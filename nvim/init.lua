@@ -106,7 +106,7 @@ local completion = require'completion'
 local function custom_on_attach(client)
   print('Attaching to ' .. client.name)
   setup_diagnostics()
-  completion.on_attach(client)
+completion.on_attach(client)
 end
 local default_config = {
   on_attach = custom_on_attach,
@@ -114,10 +114,8 @@ local default_config = {
 file_previewer = require'telescope.previewers'.vim_buffer_cat.new
 grep_previewer = require'telescope.previewers'.vim_buffer_vimgrep.new
 qflist_previewer = require'telescope.previewers'.vim_buffer_qflist.new
---
--- setup language servers here
-lspconfig.tsserver.setup(default_config)
-require'lspconfig'.tsserver.setup{}
+
+-- key bindings
 key_mapper('n', '<leader>dn', ':lua vim.lsp.diagnostic.goto_next()<CR>')
 key_mapper('n', '<leader>dp', ':lua vim.lsp.diagnostic.goto_prev()<CR>')
 key_mapper('n', '<leader>ds', ':lua vim.lsp.diagnostic.show_line_diagnostics()<CR>')
@@ -130,7 +128,7 @@ key_mapper('n', 'gr', ':lua vim.lsp.buf.references()<CR>')
 key_mapper('n', 'gt', ':lua vim.lsp.buf.type_definition()<CR>')
 key_mapper('n', 'K', ':lua vim.lsp.buf.hover()<CR>')
 key_mapper('n', '<c-k>', ':lua vim.lsp.buf.signature_help()<CR>')
-key_mapper('n', '<leader>af', ':lua vim.lsp.buf.code_action()<CR>')
+key_mapper('n', '<leader>ca', ':lua vim.lsp.buf.code_action()<CR>')
 key_mapper('n', '<leader>rn', ':lua vim.lsp.buf.rename()<CR>')
 -- fuzzy finding stuff
 key_mapper('n', '<C-p>', ':lua require"telescope.builtin".find_files()<CR>')
@@ -141,4 +139,111 @@ key_mapper('n', '<leader>gf', ':lua require"telescope.builtin".git_files()<CR>')
 -- nerd tree
 key_mapper('n', '<leader>nt', ':NERDTreeToggle<CR>')
 vim.cmd[[autocmd BufWritePre *js,*ts,*jsx,*tsx,*.graphql,*.json,*.md,*.mdx,*.svelte,*.yml,*yaml :Prettier]]
+-- sumneko lua stuff??? experiment
+  
+local configs = require 'lspconfig/configs'
+local util = require 'lspconfig/util'
 
+local name = "sumneko_lua"
+
+configs[name] = {
+  default_config = {
+    filetypes = {'lua'};
+    root_dir = function(fname)
+      return util.find_git_ancestor(fname) or util.path.dirname(fname)
+    end;
+    log_level = vim.lsp.protocol.MessageType.Warning;
+  };
+  docs = {
+    package_json = "https://raw.githubusercontent.com/sumneko/vscode-lua/master/package.json";
+    description = [[
+https://github.com/sumneko/lua-language-server
+Lua language server.
+`lua-language-server` can be installed by following the instructions [here](https://github.com/sumneko/lua-language-server/wiki/Build-and-Run-(Standalone)).
+**By default, lua-language-server doesn't have a `cmd` set.** This is because nvim-lspconfig does not make assumptions about your path. You must add the following to your init.vim or init.lua to set `cmd` to the absolute path ($HOME and ~ are not expanded) of you unzipped and compiled lua-language-server.
+```lua
+local system_name
+if vim.fn.has("mac") == 1 then
+  system_name = "macOS"
+elseif vim.fn.has("unix") == 1 then
+  system_name = "Linux"
+elseif vim.fn.has('win32') == 1 then
+  system_name = "Windows"
+else
+  print("Unsupported system for sumneko")
+end
+-- set the path to the sumneko installation; if you previously installed via the now deprecated :LspInstall, use
+local sumneko_root_path = vim.fn.stdpath('cache')..'/lspconfig/sumneko_lua/lua-language-server'
+local sumneko_binary = sumneko_root_path.."/bin/"..system_name.."/lua-language-server"
+require'lspconfig'.sumneko_lua.setup {
+  cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"};
+  settings = {
+    Lua = {
+      runtime = {
+        -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+        version = 'LuaJIT',
+        -- Setup your lua path
+        path = vim.split(package.path, ';'),
+      },
+      diagnostics = {
+        -- Get the language server to recognize the `vim` global
+        globals = {'vim'},
+      },
+      workspace = {
+        -- Make the server aware of Neovim runtime files
+        library = {
+          [vim.fn.expand('$VIMRUNTIME/lua')] = true,
+          [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true,
+        },
+      },
+    },
+  },
+}
+```
+]];
+    default_config = {
+      root_dir = [[root_pattern(".git") or bufdir]];
+    };
+  };
+}
+local system_name
+if vim.fn.has("mac") == 1 then
+  system_name = "macOS"
+elseif vim.fn.has("unix") == 1 then
+  system_name = "Linux"
+elseif vim.fn.has('win32') == 1 then
+  system_name = "Windows"
+else
+  print("Unsupported system for sumneko")
+end
+-- set the path to the sumneko installation; if you previously installed via the now deprecated :LspInstall, use
+local sumneko_root_path = "/Users/codico/code/lua-language-server"
+local sumneko_binary = sumneko_root_path.."/bin/"..system_name.."/lua-language-server"
+require'lspconfig'.sumneko_lua.setup {
+  cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"};
+  settings = {
+    Lua = {
+      runtime = {
+        -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+        version = 'LuaJIT',
+        -- Setup your lua path
+        path = vim.split(package.path, ';'),
+      },
+      diagnostics = {
+        -- Get the language server to recognize the `vim` global
+        globals = {'vim'},
+      },
+      workspace = {
+        -- Make the server aware of Neovim runtime files
+        library = {
+          [vim.fn.expand('$VIMRUNTIME/lua')] = true,
+          [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true,
+        },
+      },
+    },
+  },
+}
+
+
+lspconfig.tsserver.setup(default_config)
+require'lspconfig'.tsserver.setup{}
