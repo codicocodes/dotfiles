@@ -83,9 +83,13 @@ packer.startup(function()
   use 'nvim-lua/telescope.nvim'
   use 'jremmen/vim-ripgrep'
   use 'preservim/nerdtree'
+  use 'itchyny/lightline.vim'
   end
 )
 
+vim.g.lightline = {
+  colorscheme= 'wombat',
+}
 local function setup_diagnostics()
   vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
     vim.lsp.diagnostic.on_publish_diagnostics, {
@@ -107,8 +111,13 @@ end
 local default_config = {
   on_attach = custom_on_attach,
 }
+file_previewer = require'telescope.previewers'.vim_buffer_cat.new
+grep_previewer = require'telescope.previewers'.vim_buffer_vimgrep.new
+qflist_previewer = require'telescope.previewers'.vim_buffer_qflist.new
+--
 -- setup language servers here
 lspconfig.tsserver.setup(default_config)
+require'lspconfig'.tsserver.setup{}
 key_mapper('n', '<leader>dn', ':lua vim.lsp.diagnostic.goto_next()<CR>')
 key_mapper('n', '<leader>dp', ':lua vim.lsp.diagnostic.goto_prev()<CR>')
 key_mapper('n', '<leader>ds', ':lua vim.lsp.diagnostic.show_line_diagnostics()<CR>')
@@ -128,6 +137,8 @@ key_mapper('n', '<C-p>', ':lua require"telescope.builtin".find_files()<CR>')
 key_mapper('n', '<leader>fs', ':lua require"telescope.builtin".live_grep()<CR>')
 key_mapper('n', '<leader>fh', ':lua require"telescope.builtin".help_tags()<CR>')
 key_mapper('n', '<leader>fb', ':lua require"telescope.builtin".buffers()<CR>')
-key_mapper('n', '<leader>nt', ':NERDTreeToggle')
+key_mapper('n', '<leader>gf', ':lua require"telescope.builtin".git_files()<CR>')
+-- nerd tree
+key_mapper('n', '<leader>nt', ':NERDTreeToggle<CR>')
 vim.cmd[[autocmd BufWritePre *js,*ts,*jsx,*tsx,*.graphql,*.json,*.md,*.mdx,*.svelte,*.yml,*yaml :Prettier]]
 
