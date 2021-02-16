@@ -106,7 +106,7 @@ local completion = require'completion'
 local function custom_on_attach(client)
   print('Attaching to ' .. client.name)
   setup_diagnostics()
-completion.on_attach(client)
+  completion.on_attach(client)
 end
 local default_config = {
   on_attach = custom_on_attach,
@@ -148,62 +148,12 @@ local name = "sumneko_lua"
 
 configs[name] = {
   default_config = {
-    filetypes = {'lua'};
+    filetypes = {'lua', 'javascript', 'javascriptreact','typescript','typescriptreact'};
+
+    log_level = vim.lsp.protocol.MessageType.Warning;
     root_dir = function(fname)
       return util.find_git_ancestor(fname) or util.path.dirname(fname)
     end;
-    log_level = vim.lsp.protocol.MessageType.Warning;
-  };
-  docs = {
-    package_json = "https://raw.githubusercontent.com/sumneko/vscode-lua/master/package.json";
-    description = [[
-https://github.com/sumneko/lua-language-server
-Lua language server.
-`lua-language-server` can be installed by following the instructions [here](https://github.com/sumneko/lua-language-server/wiki/Build-and-Run-(Standalone)).
-**By default, lua-language-server doesn't have a `cmd` set.** This is because nvim-lspconfig does not make assumptions about your path. You must add the following to your init.vim or init.lua to set `cmd` to the absolute path ($HOME and ~ are not expanded) of you unzipped and compiled lua-language-server.
-```lua
-local system_name
-if vim.fn.has("mac") == 1 then
-  system_name = "macOS"
-elseif vim.fn.has("unix") == 1 then
-  system_name = "Linux"
-elseif vim.fn.has('win32') == 1 then
-  system_name = "Windows"
-else
-  print("Unsupported system for sumneko")
-end
--- set the path to the sumneko installation; if you previously installed via the now deprecated :LspInstall, use
-local sumneko_root_path = vim.fn.stdpath('cache')..'/lspconfig/sumneko_lua/lua-language-server'
-local sumneko_binary = sumneko_root_path.."/bin/"..system_name.."/lua-language-server"
-require'lspconfig'.sumneko_lua.setup {
-  cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"};
-  settings = {
-    Lua = {
-      runtime = {
-        -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-        version = 'LuaJIT',
-        -- Setup your lua path
-        path = vim.split(package.path, ';'),
-      },
-      diagnostics = {
-        -- Get the language server to recognize the `vim` global
-        globals = {'vim'},
-      },
-      workspace = {
-        -- Make the server aware of Neovim runtime files
-        library = {
-          [vim.fn.expand('$VIMRUNTIME/lua')] = true,
-          [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true,
-        },
-      },
-    },
-  },
-}
-```
-]];
-    default_config = {
-      root_dir = [[root_pattern(".git") or bufdir]];
-    };
   };
 }
 local system_name
@@ -246,4 +196,45 @@ require'lspconfig'.sumneko_lua.setup {
 
 
 lspconfig.tsserver.setup(default_config)
-require'lspconfig'.tsserver.setup{}
+require('telescope').setup{
+  defaults = {
+    vimgrep_arguments = {
+      'rg',
+      '--color=never',
+      '--no-heading',
+      '--with-filename',
+      '--line-number',
+      '--column',
+      '--smart-case'
+    },
+    prompt_position = "bottom",
+    prompt_prefix = ">",
+    initial_mode = "insert",
+    selection_strategy = "reset",
+    sorting_strategy = "descending",
+    layout_strategy = "horizontal",
+    layout_defaults = {
+      -- TODO add builtin options.
+    },
+    file_sorter =  require'telescope.sorters'.get_fuzzy_file,
+    file_ignore_patterns = {},
+    generic_sorter =  require'telescope.sorters'.get_generic_fuzzy_sorter,
+    shorten_path = true,
+    winblend = 0,
+    width = 0.75,
+    preview_cutoff = 120,
+    results_height = 1,
+    results_width = 0.8,
+    border = {},
+    borderchars = { '─', '│', '─', '│', '╭', '╮', '╯', '╰'},
+    color_devicons = true,
+    use_less = true,
+    set_env = { ['COLORTERM'] = 'truecolor' }, -- default = nil,
+    file_previewer =file_previewer, 
+    grep_previewer =grep_previewer, 
+    qflist_previewer = qflist_previewer,
+
+    -- Developer configurations: Not meant for general override
+    buffer_previewer_maker = require'telescope.previewers'.buffer_previewer_maker
+  }
+}
