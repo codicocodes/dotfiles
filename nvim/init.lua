@@ -24,7 +24,6 @@ wo.relativenumber = true
 wo.signcolumn = 'yes'
 wo.wrap = true
 
-
 vim.g.mapleader=' '
 local key_mapper = function(mode, key, result)
   vim.api.nvim_set_keymap(
@@ -62,7 +61,9 @@ packer.init({
 --- startup and add configure plugins
 packer.startup(function()
   local use = use
-  -- add you plugins here like:
+  -- add you plugins here like
+  use 'airblade/vim-gitgutter'
+  use 'APZelos/blamer.nvim'
   use 'nvim-treesitter/nvim-treesitter'
   use 'sheerun/vim-polyglot'
   -- these are optional themes but I hear good things about gloombuddy ;)
@@ -87,11 +88,15 @@ packer.startup(function()
   end
 )
 
+vim.g.blamer_relative_time = 1
+vim.g.blamer_delay = 200
+vim.g.blamer_enabled = 1
+
 vim.g.lightline = {
   colorscheme= 'wombat',
 }
 local function setup_diagnostics()
-  vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
     vim.lsp.diagnostic.on_publish_diagnostics, {
       underline = true,
       virtual_text = false,
@@ -116,6 +121,9 @@ grep_previewer = require'telescope.previewers'.vim_buffer_vimgrep.new
 qflist_previewer = require'telescope.previewers'.vim_buffer_qflist.new
 
 -- key bindings
+key_mapper('n', '<leader>hi', ':GitGutterNextHunk<CR>')
+key_mapper('n', '<leader>ho', ':GitGutterPrevHunk<CR>')
+key_mapper('n', '<leader>ht', ':GitGutterLineHighlightsToggle<CR>')
 key_mapper('n', '<leader>dn', ':lua vim.lsp.diagnostic.goto_next()<CR>')
 key_mapper('n', '<leader>dp', ':lua vim.lsp.diagnostic.goto_prev()<CR>')
 key_mapper('n', '<leader>ds', ':lua vim.lsp.diagnostic.show_line_diagnostics()<CR>')
@@ -136,6 +144,7 @@ key_mapper('n', '<leader>fs', ':lua require"telescope.builtin".live_grep()<CR>')
 key_mapper('n', '<leader>fh', ':lua require"telescope.builtin".help_tags()<CR>')
 key_mapper('n', '<leader>fb', ':lua require"telescope.builtin".buffers()<CR>')
 key_mapper('n', '<leader>gf', ':lua require"telescope.builtin".git_files()<CR>')
+key_mapper('n', '<leader>gs', ':lua require"telescope.builtin".git_status()<CR>')
 -- nerd tree
 key_mapper('n', '<leader>nt', ':NERDTreeToggle<CR>')
 vim.cmd[[autocmd BufWritePre *js,*ts,*jsx,*tsx,*.graphql,*.json,*.md,*.mdx,*.svelte,*.yml,*yaml :Prettier]]
@@ -196,6 +205,18 @@ require'lspconfig'.sumneko_lua.setup {
 
 
 lspconfig.tsserver.setup(default_config)
+
+vim.g.completion_matching_strategy_list = {'substring', 'exact', 'fuzzy', 'all'}
+vim.g.diagnostic_enable_virtual_text = 1
+vim.g.diagnostic_insert_delay = 1
+vim.g.completion_chain_complete_list = {
+  {complete_items = {'lsp', 'snippet'}},
+  {mode = '<c-p>'},
+  {mode = '<c-n>'},
+}
+
+vim.g.completion_enable_snippet = 'UltiSnips'
+
 require('telescope').setup{
   defaults = {
     vimgrep_arguments = {
