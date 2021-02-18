@@ -85,16 +85,13 @@ packer.startup(function()
   use 'nvim-lua/telescope.nvim'
   use 'jremmen/vim-ripgrep'
   use 'preservim/nerdtree'
-  use {
-  'glepnir/galaxyline.nvim',
-    branch = 'main',
-    -- your statusline
-    config = function() require'my_statusline' end,
-    -- some optional icons
-    requires = {'kyazdani42/nvim-web-devicons', opt = true}
-}
+  use 'itchyny/lightline.vim'
   end
 )
+
+vim.g.lightline = {
+  colorscheme= 'one',
+}
 
 vim.g.blamer_relative_time = 1
 vim.g.blamer_delay = 200
