@@ -62,6 +62,7 @@ packer.init({
 packer.startup(function()
   local use = use
   -- add you plugins here like
+  use 'jiangmiao/auto-pairs'
   use 'airblade/vim-gitgutter'
   use 'APZelos/blamer.nvim'
   use 'nvim-treesitter/nvim-treesitter'
@@ -84,7 +85,14 @@ packer.startup(function()
   use 'nvim-lua/telescope.nvim'
   use 'jremmen/vim-ripgrep'
   use 'preservim/nerdtree'
-  use 'itchyny/lightline.vim'
+  use {
+  'glepnir/galaxyline.nvim',
+    branch = 'main',
+    -- your statusline
+    config = function() require'statusline' end,
+    -- some optional icons
+    requires = {'kyazdani42/nvim-web-devicons', opt = true}
+}
   end
 )
 
@@ -92,14 +100,11 @@ vim.g.blamer_relative_time = 1
 vim.g.blamer_delay = 200
 vim.g.blamer_enabled = 1
 
-vim.g.lightline = {
-  colorscheme= 'wombat',
-}
 local function setup_diagnostics()
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
     vim.lsp.diagnostic.on_publish_diagnostics, {
       underline = true,
-      virtual_text = false,
+      virtual_text = true,
       signs = true,
       update_in_insert = true,
     }
