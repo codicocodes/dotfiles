@@ -68,13 +68,19 @@ packer.startup(function()
   use 'nvim-treesitter/nvim-treesitter'
   use 'sheerun/vim-polyglot'
   -- these are optional themes but I hear good things about gloombuddy ;)
+  use 'mhartington/oceanic-next'
   use 'tjdevries/colorbuddy.nvim'
   use 'codicocodes/gloombuddy'
+  use 'arcticicestudio/nord-vim'
+  use 'cocopon/iceberg.vim'
+  use 'sainnhe/sonokai'
+  use 'sainnhe/edge'
+
   -- sneaking some formatting in here too
   use {'prettier/vim-prettier', run = 'yarn install' }
+  
   -- lsp stuff
   
-
 -- old stuff language server
   
   use 'neovim/nvim-lspconfig'
@@ -89,8 +95,11 @@ packer.startup(function()
   end
 )
 
+vim.g.edge_style = 'neon'
+vim.g.sonokai_style = 'andromeda'
+
 vim.g.lightline = {
-  colorscheme= 'one',
+  colorscheme= 'edge',
 }
 
 vim.g.blamer_relative_time = 1
@@ -107,7 +116,7 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
     }
   )
 end
-vim.g.colors_name='gloombuddy'
+vim.g.colors_name='edge'
 local lspconfig = require'lspconfig'
 local completion = require'completion'
 local function custom_on_attach(client)
