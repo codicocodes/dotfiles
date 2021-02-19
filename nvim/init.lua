@@ -92,6 +92,9 @@ packer.startup(function()
   use 'jremmen/vim-ripgrep'
   use 'preservim/nerdtree'
   use 'itchyny/lightline.vim'
+  use 'itchyny/vim-gitbranch'
+  use 'kyazdani42/nvim-web-devicons'
+  use 'akinsho/nvim-bufferline.lua'
   end
 )
 
@@ -100,6 +103,12 @@ vim.g.sonokai_style = 'andromeda'
 
 vim.g.lightline = {
   colorscheme= 'edge',
+  active= {
+    left= { { 'mode', 'paste' }, { 'gitbranch', 'readonly', 'filename', 'modified' } } ,
+  },
+  component_function = {
+    gitbranch = 'gitbranch#name'
+  },
 }
 
 vim.g.blamer_relative_time = 1
@@ -226,3 +235,10 @@ vim.g.completion_chain_complete_list = {
 vim.g.completion_enable_snippet = 'UltiSnips'
 
 require("telescope")
+
+require("bufferline").setup {}
+-- key_mapper("n", "gb", [[lua require'bufferline'.BufferLinePick<CR>]])
+-- key_mapper("n", "<leader><tab>", [[<cmd>BufferLineCycleNext<CR>]])
+-- key_mapper("n", "<S-tab>", [[<cmd>BufferLineCyclePrev<CR>]])
+-- key_mapper("n", "[b", [[<cmd>BufferLineMoveNext<CR>]])
+-- key_mapper("n", "]b", [[<cmd>BufferLineMovePrev<CR>]])
