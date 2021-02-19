@@ -90,11 +90,16 @@ packer.startup(function()
   use 'nvim-lua/plenary.nvim'
   use 'nvim-lua/telescope.nvim'
   use 'jremmen/vim-ripgrep'
-  use 'preservim/nerdtree'
+  -- use 'preservim/nerdtree'
   use 'itchyny/lightline.vim'
   use 'itchyny/vim-gitbranch'
   use 'kyazdani42/nvim-web-devicons'
-  use 'akinsho/nvim-bufferline.lua'
+  use 'kyazdani42/nvim-tree.lua'
+  use {
+    'akinsho/nvim-bufferline.lua',
+        requires = {'kyazdani42/nvim-web-devicons', 'sainnhe/edge'},
+        config = require'bufferline_setup',
+  }
   end
 )
 
@@ -114,6 +119,11 @@ vim.g.lightline = {
 vim.g.blamer_relative_time = 1
 vim.g.blamer_delay = 200
 vim.g.blamer_enabled = 1
+
+vim.g.nvim_tree_width = 25
+vim.g.nvim_tree_auto_open = 1
+vim.g.nvim_tree_auto_close = 1
+vim.g.nvim_tree_git_hl = 1 
 
 local function setup_diagnostics()
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
@@ -162,8 +172,10 @@ key_mapper('n', '<leader>fh', ':lua require"telescope.builtin".help_tags()<CR>')
 key_mapper('n', '<leader>fb', ':lua require"telescope.builtin".buffers()<CR>')
 key_mapper('n', '<leader>gf', ':lua require"telescope.builtin".git_files()<CR>')
 key_mapper('n', '<leader>gs', ':lua require"telescope.builtin".git_status()<CR>')
--- nerd tree
-key_mapper('n', '<leader>nt', ':NERDTreeToggle<CR>')
+-- nvim-tree
+key_mapper('n', '<leader>tt', ':NvimTreeToggle<CR>')
+key_mapper('n', '<leader>tf', ':NvimTreeFindFile<CR>')
+-- prettier
 vim.cmd[[autocmd BufWritePre *js,*ts,*jsx,*tsx,*.graphql,*.json,*.md,*.mdx,*.svelte,*.yml,*yaml :Prettier]]
 -- sumneko lua stuff??? experiment
   
@@ -236,9 +248,3 @@ vim.g.completion_enable_snippet = 'UltiSnips'
 
 require("telescope_setup")
 
-require("bufferline").setup {}
--- key_mapper("n", "gb", [[lua require'bufferline'.BufferLinePick<CR>]])
--- key_mapper("n", "<leader><tab>", [[<cmd>BufferLineCycleNext<CR>]])
--- key_mapper("n", "<S-tab>", [[<cmd>BufferLineCyclePrev<CR>]])
--- key_mapper("n", "[b", [[<cmd>BufferLineMoveNext<CR>]])
--- key_mapper("n", "]b", [[<cmd>BufferLineMovePrev<CR>]])
