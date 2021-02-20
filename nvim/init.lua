@@ -53,55 +53,7 @@ if fn.empty(fn.glob(install_path)) > 0 then
     execute 'packadd packer.nvim'
 end
 vim.cmd('packadd packer.nvim')
-local packer = require'packer'
-local util = require'packer.util'
-packer.init({
-  package_root = util.join_paths(vim.fn.stdpath('data'), 'site', 'pack')
-})
---- startup and add configure plugins
-packer.startup(function()
-  local use = use
-  -- add you plugins here like
-  use 'jiangmiao/auto-pairs'
-  use 'airblade/vim-gitgutter'
-  use 'APZelos/blamer.nvim'
-  use 'nvim-treesitter/nvim-treesitter'
-  use 'sheerun/vim-polyglot'
-  -- these are optional themes but I hear good things about gloombuddy ;)
-  use 'mhartington/oceanic-next'
-  use 'tjdevries/colorbuddy.nvim'
-  use 'codicocodes/gloombuddy'
-  use 'arcticicestudio/nord-vim'
-  use 'cocopon/iceberg.vim'
-  use 'sainnhe/sonokai'
-  use 'sainnhe/edge'
-
-  -- sneaking some formatting in here too
-  use {'prettier/vim-prettier', run = 'yarn install' }
-  
-  -- lsp stuff
-  
--- old stuff language server
-  
-  use 'neovim/nvim-lspconfig'
-  use 'nvim-lua/completion-nvim'
-  use 'anott03/nvim-lspinstall' 
-  use 'nvim-lua/popup.nvim'
-  use 'nvim-lua/plenary.nvim'
-  use 'nvim-lua/telescope.nvim'
-  use 'jremmen/vim-ripgrep'
-  -- use 'preservim/nerdtree'
-  use 'itchyny/lightline.vim'
-  use 'itchyny/vim-gitbranch'
-  use 'kyazdani42/nvim-web-devicons'
-  use 'kyazdani42/nvim-tree.lua'
-  use {
-    'akinsho/nvim-bufferline.lua',
-        requires = {'kyazdani42/nvim-web-devicons', 'sainnhe/edge'},
-        config = require'bufferline_setup',
-  }
-  end
-)
+require'plugins_setup'
 
 vim.g.edge_style = 'neon'
 vim.g.sonokai_style = 'andromeda'
@@ -124,6 +76,7 @@ vim.g.nvim_tree_width = 25
 vim.g.nvim_tree_auto_open = 1
 vim.g.nvim_tree_auto_close = 1
 vim.g.nvim_tree_git_hl = 1 
+vim.g.nvim_tree_hide_dotfiles = 1
 
 local function setup_diagnostics()
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
@@ -148,6 +101,7 @@ local default_config = {
 }
 
 -- key bindings
+key_mapper('n', '<leader>q', ':b#|bd#')
 key_mapper('n', '<leader>hi', ':GitGutterNextHunk<CR>')
 key_mapper('n', '<leader>ho', ':GitGutterPrevHunk<CR>')
 key_mapper('n', '<leader>ht', ':GitGutterLineHighlightsToggle<CR>')
@@ -174,7 +128,7 @@ key_mapper('n', '<leader>gf', ':lua require"telescope.builtin".git_files()<CR>')
 key_mapper('n', '<leader>gs', ':lua require"telescope.builtin".git_status()<CR>')
 -- nvim-tree
 key_mapper('n', '<leader>tt', ':NvimTreeToggle<CR>')
-key_mapper('n', '<leader>tf', ':NvimTreeFindFile<CR>')
+key_mapper('n', '<leader>ff', ':NvimTreeFindFile<CR>')
 -- prettier
 vim.cmd[[autocmd BufWritePre *js,*ts,*jsx,*tsx,*.graphql,*.json,*.md,*.mdx,*.svelte,*.yml,*yaml :Prettier]]
 -- sumneko lua stuff??? experiment
