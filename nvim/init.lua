@@ -33,6 +33,7 @@ local key_mapper = function(mode, key, result)
     {noremap = true, silent = true}
   )
 end
+
 key_mapper('', '<up>', '<nop>')
 key_mapper('', '<down>', '<nop>')
 key_mapper('', '<left>', '<nop>')
@@ -72,11 +73,11 @@ vim.g.blamer_relative_time = 1
 vim.g.blamer_delay = 200
 vim.g.blamer_enabled = 1
 
-vim.g.nvim_tree_width = 25
-vim.g.nvim_tree_auto_open = 1
+vim.g.nvim_tree_width = 35
+vim.g.nvim_tree_auto_open = 0
 vim.g.nvim_tree_auto_close = 1
 vim.g.nvim_tree_git_hl = 1 
-vim.g.nvim_tree_hide_dotfiles = 1
+vim.g.nvim_tree_hide_dotfiles = 0
 
 local function setup_diagnostics()
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
@@ -188,6 +189,7 @@ require'lspconfig'.sumneko_lua.setup {
 
 
 lspconfig.tsserver.setup(default_config)
+lspconfig.svelte.setup(default_config)
 
 vim.g.completion_matching_strategy_list = {'substring', 'exact', 'fuzzy', 'all'}
 vim.g.diagnostic_enable_virtual_text = 1
