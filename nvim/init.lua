@@ -24,6 +24,8 @@ wo.relativenumber = true
 wo.signcolumn = 'yes'
 wo.wrap = true
 
+-- o.completeopt = "menuone,noselect"
+
 vim.g.mapleader=' '
 local key_mapper = function(mode, key, result)
   vim.api.nvim_set_keymap(
@@ -33,6 +35,7 @@ local key_mapper = function(mode, key, result)
     {noremap = true, silent = true}
   )
 end
+
 key_mapper('', '<up>', '<nop>')
 key_mapper('', '<down>', '<nop>')
 key_mapper('', '<left>', '<nop>')
@@ -40,9 +43,7 @@ key_mapper('', '<right>', '<nop>')
 key_mapper('i', 'jk', '<ESC>')
 key_mapper('i', 'JK', '<ESC>')
 key_mapper('i', 'jK', '<ESC>')
-key_mapper('v', 'jk', '<ESC>')
-key_mapper('v', 'JK', '<ESC>')
-key_mapper('v', 'jK', '<ESC>')
+
 local vim = vim
 local execute = vim.api.nvim_command
 local fn = vim.fn
@@ -72,12 +73,11 @@ vim.g.blamer_relative_time = 1
 vim.g.blamer_delay = 200
 vim.g.blamer_enabled = 1
 
-vim.g.nvim_tree_width = 25
-vim.g.nvim_tree_auto_open = 1
+vim.g.nvim_tree_width = 30
+vim.g.nvim_tree_auto_open = 0
 vim.g.nvim_tree_auto_close = 1
-vim.g.nvim_tree_git_hl = 1 
+vim.g.nvim_tree_git_hl = 1
 vim.g.nvim_tree_hide_dotfiles = 1
-
 local function setup_diagnostics()
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
     vim.lsp.diagnostic.on_publish_diagnostics, {
@@ -89,6 +89,8 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   )
 end
 vim.g.colors_name='edge'
+
+
 local lspconfig = require'lspconfig'
 local completion = require'completion'
 local function custom_on_attach(client)
@@ -99,6 +101,8 @@ end
 local default_config = {
   on_attach = custom_on_attach,
 }
+
+-- vim.cmd('inoremap <silent><expr> <CR>      compe#confirm("<CR>")')
 
 -- key bindings
 key_mapper('n', '<leader>q', ':b#|bd#')
@@ -131,8 +135,7 @@ key_mapper('n', '<leader>tt', ':NvimTreeToggle<CR>')
 key_mapper('n', '<leader>ff', ':NvimTreeFindFile<CR>')
 -- prettier
 vim.cmd[[autocmd BufWritePre *js,*ts,*jsx,*tsx,*.graphql,*.json,*.md,*.mdx,*.svelte,*.yml,*yaml :Prettier]]
--- sumneko lua stuff??? experiment
-  
+-- sumneko lua stuff??? experimen
 local configs = require 'lspconfig/configs'
 local util = require 'lspconfig/util'
 
@@ -188,6 +191,8 @@ require'lspconfig'.sumneko_lua.setup {
 
 
 lspconfig.tsserver.setup(default_config)
+
+-- lspconfig.svelte.setup(default_config)
 
 vim.g.completion_matching_strategy_list = {'substring', 'exact', 'fuzzy', 'all'}
 vim.g.diagnostic_enable_virtual_text = 1
