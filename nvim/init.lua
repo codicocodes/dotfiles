@@ -56,7 +56,7 @@ vim.g.blamer_enabled = 1
 vim.g.nvim_tree_width = 35
 vim.g.nvim_tree_auto_open = 0
 vim.g.nvim_tree_auto_close = 1
-vim.g.nvim_tree_git_hl = 1 
+vim.g.nvim_tree_git_hl = 1
 vim.g.nvim_tree_hide_dotfiles = 0
 
 local function setup_diagnostics()
@@ -83,7 +83,6 @@ local default_config = {
 -- prettier
 vim.cmd[[autocmd BufWritePre *js,*ts,*jsx,*tsx,*.graphql,*.json,*.md,*.mdx,*.svelte,*.yml,*yaml :Prettier]]
 -- sumneko lua stuff??? experiment
-  
 local configs = require 'lspconfig/configs'
 local util = require 'lspconfig/util'
 
@@ -154,3 +153,4 @@ vim.g.completion_enable_snippet = 'UltiSnips'
 
 require("telescope_setup")
 require("keybindings_setup")
+require("treesitter_setup")

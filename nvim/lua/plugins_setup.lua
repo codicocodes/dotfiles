@@ -32,6 +32,7 @@ packer.startup(function()
   use 'tpope/vim-commentary'
   use 'unblevable/quick-scope'
   use 'sirver/UltiSnips'
+  use 'phaazon/hop.nvim'
   end
 )
 
