@@ -1,6 +1,10 @@
 local o=vim.o
 local bo=vim.bo
 local wo=vim.wo
+
+-- Lower updatetime to show diagnostic popup
+o.updatetime = 400
+
 o.termguicolors = true
 o.syntax = 'on'
 o.errorbells = false
@@ -62,13 +66,17 @@ vim.g.nvim_tree_hide_dotfiles = 0
 local function setup_diagnostics()
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
     vim.lsp.diagnostic.on_publish_diagnostics, {
-      underline = true,
-      virtual_text = true,
+      underline = false,
+      virtual_text = false,
       signs = true,
       update_in_insert = true,
     }
   )
+
+  -- Show diagnostic text on hover
+  vim.cmd[[autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics()]]
 end
+
 local lspconfig = require'lspconfig'
 local completion = require'completion'
 local function custom_on_attach(client)
