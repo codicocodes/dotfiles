@@ -42,8 +42,13 @@ require'plugins_setup'
 
 vim.g.edge_style = 'neon'
 vim.g.colors_name='edge'
+vim.g.edge_transparent_background = 1
 
-vim.g.lightline = {
+ 
+vim.g.lightline = { 
+  enable={
+    tabline=0,
+  },
   colorscheme= 'edge',
   active= {
     left= { { 'mode', 'paste' }, { 'gitbranch', 'readonly', 'filename', 'modified' } } ,
@@ -52,10 +57,6 @@ vim.g.lightline = {
     gitbranch = 'gitbranch#name'
   },
 }
-
-vim.g.blamer_relative_time = 1
-vim.g.blamer_delay = 200
-vim.g.blamer_enabled = 1
 
 vim.g.nvim_tree_width = 35
 vim.g.nvim_tree_auto_open = 0
@@ -106,6 +107,7 @@ configs[name] = {
     end;
   };
 }
+
 local system_name
 if vim.fn.has("mac") == 1 then
   system_name = "macOS"

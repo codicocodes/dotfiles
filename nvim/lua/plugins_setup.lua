@@ -6,7 +6,7 @@ packer.init({
 })
 packer.startup(function()
   local use = use
-  use 'airblade/vim-gitgutter'
+  -- use 'airblade/vim-gitgutter'
   use 'itchyny/vim-gitbranch'
   use 'jiangmiao/auto-pairs'
   use 'nvim-treesitter/nvim-treesitter'
