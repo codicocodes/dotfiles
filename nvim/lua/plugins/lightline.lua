@@ -1,4 +1,3 @@
-
 vim.g.lightline = { 
   enable={
     tabline=0,
