@@ -10,7 +10,7 @@ return function()
       right_trunc_marker = '',
       max_name_length = 18,
       max_prefix_length = 25, -- prefix used when a buffer is deduplicated
-      tab_size = 25,
+      tab_size = 20,
       diagnostics ="nvim_lsp",
       diagnostics_indicator = function(count, level)
         local icon = level:match("error") and "" or ""
