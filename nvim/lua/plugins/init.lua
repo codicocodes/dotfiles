@@ -45,7 +45,7 @@ packer.startup(function()
   use {
     'akinsho/nvim-bufferline.lua',
     requires = { 'kyazdani42/nvim-web-devicons', 'sainnhe/edge' },
-    config = require'bufferline',
+    config = require'plugins.bufferline',
   }
 
 end
