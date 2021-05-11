@@ -38,9 +38,9 @@ packer.startup(function()
     requires = {
       'nvim-lua/plenary.nvim'
     },
-      config = function()
-    require('gitsigns').setup()
-  end
+    config = function()
+      require('gitsigns').setup()
+    end
   }
 
   -- EDITING
