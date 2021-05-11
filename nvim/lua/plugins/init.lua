@@ -29,7 +29,6 @@ packer.startup(function()
 
   -- THEMES
   use 'sainnhe/edge'
-
   -- GIT
   use 'tpope/vim-fugitive'
   use 'itchyny/vim-gitbranch'
@@ -38,8 +37,9 @@ packer.startup(function()
     requires = {
       'nvim-lua/plenary.nvim'
     },
+
     config = function()
-      require('gitsigns').setup()
+      require'plugins.gitsigns'
     end
   }
 
