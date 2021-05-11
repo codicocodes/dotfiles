@@ -22,6 +22,11 @@ packer.startup(function()
   use 'nvim-lua/completion-nvim'
   use 'anott03/nvim-lspinstall'
   use 'glepnir/lspsaga.nvim'
+  use {
+    'creativenull/diagnosticls-nvim',
+    requires = { 'neovim/nvim-lspconfig' }
+  }
+
   -- THEMES
   use 'sainnhe/edge'
 

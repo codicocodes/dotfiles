@@ -19,8 +19,26 @@ local function custom_on_attach(client)
   setup_diagnostics()
   completion.on_attach(client)
 end
+
 local default_config = {
   on_attach = custom_on_attach,
+}
+
+require 'diagnosticls-nvim'.init(default_config)
+
+local eslint = require 'diagnosticls-nvim.linters.eslint'
+
+local prettier = require 'diagnosticls-nvim.formatters.prettier'
+
+require 'diagnosticls-nvim'.setup {
+  ['javascript'] = {
+    linter = eslint,
+    formatter = prettier
+  },
+  ['javascriptreact'] = {
+    linter = eslint,
+    formatter = prettier
+  }
 }
 
 lspconfig.tsserver.setup(default_config)
