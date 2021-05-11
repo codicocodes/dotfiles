@@ -33,6 +33,15 @@ packer.startup(function()
   -- GIT
   use 'tpope/vim-fugitive'
   use 'itchyny/vim-gitbranch'
+  use {
+    'lewis6991/gitsigns.nvim',
+    requires = {
+      'nvim-lua/plenary.nvim'
+    },
+      config = function()
+    require('gitsigns').setup()
+  end
+  }
 
   -- EDITING
   use 'jiangmiao/auto-pairs'
@@ -44,12 +53,18 @@ packer.startup(function()
   use 'phaazon/hop.nvim'
 
   -- EDITOR
-  use 'itchyny/lightline.vim'
+  -- use 'itchyny/lightline.vim'
   use 'kyazdani42/nvim-web-devicons'
   use 'kyazdani42/nvim-tree.lua'
   use {
+    'glepnir/galaxyline.nvim',
+    branch = 'main',
+    config = function() require'plugins.galaxyline' end,
+    requires = {'kyazdani42/nvim-web-devicons', opt = true}
+  }
+  use {
     'akinsho/nvim-bufferline.lua',
-    requires = { 'kyazdani42/nvim-web-devicons', 'sainnhe/edge' },
+    requires = { 'kyazdani42/nvim-web-devicons' },
     config = require'plugins.bufferline',
   }
 
