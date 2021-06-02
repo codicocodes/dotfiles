@@ -8,7 +8,6 @@ local key_mapper = function(mode, key, result)
 end
 
 -- Buffers
-key_mapper('', '<leader>p', ':bprev<CR>')
 key_mapper('', '<leader>n', ':bnext<CR>')
 key_mapper('', '<leader>bd', ':bd<CR>')
 key_mapper('', '<leader>q', ':wq<CR>')
@@ -25,7 +24,7 @@ key_mapper('i', 'jk', '<ESC>')
 key_mapper('i', 'JK', '<ESC>')
 key_mapper('i', 'jK', '<ESC>')
 
--- Windows 
+-- Window
 key_mapper('n', '<leader>sv', ':vsplit<CR>')
 key_mapper('n', '<leader>sh', ':split<CR>')
 key_mapper('n', '<up>',    ':resize +2<CR>')
@@ -43,7 +42,7 @@ key_mapper('n', '<leader>h', ':wincmd h<CR>')
 key_mapper('n', '<leader>dn', ':lua vim.lsp.diagnostic.goto_next()<CR>')
 key_mapper('n', '<leader>dp', ':lua vim.lsp.diagnostic.goto_prev()<CR>')
 key_mapper('n', '<leader>ds', ':lua vim.lsp.diagnostic.show_line_diagnostics()<CR>')
-key_mapper('n', 'gd', ':lua vim.lsp.buf.definition()<CR>')
+key_mapper('n', 'gd', ':lua vim.lsp.buf.definition()<CR>zz')
 key_mapper('n', 'gD', ':lua vim.lsp.buf.declaration()<CR>')
 key_mapper('n', 'gi', ':lua vim.lsp.buf.implementation()<CR>')
 key_mapper('n', 'gw', ':lua vim.lsp.buf.document_symbol()<CR>')
@@ -72,8 +71,15 @@ key_mapper('', '<leader>gt', ':Gitsigns toggle_signs<CR>')
 key_mapper('', '<leader>gp', ':Gitsigns preview_hunk<CR>')
 key_mapper('', '<leader>gi', ':Gitsigns next_hunk<CR>')
 key_mapper('', '<leader>go', ':Gitsigns prev_hunk<CR>')
+key_mapper('', '<leader>gu', ':Gitsigns unstage_hunk<CR>')
 
 -- Helpers
+-- key_mapper('v','J','dp')
+-- key_mapper('v','K','dkp')
+-- key_mapper('n','J','ddp')
+-- key_mapper('n','K','ddkP')
+
+key_mapper('', "vp", 'viwp')
 key_mapper('', "''", '<ESC>I"<ESC>A"<ESC>')
 key_mapper('', ';;', '<ESC>A;<ESC>')
 key_mapper('', ',,', '<ESC>A,<ESC>')

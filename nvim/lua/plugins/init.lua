@@ -48,12 +48,11 @@ packer.startup(function()
   use { 'prettier/vim-prettier', run = 'yarn install' }
   use 'tpope/vim-surround'
   use 'tpope/vim-commentary'
-  use 'unblevable/quick-scope'
   use 'sirver/UltiSnips'
   use 'phaazon/hop.nvim'
+  use 'tpope/vim-abolish'
 
   -- EDITOR
-  -- use 'itchyny/lightline.vim'
   use 'kyazdani42/nvim-web-devicons'
   use 'kyazdani42/nvim-tree.lua'
   use {
