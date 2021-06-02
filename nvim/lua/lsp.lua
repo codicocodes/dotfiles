@@ -1,15 +1,12 @@
 local function setup_diagnostics()
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
     vim.lsp.diagnostic.on_publish_diagnostics, {
-      underline = false,
-      virtual_text = false,
+      underline = true,
+      virtual_text = true,
       signs = true,
       update_in_insert = true,
     }
   )
-
-  -- Show diagnostic text on hover
-  vim.cmd[[autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics()]]
 end
 
 local lspconfig = require'lspconfig'
