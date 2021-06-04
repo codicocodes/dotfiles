@@ -71,14 +71,17 @@ set showmatch
 map <leader><space> :let @/=''<cr> " clear search
 
 " Remap help key.
-inoremap <F1> <ESC>:set invfullscreen<CR>a
-nnoremap <F1> :set invfullscreen<CR>
-vnoremap <F1> :set invfullscreen<CR>
+" inoremap <F1> <ESC>:set invfullscreen<CR>a
+" nnoremap <F1> :set invfullscreen<CR>
+" vnoremap <F1> :set invfullscreen<CR>
+map Y$ y$
+map <leader>ff :Explore<CR>
 
 " Textmate holdouts
 
 " Formatting
-map <leader>q gqip
+map <leader>q :wq<CR>
+map <leader>w :w<CR>
 
 " Visualize tabs and newlines
 set listchars=tab:▸\ ,eol:¬
