@@ -71,7 +71,7 @@ key_mapper('', '<leader>gt', ':Gitsigns toggle_signs<CR>')
 key_mapper('', '<leader>gp', ':Gitsigns preview_hunk<CR>')
 key_mapper('', '<leader>gi', ':Gitsigns next_hunk<CR>')
 key_mapper('', '<leader>go', ':Gitsigns prev_hunk<CR>')
-key_mapper('', '<leader>gu', ':Gitsigns unstage_hunk<CR>')
+key_mapper('', '<leader>gu', ':Gitsigns reset_hunk<CR>')
 
 -- Helpers
 -- key_mapper('v','J','dp')
@@ -85,3 +85,7 @@ key_mapper('', ';;', '<ESC>A;<ESC>')
 key_mapper('', ',,', '<ESC>A,<ESC>')
 key_mapper('', '<ESC>', ':noh<CR>')
 key_mapper('','Y','y$')
+key_mapper('', 'vaf','0v$%V')
+key_mapper('', 'yaf','0v$%Vy')
+key_mapper('', 'daf','0v$%Vd')
+

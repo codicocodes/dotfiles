@@ -90,6 +90,9 @@ set listchars=tab:▸\ ,eol:¬
 " Or use your leader key + l to toggle on/off
 map <leader>l :set list!<CR> " Toggle tabs and EOL
 
+map <leader>ff :Explore<CR> " Open the file tree
+map <leader>tt :Explore<CR> " Open the file tree
+
 " Color scheme (terminal)
 set t_Co=256
 set background=dark

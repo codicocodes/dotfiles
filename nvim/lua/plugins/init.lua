@@ -70,3 +70,4 @@ packer.startup(function()
 end
 )
 
+require 'lspsaga'.init_lsp_saga()
