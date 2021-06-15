@@ -8,6 +8,7 @@ local key_mapper = function(mode, key, result)
 end
 
 -- Buffers
+key_mapper('', '<leader>p', ':bprev<CR>')
 key_mapper('', '<leader>n', ':bnext<CR>')
 key_mapper('', '<leader>bd', ':bd<CR>')
 key_mapper('', '<leader>q', ':wq<CR>')
@@ -41,7 +42,7 @@ key_mapper('n', '<leader>h', ':wincmd h<CR>')
 -- LSP
 key_mapper('n', '<leader>dn', ':lua vim.lsp.diagnostic.goto_next()<CR>')
 key_mapper('n', '<leader>dp', ':lua vim.lsp.diagnostic.goto_prev()<CR>')
-key_mapper('n', '<leader>ds', ':lua vim.lsp.diagnostic.show_line_diagnostics()<CR>')
+key_mapper('n', '<leader>ds', ':Lspsaga show_line_diagnostics <CR>')
 key_mapper('n', 'gd', ':lua vim.lsp.buf.definition()<CR>zz')
 key_mapper('n', 'gD', ':lua vim.lsp.buf.declaration()<CR>')
 key_mapper('n', 'gi', ':lua vim.lsp.buf.implementation()<CR>')
@@ -51,8 +52,8 @@ key_mapper('n', 'gr', ':lua vim.lsp.buf.references()<CR>')
 key_mapper('n', 'gt', ':lua vim.lsp.buf.type_definition()<CR>')
 key_mapper('n', 'K', ':lua vim.lsp.buf.hover()<CR>')
 key_mapper('n', '<c-k>', ':lua vim.lsp.buf.signature_help()<CR>')
-key_mapper('n', '<leader>ca', ':lua vim.lsp.buf.code_action()<CR>')
-key_mapper('n', '<leader>rn', ':lua vim.lsp.buf.rename()<CR>')
+key_mapper('n', '<leader>ca', ':Lspsaga code_action<CR>')
+key_mapper('n', '<leader>rn', ':Lspsaga rename<CR>')
 
 -- Telescope
 key_mapper('n', '<C-p>', ':lua require"telescope.builtin".find_files()<CR>')
@@ -73,19 +74,10 @@ key_mapper('', '<leader>gi', ':Gitsigns next_hunk<CR>')
 key_mapper('', '<leader>go', ':Gitsigns prev_hunk<CR>')
 key_mapper('', '<leader>gu', ':Gitsigns reset_hunk<CR>')
 
--- Helpers
--- key_mapper('v','J','dp')
--- key_mapper('v','K','dkp')
--- key_mapper('n','J','ddp')
--- key_mapper('n','K','ddkP')
-
 key_mapper('', "vp", 'viwp')
 key_mapper('', "''", '<ESC>I"<ESC>A"<ESC>')
 key_mapper('', ';;', '<ESC>A;<ESC>')
 key_mapper('', ',,', '<ESC>A,<ESC>')
 key_mapper('', '<ESC>', ':noh<CR>')
 key_mapper('','Y','y$')
-key_mapper('', 'vaf','0v$%V')
-key_mapper('', 'yaf','0v$%Vy')
-key_mapper('', 'daf','0v$%Vd')
 
