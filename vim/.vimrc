@@ -13,7 +13,7 @@ syntax on
 filetype plugin indent on
 
 " TODO: Pick a leader key
-" let mapleader = " "
+let mapleader = " "
 
 " Security
 set modelines=0
@@ -74,14 +74,13 @@ map <leader><space> :let @/=''<cr> " clear search
 " inoremap <F1> <ESC>:set invfullscreen<CR>a
 " nnoremap <F1> :set invfullscreen<CR>
 " vnoremap <F1> :set invfullscreen<CR>
-map Y$ y$
-map <leader>ff :Explore<CR>
-
-" Textmate holdouts
+nnoremap Y$ y$
+nnoremap <leader>ff :Explore<CR>
+nnoremap <leader>tt :Explore<CR> " Open the file tree
 
 " Formatting
-map <leader>q :wq<CR>
-map <leader>w :w<CR>
+nnoremap <leader>q :wq<CR>
+nnoremap <leader>w :w<CR>
 
 " Visualize tabs and newlines
 set listchars=tab:▸\ ,eol:¬
@@ -90,8 +89,6 @@ set listchars=tab:▸\ ,eol:¬
 " Or use your leader key + l to toggle on/off
 map <leader>l :set list!<CR> " Toggle tabs and EOL
 
-map <leader>ff :Explore<CR> " Open the file tree
-map <leader>tt :Explore<CR> " Open the file tree
 
 " Color scheme (terminal)
 set t_Co=256
