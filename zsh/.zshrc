@@ -5,7 +5,7 @@ export ZSH="/Users/codico/.oh-my-zsh"
 ZSH_THEME="robbyrussell"
 
 # Plugins
-plugins+=(zsh-vi-mode)
+plugins+=(git zsh-z zsh-vi-mode)
 ZVM_VI_EDITOR=nvim
 
 # Source
@@ -21,19 +21,26 @@ background_set() {
     clear
 }
 
-background_random() {
-    echo "Setting random image"
+bgr() {
     image_path=find ~/wallpapers -iname '*.png' -type f | shuf -n1
-    echo "image path: $image_path"
     kitty @ set-background-image $image_path
+    echo "background_image $image_path" > "$HOME/code/dotfiles/kitty/background_image.conf"
 }
+
+
+# background_random() {
+#     echo "Setting random image"
+#     image_path=find ~/wallpapers -iname '*.png' -type f | shuf -n1
+#     echo "image path: $image_path"
+#     kitty @ set-background-image $image_path
+# }
 
 # Aliases
 alias src="source ~/.zshrc"
 alias nv="nvim"
 alias vi="nvim"
 alias bgs="background_set"
-alias bgr="background_random"
+# alias bgr="background_random"
 alias bgp="ls ~/wallpapers"
 
 ## Projects

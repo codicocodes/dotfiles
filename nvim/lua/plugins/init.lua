@@ -29,6 +29,9 @@ packer.startup(function()
 
   -- THEMES
   use 'sainnhe/edge'
+  -- use 'folke/tokyonight.nvim'
+  use 'codicocodes/tokyonight.nvim'
+
   -- GIT
   use 'tpope/vim-fugitive'
   use 'itchyny/vim-gitbranch'

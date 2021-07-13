@@ -21,7 +21,7 @@ local default_config = {
   on_attach = custom_on_attach,
 }
 
-require 'diagnosticls-nvim'.init(default_config)
+require'diagnosticls-nvim'.init(default_config)
 
 local eslint = require 'diagnosticls-nvim.linters.eslint'
 
@@ -49,6 +49,3 @@ vim.g.completion_chain_complete_list = {
   {mode = '<c-p>'},
   {mode = '<c-n>'},
 }
-
-vim.g.completion_enable_snippet = 'UltiSnips'
-
