@@ -49,14 +49,16 @@ alias st-client="cd ~/code/stream/speedtyper/speedtyper-client"
 alias st-server="cd ~/code/stream/speedtyper/speedtyper-server"
 alias dots="cd ~/code/dotfiles"
 
-## Git
-alias gs="git status"
-alias gc="git commit -m"
-alias gco="git checkout"
-alias gcob="git checkout -b"
+# ## Git
+# alias gs="git status"
+# alias gc="git commit -m"
+# alias gco="git checkout"
+# alias gcob="git checkout -b"
 
 # Setup
 # Set tab name or window title automatically to the current directory or file #930
 precmd () {print -Pn "\e]0;%~\a"}
 # Source nvm
-source ~/.nvm/nvm.sh
+export NVM_DIR=~/.nvm
+source  ~/.nvm/nvm.sh
+# source $(brew --prefix nvm)/nvm.sh

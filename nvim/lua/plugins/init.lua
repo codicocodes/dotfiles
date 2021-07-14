@@ -51,7 +51,6 @@ packer.startup(function()
   use { 'prettier/vim-prettier', run = 'yarn install' }
   use 'tpope/vim-surround'
   use 'tpope/vim-commentary'
-  use 'sirver/UltiSnips'
   use 'phaazon/hop.nvim'
   use 'tpope/vim-abolish'
 
