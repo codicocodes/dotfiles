@@ -14,18 +14,18 @@ key_mapper('', '<leader>bd', ':bd<CR>')
 key_mapper('', '<leader>q', ':wq<CR>')
 key_mapper('', '<leader>w', ':w<CR>')
 
--- Arrowkeys
+-- Try to use your arrows keys KEKW
 key_mapper('', '<up>', '<nop>')
 key_mapper('', '<down>', '<nop>')
 key_mapper('', '<left>', '<nop>')
 key_mapper('', '<right>', '<nop>')
 
--- Escape
+-- GET THE HELL OUT OF INSERTMODE RIGHT NOW
 key_mapper('i', 'jk', '<ESC>')
 key_mapper('i', 'JK', '<ESC>')
 key_mapper('i', 'jK', '<ESC>')
 
--- Window
+-- Manage your windows like a boss
 key_mapper('n', '<leader>sv', ':vsplit<CR>')
 key_mapper('n', '<leader>sh', ':split<CR>')
 key_mapper('n', '<up>',    ':resize +2<CR>')
@@ -50,8 +50,8 @@ key_mapper('n', 'gw', ':lua vim.lsp.buf.document_symbol()<CR>')
 key_mapper('n', 'gW', ':lua vim.lsp.buf.workspace_symbol()<CR>')
 key_mapper('n', 'gr', ':lua vim.lsp.buf.references()<CR>')
 key_mapper('n', 'gt', ':lua vim.lsp.buf.type_definition()<CR>')
-key_mapper('n', 'K', ':lua vim.lsp.buf.hover()<CR>')
-key_mapper('n', '<c-k>', ':lua vim.lsp.buf.signature_help()<CR>')
+key_mapper('n', 'K', ':Lspsaga hover_doc<CR>')
+key_mapper('n', '<c-k>', ':Lspsaga signature_help<CR>')
 key_mapper('n', '<leader>ca', ':Lspsaga code_action<CR>')
 key_mapper('n', '<leader>rn', ':Lspsaga rename<CR>')
 
@@ -66,18 +66,30 @@ key_mapper('n', '<leader>gs', ':lua require"telescope.builtin".git_status()<CR>'
 -- Plugins
 key_mapper('n', '<leader>tt', ':NvimTreeToggle<CR>')
 key_mapper('n', '<leader>ff', ':NvimTreeFindFile<CR>')
+key_mapper('n', '<leader>tr', ':NvimTreeRefresh<CR>')
+
 key_mapper('', '<leader><leader>', ':HopWord<CR>')
-key_mapper('', '<leader>gb', ':Gitsigns blame_line<CR>')
-key_mapper('', '<leader>gt', ':Gitsigns toggle_signs<CR>')
-key_mapper('', '<leader>gp', ':Gitsigns preview_hunk<CR>')
-key_mapper('', '<leader>gi', ':Gitsigns next_hunk<CR>')
-key_mapper('', '<leader>go', ':Gitsigns prev_hunk<CR>')
-key_mapper('', '<leader>gu', ':Gitsigns reset_hunk<CR>')
+
+-- Gitsigns
+key_mapper('', '<leader>ghb', ':Gitsigns blame_line<CR>')
+key_mapper('', '<leader>ght', ':Gitsigns toggle_signs<CR>')
+key_mapper('', '<leader>ghp', ':Gitsigns preview_hunk<CR>')
+key_mapper('', '<leader>ghi', ':Gitsigns next_hunk<CR>')
+key_mapper('', '<leader>gho', ':Gitsigns prev_hunk<CR>')
+key_mapper('', '<leader>ghu', ':Gitsigns reset_hunk<CR>')
+key_mapper('', '<leader>ghs', ':Gitsigns stage_hunk<CR>')
 
 key_mapper('', "vp", 'viwp')
-key_mapper('', "''", '<ESC>I"<ESC>A"<ESC>')
-key_mapper('', ';;', '<ESC>A;<ESC>')
-key_mapper('', ',,', '<ESC>A,<ESC>')
 key_mapper('', '<ESC>', ':noh<CR>')
+key_mapper('', "''", '<ESC>I"<ESC>A"<ESC>')
 key_mapper('','Y','y$')
 
+-- moving text
+key_mapper('','<C-k>',':m .-2<CR>==')
+key_mapper('','<C-j>',':m .+1<CR>==')
+key_mapper('i','<C-k>','<ESC>:m .-2<CR>==')
+key_mapper('i','<C-j>','<ESC>:m .+1<CR>==')
+key_mapper('v','<C-j>',":m '>+1<CR>gv=gv")
+key_mapper('v','<C-k>',":m '<-2<CR>gv=gv")
+
+key_mapper('','<leader>bg', ":lua require('plugins.telescope').wallpaper_selector()<CR>")

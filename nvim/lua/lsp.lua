@@ -10,16 +10,18 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
 end
 
 local lspconfig = require'lspconfig'
-local completion = require'completion'
+-- local completion = require'completion'
 local function custom_on_attach(client)
   print('Attaching to ' .. client.name)
   setup_diagnostics()
-  completion.on_attach(client)
+  -- completion.on_attach(client)
 end
 
 local default_config = {
   on_attach = custom_on_attach,
 }
+
+require('plugins.compe')
 
 require'diagnosticls-nvim'.init(default_config)
 
@@ -27,7 +29,7 @@ local eslint = require 'diagnosticls-nvim.linters.eslint'
 
 local prettier = require 'diagnosticls-nvim.formatters.prettier'
 
-require 'diagnosticls-nvim'.setup {
+require'diagnosticls-nvim'.setup {
   ['javascript'] = {
     linter = eslint,
     formatter = prettier
@@ -38,8 +40,21 @@ require 'diagnosticls-nvim'.setup {
   }
 }
 
+lspconfig.pyright.setup(default_config)
 lspconfig.tsserver.setup(default_config)
 lspconfig.svelte.setup(default_config)
+
+lspconfig.gopls.setup {
+  cmd = {"gopls", "serve"},
+  settings = {
+    gopls = {
+      analyses = {
+        unusedparams = true,
+      },
+      staticcheck = true,
+    },
+  },
+}
 
 vim.g.completion_matching_strategy_list = {'substring', 'exact', 'fuzzy', 'all'}
 vim.g.diagnostic_enable_virtual_text = 1

@@ -1,3 +1,16 @@
+echo "  __     __     ______     __         ______     ______     __    __     ______    "
+echo " /\ \  _ \ \   /\  ___\   /\ \       /\  ___\   /\  __ \   /\ '-./  \   /\  ___\   "
+echo " \ \ \/ \/\ \  \ \  __\   \ \ \____  \ \ \____  \ \ \/\ \  \ \ \-./\ \  \ \  __\   "
+echo "  \ \__/'\~\_\  \ \_____\  \ \_____\  \ \_____\  \ \_____\  \ \_\ \ \_\  \ \_____\ "
+echo "   \/_/   \/_/   \/_____/   \/_____/   \/_____/   \/_____/   \/_/  \/_/   \/_____/ "
+                                                                                  
+
+echo " ______     ______     _____     __     ______     ______    "
+echo "/\  ___\   /\  __ \   /\  __-.  /\ \   /\  ___\   /\  __ \   "
+echo "\ \ \____  \ \ \/\ \  \ \ \/\ \ \ \ \  \ \ \____  \ \ \/\ \  "
+echo " \ \_____\  \ \_____\  \ \____-  \ \_\  \ \_____\  \ \_____\ "
+echo "  \/_____/   \/_____/   \/____/   \/_/   \/_____/   \/_____/ "
+
 ZSH_DISABLE_COMPFIX=true
 
 # Path to oh-my-zsh
@@ -11,6 +24,11 @@ ZVM_VI_EDITOR=nvim
 # Source
 source $ZSH/oh-my-zsh.sh
 
+# Golang
+# Append go binary to path and append gopls binary to path
+# go should be installed at /user/local/go/bin
+# gopls should be installed at ~/code/go/bin
+export PATH=$PATH:/usr/local/go/bin:$HOME/code/go/bin
 
 # Functions
 background_set() {

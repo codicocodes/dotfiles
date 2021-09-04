@@ -2,8 +2,8 @@ local packer = require'packer'
 
 local util = require'packer.util'
 
-packer.init({
     package_root = util.join_paths(vim.fn.stdpath('data'), 'site', 'pack')
+packer.init({
   })
 
 packer.startup(function()
@@ -16,15 +16,24 @@ packer.startup(function()
   use 'nvim-lua/plenary.nvim'
   use 'nvim-lua/telescope.nvim'
   use 'jremmen/vim-ripgrep'
+  use 'arcticicestudio/nord-vim'
 
   -- LSP
   use 'neovim/nvim-lspconfig'
-  use 'nvim-lua/completion-nvim'
+  -- use 'nvim-lua/completion-nvim'
+  use 'hrsh7th/nvim-compe'
   use 'anott03/nvim-lspinstall'
   use 'glepnir/lspsaga.nvim'
   use {
     'creativenull/diagnosticls-nvim',
     requires = { 'neovim/nvim-lspconfig' }
+  }
+  use {
+    "ThePrimeagen/refactoring.nvim",
+    requires = {
+      {"nvim-lua/plenary.nvim"},
+      {"nvim-treesitter/nvim-treesitter"}
+    }
   }
 
   -- THEMES
@@ -68,6 +77,17 @@ packer.startup(function()
     requires = { 'kyazdani42/nvim-web-devicons' },
     config = require'plugins.bufferline',
   }
+  use {
+  "folke/trouble.nvim",
+  requires = "kyazdani42/nvim-web-devicons",
+  config = function()
+    require("trouble").setup {
+      -- your configuration comes here
+      -- or leave it empty to use the default settings
+      -- refer to the configuration section below
+    }
+  end
+}
 
 end
 )
