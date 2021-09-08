@@ -18,7 +18,7 @@ export ZSH="/Users/codico/.oh-my-zsh"
 ZSH_THEME="robbyrussell"
 
 # Plugins
-plugins+=(git zsh-z zsh-vi-mode)
+plugins+=(git zsh-autosuggestions zsh-z zsh-vi-mode)
 ZVM_VI_EDITOR=nvim
 
 # Source
@@ -45,6 +45,17 @@ bgr() {
     echo "background_image $image_path" > "$HOME/code/dotfiles/kitty/background_image.conf"
 }
 
+brew_permissions() {
+    sudo chown -R $(whoami) $(brew --prefix)/*
+}
+
+sumneko_build() {
+    cd ~/code/lua-language-server/3rd/luamake
+    ninja -f ninja/macos.ninja
+    cd ../..
+    ./3rd/luamake/luamake rebuild
+}
+
 
 # background_random() {
 #     echo "Setting random image"
@@ -55,8 +66,8 @@ bgr() {
 
 # Aliases
 alias src="source ~/.zshrc"
-alias nv="nvim"
 alias vi="nvim"
+alias nv="nvim"
 alias bgs="background_set"
 # alias bgr="background_random"
 alias bgp="ls ~/wallpapers"
@@ -66,6 +77,7 @@ alias speedtyper="cd ~/code/stream/speedtyper"
 alias st-client="cd ~/code/stream/speedtyper/speedtyper-client"
 alias st-server="cd ~/code/stream/speedtyper/speedtyper-server"
 alias dots="cd ~/code/dotfiles"
+alias ninja="~/code/ninja/ninja"
 
 # ## Git
 # alias gs="git status"

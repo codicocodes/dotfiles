@@ -6,7 +6,6 @@ vim.g.nvim_tree_hide_dotfiles = 0
 
 vim.g.nvim_tree_lint_lsp = 1
 -- vim.g.nvim_tree_lsp_diagnostics = 1
-
 vim.g.nvim_tree_icons = {
   default= '',
   symlink= '',

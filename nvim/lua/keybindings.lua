@@ -8,6 +8,16 @@ local key_mapper = function(mode, key, result)
 end
 
 -- Buffers
+key_mapper ('', '<leader>1', ':BufferLineGoToBuffer 1<CR>')
+key_mapper ('', '<leader>2', ':BufferLineGoToBuffer 2<CR>')
+key_mapper ('', '<leader>3', ':BufferLineGoToBuffer 3<CR>')
+key_mapper ('', '<leader>4', ':BufferLineGoToBuffer 4<CR>')
+key_mapper ('', '<leader>5', ':BufferLineGoToBuffer 5<CR>')
+key_mapper ('', '<leader>6', ':BufferLineGoToBuffer 6<CR>')
+key_mapper ('', '<leader>7', ':BufferLineGoToBuffer 7<CR>')
+key_mapper ('', '<leader>8', ':BufferLineGoToBuffer 8<CR>')
+key_mapper ('', '<leader>9', ':BufferLineGoToBuffer 9<CR>')
+
 key_mapper('', '<leader>p', ':bprev<CR>')
 key_mapper('', '<leader>n', ':bnext<CR>')
 key_mapper('', '<leader>bd', ':bd<CR>')
@@ -93,3 +103,4 @@ key_mapper('v','<C-j>',":m '>+1<CR>gv=gv")
 key_mapper('v','<C-k>',":m '<-2<CR>gv=gv")
 
 key_mapper('','<leader>bg', ":lua require('plugins.telescope').wallpaper_selector()<CR>")
+key_mapper('','<leader>bgr', ":lua require'wallpaper'.set_random_background()<CR><ESC>")

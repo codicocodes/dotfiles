@@ -57,26 +57,11 @@ require('telescope').setup{
   },
 }
 
-local function set_background(image_path)
-  -- local image_path = "$HOME/wallpapers/green2.png"
-  print(image_path)
-  local kittyCmd = "kitty @ set-background-image " .. image_path
-
-  vim.fn.system(
-    kittyCmd
-  )
-  local configUpdate = 'echo "background_image ' ..image_path ..'" > ' .."$HOME/code/dotfiles/kitty/background_image.conf"
-  vim.fn.system(
-    configUpdate
-  )
-
-end
-
 local function select_background(prompt_bufnr, map)
   local function set_the_background(close)
     local content = require("telescope.actions.state").get_selected_entry(prompt_bufnr)
 
-    set_background(content.cwd .. "/" .. content.value)
+    require'wallpaper'.set_background(content.cwd .. "/" .. content.value)
     if close then
       require("telescope.actions").close(prompt_bufnr)
     end
@@ -97,7 +82,6 @@ M.wallpaper_selector = function()
   require("telescope.builtin").find_files({
       prompt_title = "Wallpapers",
       cwd = "~/wallpapers",
-
       attach_mappings = function(prompt_bufnr, map)
         -- map("", "<C-n>", require('telescope').actions.move_selection_next(prompt_bufnr))
         -- map("", "<C-p>", require('telescope').actions.move_selection_previous(prompt_bufnr))

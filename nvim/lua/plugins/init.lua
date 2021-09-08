@@ -9,6 +9,17 @@ packer.init({
 packer.startup(function()
   local use = use
 
+  -- Lua
+  use {
+    "folke/zen-mode.nvim",
+    config = function()
+      require("zen-mode").setup {
+        -- your configuration comes here
+        -- or leave it empty to use the default settings
+        -- refer to the configuration section below
+      }
+    end
+  }
   -- GENERAL
   use 'nvim-treesitter/nvim-treesitter'
   use 'sheerun/vim-polyglot'
@@ -25,7 +36,7 @@ packer.startup(function()
   use 'anott03/nvim-lspinstall'
   use 'glepnir/lspsaga.nvim'
   use {
-    'creativenull/diagnosticls-nvim',
+    'creativenull/diagnosticls-configs-nvim',
     requires = { 'neovim/nvim-lspconfig' }
   }
   use {
@@ -38,12 +49,12 @@ packer.startup(function()
 
   -- THEMES
   use 'sainnhe/edge'
-  -- use 'folke/tokyonight.nvim'
-  use 'codicocodes/tokyonight.nvim'
+  use 'folke/tokyonight.nvim'
 
   -- GIT
   use 'tpope/vim-fugitive'
   use 'itchyny/vim-gitbranch'
+
   use {
     'lewis6991/gitsigns.nvim',
     requires = {

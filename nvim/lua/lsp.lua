@@ -23,13 +23,13 @@ local default_config = {
 
 require('plugins.compe')
 
-require'diagnosticls-nvim'.init(default_config)
+require'diagnosticls-configs'.init(default_config)
 
-local eslint = require 'diagnosticls-nvim.linters.eslint'
+local eslint = require 'diagnosticls-configs.linters.eslint'
 
-local prettier = require 'diagnosticls-nvim.formatters.prettier'
+local prettier = require 'diagnosticls-configs.formatters.prettier'
 
-require'diagnosticls-nvim'.setup {
+require'diagnosticls-configs'.setup {
   ['javascript'] = {
     linter = eslint,
     formatter = prettier

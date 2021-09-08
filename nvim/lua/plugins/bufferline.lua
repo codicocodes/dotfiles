@@ -3,8 +3,7 @@ return function()
     options = {
       view = "multiwindow",
       numbers = "ordinal",
-      number_style = "superscript",
-      mappings = true,
+      number = "superscript",
       modified_icon = '●',
       left_trunc_marker = '',
       right_trunc_marker = '',
