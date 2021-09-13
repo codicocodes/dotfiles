@@ -97,8 +97,6 @@ key_mapper('','Y','y$')
 -- moving text
 key_mapper('','<C-k>',':m .-2<CR>==')
 key_mapper('','<C-j>',':m .+1<CR>==')
-key_mapper('i','<C-k>','<ESC>:m .-2<CR>==')
-key_mapper('i','<C-j>','<ESC>:m .+1<CR>==')
 key_mapper('v','<C-j>',":m '>+1<CR>gv=gv")
 key_mapper('v','<C-k>',":m '<-2<CR>gv=gv")
 

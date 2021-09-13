@@ -3,7 +3,7 @@ vim.cmd[[au TextYankPost * silent! lua vim.highlight.on_yank()]]
 vim.cmd[[au BufWritePre *.go lua vim.lsp.buf.formatting_sync(nil, 100)]]
 vim.cmd[[au BufWritePre *.lua lua vim.lsp.buf.formatting_sync(nil, 100)]]
 
-local function goimports(timeoutms)
+function GoImports(timeoutms)
   local context = { source = { organizeImports = true } }
   vim.validate { context = { context, "t", true } }
 
@@ -23,7 +23,7 @@ local function goimports(timeoutms)
   vim.lsp.buf.formatting()
 end
 
--- vim.cmd([[autocmd BufWritePre *.go lua goimports(1000)]])
+vim.cmd([[autocmd BufWritePre *.go lua GoImports(1000)]])
 -- vim.cmd([[set completeopt=menuone,noinsert,noselect]])
 -- this should remove le whitespace?
 -- `:w`: autocmd BufWritePre * %s/\s\+$//e

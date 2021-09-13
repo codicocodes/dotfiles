@@ -30,3 +30,15 @@ wo.relativenumber = true
 wo.signcolumn = 'yes'
 wo.wrap = false
 vim.g.mapleader=' '
+vim.g.python3_host_prog="/usr/local/bin/python3"
+
+-- @TODO: Move this.
+-- UltiSnips/vim-snippets Config
+---
+vim.g.UltiSnipsExpandTrigger = '<C-q>.'
+vim.g.UltiSnipsJumpForwardTrigger = '<C-j>'
+vim.g.UltiSnipsJumpBackwardTrigger = '<C-k>'
+
+-- inoremap <silent> <expr> <Tab> pumvisible()
+--   \ ? (UltiSnips#CanExpandSnippet() ? "\<C-r>=UltiSnips#ExpandSnippet()<CR>" : "\<C-y>")
+--   \ : "\<Tab>"

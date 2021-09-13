@@ -10,7 +10,6 @@ require'nvim-treesitter.configs'.setup({
   textobjects = {
     enabled = true
   },
-
   incremental_selection = {
     enable = true,
     keymaps = {

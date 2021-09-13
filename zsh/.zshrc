@@ -31,6 +31,13 @@ source $ZSH/oh-my-zsh.sh
 export PATH=$PATH:/usr/local/go/bin:$HOME/code/go/bin
 
 # Functions
+bgs2() {
+    echo "Setting image: $1"
+    image_path="$HOME/wallpapers2/$1.png"
+    kitty @ set-background-image $image_path
+    echo "background_image $image_path" > "$HOME/code/dotfiles/kitty/background_image.conf"
+    clear
+}
 background_set() {
     echo "Setting image: $1"
     image_path="$HOME/wallpapers/$1.png"

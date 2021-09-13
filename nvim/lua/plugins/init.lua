@@ -2,24 +2,28 @@ local packer = require'packer'
 
 local util = require'packer.util'
 
-    package_root = util.join_paths(vim.fn.stdpath('data'), 'site', 'pack')
-packer.init({
-  })
+package_root = util.join_paths(vim.fn.stdpath('data'), 'site', 'pack')
+
+packer.init({})
 
 packer.startup(function()
   local use = use
+
+  use "mfussenegger/nvim-dap"
+  use "rcarriga/nvim-dap-ui"
+  use "theHamsta/nvim-dap-virtual-text"
+  use "mfussenegger/nvim-dap-python"
+  use "nvim-telescope/telescope-dap.nvim"
 
   -- Lua
   use {
     "folke/zen-mode.nvim",
     config = function()
       require("zen-mode").setup {
-        -- your configuration comes here
-        -- or leave it empty to use the default settings
-        -- refer to the configuration section below
       }
     end
   }
+
   -- GENERAL
   use 'nvim-treesitter/nvim-treesitter'
   use 'sheerun/vim-polyglot'
@@ -27,20 +31,25 @@ packer.startup(function()
   use 'nvim-lua/plenary.nvim'
   use 'nvim-lua/telescope.nvim'
   use 'jremmen/vim-ripgrep'
-  use 'arcticicestudio/nord-vim'
 
   -- LSP
   use 'neovim/nvim-lspconfig'
-  -- use 'nvim-lua/completion-nvim'
-  use 'hrsh7th/nvim-compe'
-  use 'anott03/nvim-lspinstall'
+
+  -- Autocomplete
+  use 'hrsh7th/nvim-cmp'
+  use 'hrsh7th/cmp-nvim-lsp'
+  use 'quangnguyen30192/cmp-nvim-ultisnips'
+  use 'SirVer/ultisnips'
+
+
+  use 'kabouzeid/nvim-lspinstall'
   use 'glepnir/lspsaga.nvim'
   use {
     'creativenull/diagnosticls-configs-nvim',
     requires = { 'neovim/nvim-lspconfig' }
   }
   use {
-    "ThePrimeagen/refactoring.nvim",
+    'ThePrimeagen/refactoring.nvim',
     requires = {
       {"nvim-lua/plenary.nvim"},
       {"nvim-treesitter/nvim-treesitter"}
@@ -49,7 +58,9 @@ packer.startup(function()
 
   -- THEMES
   use 'sainnhe/edge'
-  use 'folke/tokyonight.nvim'
+  -- use 'folke/tokyonight.nvim'
+  use 'codicocodes/tokyonight.nvim'
+  use 'arcticicestudio/nord-vim'
 
   -- GIT
   use 'tpope/vim-fugitive'
@@ -88,19 +99,7 @@ packer.startup(function()
     requires = { 'kyazdani42/nvim-web-devicons' },
     config = require'plugins.bufferline',
   }
-  use {
-  "folke/trouble.nvim",
-  requires = "kyazdani42/nvim-web-devicons",
-  config = function()
-    require("trouble").setup {
-      -- your configuration comes here
-      -- or leave it empty to use the default settings
-      -- refer to the configuration section below
-    }
-  end
-}
-
-end
+ end
 )
 
 require 'lspsaga'.init_lsp_saga()
