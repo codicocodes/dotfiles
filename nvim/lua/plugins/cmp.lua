@@ -19,6 +19,16 @@ cmp.setup({
       { name = 'nvim_lsp' },
       -- more sources
     },
+    formatting = {
+      format = function(entry, item)
+        item.menu = ({
+            nvim_lsp = '[lsp]',
+            ultisnips = '[ultisnips]',
+          })[entry.source.name]
+
+        return item
+      end,
+    },
     -- Configure for <TAB> people
     -- - <TAB> and <S-TAB>: cycle forward and backward through autocompletion items
     -- - <TAB> and <S-TAB>: cycle forward and backward through snippets tabstops and placeholders
