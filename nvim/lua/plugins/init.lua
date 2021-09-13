@@ -39,10 +39,17 @@ packer.startup(function()
   use 'hrsh7th/nvim-cmp'
   use 'hrsh7th/cmp-nvim-lsp'
   use 'quangnguyen30192/cmp-nvim-ultisnips'
-  use 'SirVer/ultisnips'
-
+  use 'honza/vim-snippets'
+  use({
+      "SirVer/ultisnips",
+      requires = "honza/vim-snippets",
+      config = function()
+        vim.g.UltiSnipsRemoveSelectModeMappings = 0
+      end,
+    })
 
   use 'kabouzeid/nvim-lspinstall'
+
   use 'glepnir/lspsaga.nvim'
   use {
     'creativenull/diagnosticls-configs-nvim',
