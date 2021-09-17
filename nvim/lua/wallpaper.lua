@@ -12,21 +12,25 @@ local function get_all_files(directory)
 end
 
 local get_random = function(images_table)
+---@diagnostic disable-next-line: undefined-field
     local table_length = table.getn(images_table)
     math.randomseed(os.time())
     local selected = math.random(1, table_length)
-    return images_table[selected]
+    local img = images_table[selected]
+    local suffix = ".png"
+    local isPng = img:sub(-string.len(suffix)) == suffix
+    if not isPng then
+      print('its not a png...')
+      -- return get_random(images_table)
+    end
+    return img
 end
 
 local function set_background(image_path)
   local kittyCmd = "kitty @ set-background-image " .. image_path
-  vim.fn.system(
-    kittyCmd
-  )
+  vim.fn.system(kittyCmd)
   local configUpdate = 'echo "background_image ' ..image_path ..'" > ' .."$HOME/code/dotfiles/kitty/background_image.conf"
-  vim.fn.system(
-    configUpdate
-  )
+  vim.fn.system(configUpdate)
 end
 
 local M = {}

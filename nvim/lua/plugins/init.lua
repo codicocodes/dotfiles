@@ -51,10 +51,12 @@ packer.startup(function()
   use 'kabouzeid/nvim-lspinstall'
 
   use 'glepnir/lspsaga.nvim'
-  use {
-    'creativenull/diagnosticls-configs-nvim',
-    requires = { 'neovim/nvim-lspconfig' }
-  }
+  use 'dense-analysis/ale'
+  use 'nathunsmitty/nvim-ale-diagnostic'
+  -- use {
+  --   'creativenull/diagnosticls-configs-nvim',
+  --   requires = { 'neovim/nvim-lspconfig' }
+  -- }
   use {
     'ThePrimeagen/refactoring.nvim',
     requires = {

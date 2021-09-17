@@ -21,29 +21,11 @@ local default_config = {
   on_attach = custom_on_attach,
 }
 
--- require('plugins.compe')
-
-require'diagnosticls-configs'.init(default_config)
-
-local eslint = require 'diagnosticls-configs.linters.eslint'
-
-local prettier = require 'diagnosticls-configs.formatters.prettier'
-
-require'diagnosticls-configs'.setup {
-  ['javascript'] = {
-    linter = eslint,
-    formatter = prettier
-  },
-  ['javascriptreact'] = {
-    linter = eslint,
-    formatter = prettier
-  }
-}
-
 lspconfig.pyright.setup(default_config)
 lspconfig.tsserver.setup(default_config)
 lspconfig.svelte.setup(default_config)
 lspconfig.cmake.setup(default_config)
+lspconfig.java_language_server.setup(default_config)
 
 lspconfig.gopls.setup {
   cmd = {"gopls", "serve"},

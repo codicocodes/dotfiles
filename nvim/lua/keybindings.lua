@@ -23,6 +23,7 @@ key_mapper('', '<leader>n', ':bnext<CR>')
 key_mapper('', '<leader>bd', ':bd<CR>')
 key_mapper('', '<leader>q', ':wq<CR>')
 key_mapper('', '<leader>w', ':w<CR>')
+key_mapper('', '<leader>e', ':e<CR>')
 
 -- Try to use your arrows keys KEKW
 key_mapper('', '<up>', '<nop>')
