@@ -5,6 +5,7 @@ dap.adapters.go = {
   command = 'node';
   args = {'~/code/vscode-go/dist/debugAdapter.js'};
 }
+
 dap.configurations.go = {
   {
     type = 'go';

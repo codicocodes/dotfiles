@@ -1,8 +1,7 @@
 local packer = require'packer'
 
-local util = require'packer.util'
-
-package_root = util.join_paths(vim.fn.stdpath('data'), 'site', 'pack')
+-- local util = require'packer.util'
+-- local package_root = util.join_paths(vim.fn.stdpath('data'), 'site', 'pack')
 
 packer.init({})
 
@@ -53,10 +52,6 @@ packer.startup(function()
   use 'glepnir/lspsaga.nvim'
   use 'dense-analysis/ale'
   use 'nathunsmitty/nvim-ale-diagnostic'
-  -- use {
-  --   'creativenull/diagnosticls-configs-nvim',
-  --   requires = { 'neovim/nvim-lspconfig' }
-  -- }
   use {
     'ThePrimeagen/refactoring.nvim',
     requires = {

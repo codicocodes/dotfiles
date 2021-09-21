@@ -16,8 +16,6 @@ o.undofile = true
 o.incsearch = true
 o.hidden = true
 o.scrolloff=8
--- o.nowrap=true
--- o.completeopt='menuone,noinsert,noselect'
 o.completeopt = "menuone,noselect"
 bo.autoindent = true
 bo.smartindent = true
@@ -33,12 +31,7 @@ vim.g.mapleader=' '
 vim.g.python3_host_prog="/usr/local/bin/python3"
 
 -- @TODO: Move this.
--- UltiSnips/vim-snippets Config
----
+-- UltiSnips Config
 vim.g.UltiSnipsExpandTrigger = '<C-q>.'
 vim.g.UltiSnipsJumpForwardTrigger = '<C-j>'
 vim.g.UltiSnipsJumpBackwardTrigger = '<C-k>'
-
--- inoremap <silent> <expr> <Tab> pumvisible()
---   \ ? (UltiSnips#CanExpandSnippet() ? "\<C-r>=UltiSnips#ExpandSnippet()<CR>" : "\<C-y>")
---   \ : "\<Tab>"

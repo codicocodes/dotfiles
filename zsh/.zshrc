@@ -31,23 +31,27 @@ export PATH=$PATH:/usr/local/go/bin:$HOME/code/go/bin
 # Functions
 bgs2() {
     echo "Setting image: $1"
-    image_path="$HOME/wallpapers2/$1.png"
-    kitty @ set-background-image $image_path
-    echo "background_image $image_path" > "$HOME/code/dotfiles/kitty/background_image.conf"
-    clear
-}
-background_set() {
-    echo "Setting image: $1"
     image_path="$HOME/wallpapers/$1.png"
     kitty @ set-background-image $image_path
     echo "background_image $image_path" > "$HOME/code/dotfiles/kitty/background_image.conf"
     clear
 }
 
+chmod +x $HOME/code/dotfiles/zsh/select_wallpaper.sh
+background_set() {
+    $HOME/code/dotfiles/zsh/select_wallpaper.sh
+}
+
+# background_set() {
+#     $HOME/code/dotfiles/zsh/random_wallpaper.sh
+# }
+
+chmod +x $HOME/code/dotfiles/zsh/random_wallpaper.sh
 bgr() {
-    image_path=find ~/wallpapers -iname '*.png' -type f | shuf -n1
-    kitty @ set-background-image $image_path
-    echo "background_image $image_path" > "$HOME/code/dotfiles/kitty/background_image.conf"
+    $HOME/code/dotfiles/zsh/random_wallpaper.sh
+    # image_path=find ~/wallpapers -iname '*.png' -type f | shuf -n1
+    # kitty @ set-background-image $image_path
+    # echo "background_image $image_path" > "$HOME/code/dotfiles/kitty/background_image.conf"
 }
 
 brew_permissions() {
@@ -71,7 +75,7 @@ sumneko_build() {
 
 # Aliases
 alias src="source ~/.zshrc"
-alias vi="nvim"
+# alias vi="nvim"
 alias nv="nvim"
 alias bgs="background_set"
 # alias bgr="background_random"
