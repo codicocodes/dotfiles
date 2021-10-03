@@ -4,27 +4,26 @@ local gls = gl.section
 gl.short_line_list = {'NvimTree','vista','dbui','packer'}
 
 local colors = {
-  bg = '#282c34',
-  yellow = '#deb974',
-  cyan = '#008080',
+  bg = '#ec5f67',
+  yellow = '#e0af68',
+  cyan = '#2ac3de',
   darkblue = '#081633',
-  green = '#a0c980',
-  orange = '#FF8800',
-  purple = '#5d4d7a',
-  magenta = '#d16d9e',
-  grey = '#c0c0c0',
-  blue = '#6cb6eb',
-  red = '#ec5f67',
+  green = '#9ece6a',
+  orange = '#ff9e64',
+  purple = '#9d7cd8',
+  magenta = '#bb9af7',
+  blue = '#0db9d7',
+  red = '#f7768e',
   pink = '#c981c5',
   violet=''
 }
 
-local buffer_not_empty = function()
-  if vim.fn.empty(vim.fn.expand('%:t')) ~= 1 then
-    return true
-  end
-  return false
-end
+-- local buffer_not_empty = function()
+--   if vim.fn.empty(vim.fn.expand('%:t')) ~= 1 then
+--     return true
+--   end
+--   return false
+-- end
 
 gls.left[2] = {
   ViMode = {
@@ -32,7 +31,7 @@ gls.left[2] = {
       local alias = {n = ' am very normal :) ',i = ' inserting shit ',c= 'i command thee ',v= ' soo visual ',V= ' such visual line ', [''] = 'its a block '}
       return alias[vim.fn.mode()]
     end,
-    highlight = {colors.pink},
+    highlight = {colors.purple},
   },
 }
 
@@ -146,7 +145,7 @@ gls.right[5] = {
 gls.short_line_left[1] = {
   BufferType = {
     provider = 'FileTypeName',
-    separator = ' ',
+    separator = ' deez nuts ',
     highlight = {colors.pink}
   }
 }

@@ -3,6 +3,7 @@ local bo=vim.bo
 local wo=vim.wo
 
 -- Lower updatetime to show diagnostic popup
+o.mouse='a'
 o.updatetime = 400
 o.termguicolors = true
 o.syntax = 'on'
@@ -29,6 +30,8 @@ wo.signcolumn = 'yes'
 wo.wrap = false
 vim.g.mapleader=' '
 vim.g.python3_host_prog="/usr/local/bin/python3"
+-- vim.g.highlight.Pmenu = "none"
+
 
 -- @TODO: Move this.
 -- UltiSnips Config

@@ -1,8 +1,9 @@
 vim.cmd[[autocmd BufWritePre *js,*ts,*jsx,*tsx,*.graphql,*.json,*.md,*.mdx,*.svelte,*.yml,*yaml :Prettier]]
 vim.cmd[[au TextYankPost * silent! lua vim.highlight.on_yank()]]
-vim.cmd[[au BufWritePre *.go *.lua lua vim.lsp.buf.formatting_sync(nil, 100)]]
+-- vim.cmd[[au BufWritePre *.go *.lua lua vim.lsp.buf.formatting_sync(nil, 100)]]
 vim.cmd([[autocmd BufWritePre *.go lua GoImports(1000)]])
 vim.cmd([[autocmd BufWritePre * %s/\s\+$//e]]) -- removes whitespace on save
+vim.cmd([[au VimEnter * highlight Pmenu none]]) -- sets autocomplete suggestions to to transparent
 
 function GoImports(timeoutms)
   local context = { source = { organizeImports = true } }

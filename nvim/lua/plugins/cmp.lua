@@ -80,3 +80,10 @@ cmp.setup({
   }),
       },
     })
+
+-- Add js/ts snippets for jsx/tsx files
+vim.cmd 'augroup ultisnips_user_events'
+vim.cmd 'au!'
+vim.cmd 'au FileType javascriptreact UltiSnipsAddFiletypes javascript'
+vim.cmd 'au FileType typescriptreact UltiSnipsAddFiletypes typescript'
+vim.cmd 'augroup END'

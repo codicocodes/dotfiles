@@ -49,7 +49,8 @@ packer.startup(function()
 
   use 'kabouzeid/nvim-lspinstall'
 
-  use 'glepnir/lspsaga.nvim'
+  use 'tami5/lspsaga.nvim'
+  -- use 'glepnir/lspsaga.nvim'
   use 'dense-analysis/ale'
   use 'nathunsmitty/nvim-ale-diagnostic'
   use {
@@ -63,7 +64,7 @@ packer.startup(function()
   -- THEMES
   use 'sainnhe/edge'
   -- use 'folke/tokyonight.nvim'
-  use 'codicocodes/tokyonight.nvim'
+  use '~/code/tokyonight.nvim'
   use 'arcticicestudio/nord-vim'
 
   -- GIT
@@ -91,7 +92,11 @@ packer.startup(function()
 
   -- EDITOR
   use 'kyazdani42/nvim-web-devicons'
-  use 'kyazdani42/nvim-tree.lua'
+  use {
+    'kyazdani42/nvim-tree.lua',
+    requires = 'kyazdani42/nvim-web-devicons',
+    config = function() require'nvim-tree'.setup() end
+  }
   use {
     'glepnir/galaxyline.nvim',
     branch = 'main',

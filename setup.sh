@@ -9,7 +9,7 @@ ZSH_PATH="/Users/codico/code/dotfiles/zsh/.zshrc"
 
 # ln -sf $KITTY_PATH ~/.config
 # ln -sf $NVIM_PATH ~/.config
-# ln -sf $VIM_PATH ~/.vimrc 
+# ln -sf $VIM_PATH ~/.vimrc
 ln -sf $ZSH_PATH ~/.zshrc
 
 echo "Symlink Completed"
