@@ -26,7 +26,7 @@ source $ZSH/oh-my-zsh.sh
 # Append go binary to path and append gopls binary to path
 # go should be installed at /user/local/go/bin
 # gopls should be installed at ~/code/go/bin
-export PATH=$PATH:/usr/local/go/bin:$HOME/code/go/bin
+export PATH=$PATH:/usr/local/go/bin:$HOME/code/go/bin:$HOME/code/delve/cmd/dlv
 
 # Functions
 bgs2() {

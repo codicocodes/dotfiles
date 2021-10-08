@@ -11,8 +11,16 @@ return function()
       max_prefix_length = 25, -- prefix used when a buffer is deduplicated
       tab_size = 20,
       diagnostics ="nvim_lsp",
-      show_buffer_close_icons = false,
-      show_close_icon = false,
+      -- indicator_icon = '▎',
+      -- buffer_close_icon = '',
+      -- modified_icon = '●',
+      -- close_icon = '',
+      -- left_trunc_marker = '',
+      -- right_trunc_marker = '',
+      close_icon = '',
+      buffer_close_icon = '',
+      show_buffer_close_icons = true,
+      show_close_icon = true,
       diagnostics_indicator = function(count, level)
         local icon = level:match("error") and "" or ""
         return " " .. icon .. count

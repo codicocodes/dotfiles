@@ -1,18 +1,20 @@
-local dap = require('dap')
+require('dap-go').setup()
 
-dap.adapters.go = {
-  type = 'executable';
-  command = 'node';
-  args = {'~/code/vscode-go/dist/debugAdapter.js'};
-}
+-- local dap = require('dap')
 
-dap.configurations.go = {
-  {
-    type = 'go';
-    name = 'Debug';
-    request = 'launch';
-    showLog = false;
-    program = "${file}";
-    dlvToolPath = vim.fn.exepath('dlv')  -- Adjust to where delve is installed
-  },
-}
+-- dap.adapters.go = {
+--   type = 'executable';
+--   command = 'node';
+--   args = {'~/code/vscode-go/dist/debugAdapter.js'};
+-- }
+
+-- dap.configurations.go = {
+--   {
+--     type = 'go';
+--     name = 'Debug';
+--     request = 'launch';
+--     showLog = false;
+--     program = "${file}";
+--     dlvToolPath = "./Users/codico/code/delve/cmd/dlv" -- vim.fn.exepath('dlv')  -- Adjust to where delve is installed
+--   },
+-- }

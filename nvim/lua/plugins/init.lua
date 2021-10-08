@@ -1,6 +1,6 @@
 local packer = require'packer'
-
 -- local util = require'packer.util'
+
 -- local package_root = util.join_paths(vim.fn.stdpath('data'), 'site', 'pack')
 
 packer.init({})
@@ -8,18 +8,26 @@ packer.init({})
 packer.startup(function()
   local use = use
 
+  -- use "fatih/vim-go"
   use "mfussenegger/nvim-dap"
+  use "leoluz/nvim-dap-go"
   use "rcarriga/nvim-dap-ui"
   use "theHamsta/nvim-dap-virtual-text"
   use "mfussenegger/nvim-dap-python"
   use "nvim-telescope/telescope-dap.nvim"
-
+  -- Lua
+  use {
+    "folke/trouble.nvim",
+    requires = "kyazdani42/nvim-web-devicons",
+    config = function()
+      require("trouble").setup{}
+    end
+  }
   -- Lua
   use {
     "folke/zen-mode.nvim",
     config = function()
-      require("zen-mode").setup {
-      }
+      require("zen-mode").setup{}
     end
   }
 
@@ -108,7 +116,7 @@ packer.startup(function()
     requires = { 'kyazdani42/nvim-web-devicons' },
     config = require'plugins.bufferline',
   }
- end
+end
 )
 
 require 'lspsaga'.init_lsp_saga()
