@@ -14,4 +14,5 @@ require'plugins.telescope'
 require'plugins.cmp'
 require'plugins.refactoring'
 require'plugins.dap'
+require'dapui'.setup()
 

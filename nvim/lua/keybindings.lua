@@ -80,6 +80,7 @@ key_mapper('n', '<leader>gs', ':lua require"telescope.builtin".git_status()<CR>'
 key_mapper('n', '<leader>tt', ':NvimTreeToggle<CR>')
 key_mapper('n', '<leader>ff', ':NvimTreeFindFile<CR>')
 key_mapper('n', '<leader>tr', ':NvimTreeRefresh<CR>')
+key_mapper('n', '<leader>fd', ':TroubleToggle<CR>')
 
 key_mapper('', '<leader><leader>', ':HopWord<CR>')
 
