@@ -144,9 +144,22 @@ gls.right[5] = {
 
 gls.short_line_left[1] = {
   BufferType = {
-    provider = 'FileTypeName',
-    separator = ' deez nuts ',
-    highlight = {colors.pink}
+    -- provider = 'FileTypeName',
+    -- separator = ' deez nuts ',
+
+    provider = function()
+      local myTable = {
+        -- ' my name jeff ',
+        -- ' poki plz raid me ',
+        -- ' <message deleted> ',
+        -- ' RSVP e10 conference ',
+        -- ' you\'re not that guy ',
+        ' bezos is watching monkaS ',
+      }
+      return myTable[math.random(#myTable)]
+    end,
+
+    highlight = {colors.magenta}
   }
 }
 

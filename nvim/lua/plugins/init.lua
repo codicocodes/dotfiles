@@ -7,7 +7,8 @@ packer.init({})
 
 packer.startup(function()
   local use = use
-
+  -- java
+  use "mfussenegger/nvim-jdtls"
   -- use "fatih/vim-go"
   use "mfussenegger/nvim-dap"
   use "leoluz/nvim-dap-go"
@@ -16,11 +17,27 @@ packer.startup(function()
   use "mfussenegger/nvim-dap-python"
   use "nvim-telescope/telescope-dap.nvim"
   -- Lua
+use {
+  "folke/todo-comments.nvim",
+  requires = "nvim-lua/plenary.nvim",
+  config = function()
+    require"todo-comments".setup{}
+  end
+}
+  -- Lua
   use {
     "folke/trouble.nvim",
     requires = "kyazdani42/nvim-web-devicons",
     config = function()
-      require("trouble").setup{}
+      require"trouble".setup{
+        signs = {
+          error = "",
+          warning = "",
+          hint = "",
+          information = "",
+          other = ""
+        },
+      }
     end
   }
   -- Lua
@@ -57,10 +74,14 @@ packer.startup(function()
 
   use 'kabouzeid/nvim-lspinstall'
 
+  -- use 'ray-x/navigator.lua'
+  -- use {
+    -- 'ray-x/guihua.lua',
+    -- {'do': 'cd lua/fzy && make' } }
   use 'tami5/lspsaga.nvim'
   -- use 'glepnir/lspsaga.nvim'
-  use 'dense-analysis/ale'
-  use 'nathunsmitty/nvim-ale-diagnostic'
+  -- use 'dense-analysis/ale'
+  -- use 'nathunsmitty/nvim-ale-diagnostic'
   use {
     'ThePrimeagen/refactoring.nvim',
     requires = {
@@ -73,6 +94,7 @@ packer.startup(function()
   use 'sainnhe/edge'
   -- use 'folke/tokyonight.nvim'
   use '~/code/tokyonight.nvim'
+  use "~/code/Catppuccino.nvim"
   use 'arcticicestudio/nord-vim'
 
   -- GIT
@@ -114,7 +136,7 @@ packer.startup(function()
   use {
     'akinsho/nvim-bufferline.lua',
     requires = { 'kyazdani42/nvim-web-devicons' },
-    config = require'plugins.bufferline',
+    config = require('plugins.bufferline'),
   }
 end
 )

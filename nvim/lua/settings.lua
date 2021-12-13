@@ -38,3 +38,9 @@ vim.g.python3_host_prog="/usr/local/bin/python3"
 vim.g.UltiSnipsExpandTrigger = '<C-q>.'
 vim.g.UltiSnipsJumpForwardTrigger = '<C-j>'
 vim.g.UltiSnipsJumpBackwardTrigger = '<C-k>'
+
+-- -- ALE
+-- vim.g.ale_sign_error = ''
+-- vim.g.ale_sign_warning = ''
+-- vim.g.ale_sign_info = ''
+-- vim.g.ale_virtualtext_prefix='~'

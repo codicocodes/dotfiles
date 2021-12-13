@@ -1,13 +1,14 @@
-echo "  __     __     ______     __         ______     ______     __    __     ______    "
-echo " /\ \  _ \ \   /\  ___\   /\ \       /\  ___\   /\  __ \   /\ '-./  \   /\  ___\   "
-echo " \ \ \/ \/\ \  \ \  __\   \ \ \____  \ \ \____  \ \ \/\ \  \ \ \-./\ \  \ \  __\   "
-echo "  \ \__/'\~\_\  \ \_____\  \ \_____\  \ \_____\  \ \_____\  \ \_\ \ \_\  \ \_____\ "
-echo "   \/_/   \/_/   \/_____/   \/_____/   \/_____/   \/_____/   \/_/  \/_/   \/_____/ "
-echo " ______     ______     _____     __     ______     ______    "
-echo "/\  ___\   /\  __ \   /\  __-.  /\ \   /\  ___\   /\  __ \   "
-echo "\ \ \____  \ \ \/\ \  \ \ \/\ \ \ \ \  \ \ \____  \ \ \/\ \  "
-echo " \ \_____\  \ \_____\  \ \____-  \ \_\  \ \_____\  \ \_____\ "
-echo "  \/_____/   \/_____/   \/____/   \/_/   \/_____/   \/_____/ "
+echo "                  __                            ";
+echo " _      __ ___   / /_____ ____   ____ ___   ___ ";
+echo "| | /| / // _ \ / // ___// __ \ / __ \`__ \ / _ \ ";
+echo "| |/ |/ //  __// // /__ / /_/ // / / / / //  __/  ";
+echo "|__/|__/ \___//_/ \___/ \____//_/ /_/ /_/ \___/  ";
+echo "                    __ _                         ";
+echo "  _____ ____   ____/ /(_)_____ ____              ";
+echo " / ___// __ \ / __  // // ___// __ \             ";
+echo "/ /__ / /_/ // /_/ // // /__ / /_/ /             ";
+echo "\___/ \____/ \__,_//_/ \___/ \____/              ";
+echo "                                                 ";
 
 ZSH_DISABLE_COMPFIX=true
 
@@ -26,7 +27,7 @@ source $ZSH/oh-my-zsh.sh
 # Append go binary to path and append gopls binary to path
 # go should be installed at /user/local/go/bin
 # gopls should be installed at ~/code/go/bin
-export PATH=$PATH:/usr/local/go/bin:$HOME/code/go/bin:$HOME/code/delve/cmd/dlv
+export PATH=$PATH:/usr/local/go/bin:$HOME/code/go/bin:$HOME/code/delve/cmd/dlv:$HOME/code/go/bin/gofumpt
 
 # Functions
 bgs2() {
