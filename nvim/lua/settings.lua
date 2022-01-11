@@ -32,7 +32,6 @@ vim.g.mapleader=' '
 vim.g.python3_host_prog="/usr/local/bin/python3"
 -- vim.g.highlight.Pmenu = "none"
 
-
 -- @TODO: Move this.
 -- UltiSnips Config
 vim.g.UltiSnipsExpandTrigger = '<C-q>.'
