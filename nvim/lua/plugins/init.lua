@@ -9,7 +9,6 @@ packer.startup(function()
   local use = use
   -- java
   use "mfussenegger/nvim-jdtls"
-  -- use "fatih/vim-go"
   use "mfussenegger/nvim-dap"
   use "leoluz/nvim-dap-go"
   use "rcarriga/nvim-dap-ui"

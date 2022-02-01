@@ -29,7 +29,8 @@ wo.relativenumber = true
 wo.signcolumn = 'yes'
 wo.wrap = false
 vim.g.mapleader=' '
-vim.g.python3_host_prog="/usr/local/bin/python3"
+-- vim.g.python3_host_prog="/usr/local/bin/python3"
+vim.g.python3_host_prog="/Library/Frameworks/Python.framework/Versions/3.10/bin/python3"
 -- vim.g.highlight.Pmenu = "none"
 
 -- @TODO: Move this.
