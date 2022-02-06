@@ -15,6 +15,7 @@ packer.startup(function()
   use "theHamsta/nvim-dap-virtual-text"
   use "mfussenegger/nvim-dap-python"
   use "nvim-telescope/telescope-dap.nvim"
+
   -- Lua
 use {
   "folke/todo-comments.nvim",
@@ -53,6 +54,7 @@ use {
   use 'nvim-lua/popup.nvim'
   use 'nvim-lua/plenary.nvim'
   use 'nvim-lua/telescope.nvim'
+  use "nvim-telescope/telescope-file-browser.nvim"
   use 'jremmen/vim-ripgrep'
 
   -- LSP

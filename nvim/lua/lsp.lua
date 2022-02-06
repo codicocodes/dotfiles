@@ -8,8 +8,7 @@ end
 
 setup_signs()
 
-local function setup_diagnostics()
-  vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+local function setup_diagnostics() vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
       virtual_text = {
         update_in_insert = false,
         virtual_text = true,
@@ -116,6 +115,8 @@ lspconfig.gopls.setup {
     },
   },
 }
+
+lspconfig.rust_analyzer.setup{}
 
 vim.g.completion_matching_strategy_list = {'substring', 'exact', 'fuzzy', 'all'}
 vim.g.diagnostic_enable_virtual_text = 1

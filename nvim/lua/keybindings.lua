@@ -65,21 +65,17 @@ key_mapper('n', 'gw', ':lua vim.lsp.buf.document_symbol()<CR>')
 key_mapper('n', 'gW', ':lua vim.lsp.buf.workspace_symbol()<CR>')
 key_mapper('n', 'gr', ':lua vim.lsp.buf.references()<CR>')
 key_mapper('n', 'gt', ':lua vim.lsp.buf.type_definition()<CR>')
--- key_mapper('n', 'K', ':Lspsaga hover_doc<CR>')
 key_mapper('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>')
 key_mapper('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>')
 key_mapper('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>')
 
 key_mapper('n', '<c-k>', ':Lspsaga signature_help<CR>')
--- key_mapper('n', '<leader>ca', ':Lspsaga code_action<CR>')
--- key_mapper('n', '<leader>rn', ':Lspsaga rename<CR>')
 
 -- Telescope
 key_mapper('n', '<C-p>', ':lua require"telescope.builtin".find_files()<CR>')
 key_mapper('n', '<leader>fs', ':lua require"telescope.builtin".live_grep()<CR>')
 key_mapper('n', '<leader>fh', ':lua require"telescope.builtin".help_tags()<CR>')
--- key_mapper('n', '<leader>fb', ':lua require"telescope.builtin".buffers()<CR>')
-key_mapper('n', '<leader>fb', ':lua require"telescope.builtin".file_browser({cwd = vim.fn.expand("%:p:h")})<CR>')
+key_mapper('n', '<leader>fb', ':Telescope file_browser path=%:p:h<CR>')
 key_mapper('n', '<leader>gf', ':lua require"telescope.builtin".git_files()<CR>')
 key_mapper('n', '<leader>gs', ':lua require"telescope.builtin".git_status()<CR>')
 
@@ -111,5 +107,3 @@ key_mapper('','<C-j>',':m .+1<CR>==')
 key_mapper('v','<C-j>',":m '>+1<CR>gv=gv")
 key_mapper('v','<C-k>',":m '<-2<CR>gv=gv")
 
-key_mapper('','<leader>bg', ":lua require('plugins.telescope').wallpaper_selector()<CR>")
-key_mapper('','<leader>bgr', ":lua require'wallpaper'.set_random_background()<CR><ESC>")
