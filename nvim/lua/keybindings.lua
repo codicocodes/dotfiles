@@ -27,7 +27,6 @@ key_mapper('', '<leader>q', ':wq<CR>')
 key_mapper('', '<leader>w', ':w<CR>')
 key_mapper('', '<leader>e', ':e<CR>')
 key_mapper('', '<leader>r', ':LspRestart<CR>')
--- key_mapper('', '<leader>ss', ':lua GoImports()<CR>')
 
 -- Try to use your arrows keys KEKW
 key_mapper('', '<up>', '<nop>')
@@ -84,6 +83,7 @@ key_mapper('n', '<leader>tt', ':NvimTreeToggle<CR>')
 key_mapper('n', '<leader>ff', ':NvimTreeFindFile<CR>')
 key_mapper('n', '<leader>tr', ':NvimTreeRefresh<CR>')
 key_mapper('n', '<leader>fd', ':TroubleToggle<CR>')
+key_mapper('n', '<leader>td', ':TodoTelescope<CR>')
 
 key_mapper('', '<leader><leader>', ':HopWord<CR>')
 
@@ -106,4 +106,3 @@ key_mapper('','<C-k>',':m .-2<CR>==')
 key_mapper('','<C-j>',':m .+1<CR>==')
 key_mapper('v','<C-j>',":m '>+1<CR>gv=gv")
 key_mapper('v','<C-k>',":m '<-2<CR>gv=gv")
-

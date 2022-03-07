@@ -6,6 +6,6 @@ vim.g.tokyonight_transparent = true
 vim.cmd[[colorscheme tokyonight]]
 -- vim.cmd([[au VimEnter * highlight Normal guibg=none]])
 -- vim.cmd [[highlight Normal guibg=none]]
--- vim.g.tokyonight_dark_sidebar=false
--- vim.g.tokyonight_transparent_sidebar=true
--- vim.g.tokyonight_transparent_float=true
+vim.g.tokyonight_dark_sidebar=false
+vim.g.tokyonight_transparent_sidebar=true
+vim.g.tokyonight_transparent_float=true

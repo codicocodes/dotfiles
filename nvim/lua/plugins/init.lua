@@ -93,9 +93,11 @@ use {
 
   -- THEMES
   use 'sainnhe/edge'
+  -- my version of tokyonight is modified for better transparency support
+  use 'codicocodes/tokyonight.nvim' 
   -- use 'folke/tokyonight.nvim'
-  use '~/code/tokyonight.nvim'
-  use "~/code/Catppuccino.nvim"
+  -- use '~/code/tokyonight.nvim'
+  -- use "~/code/Catppuccino.nvim"
   use 'arcticicestudio/nord-vim'
 
   -- GIT

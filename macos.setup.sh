@@ -19,6 +19,7 @@ brew install gnu-sed --with-default-names
 brew install wget --with-iri
 
 # Install more recent versions of some OS X tools
+brew install neovim
 brew install vim --with-override-system-vi
 brew install ripgrep
 
@@ -38,11 +39,12 @@ brew install gh
 brew cleanup
 
 brew install nvm # This installs `npm` too using the recommended installation method
-nvm install 16
-nvm use 16
+# nvm install 16
+# nvm use 16
 
-npm install -g prettier
-npm install -g eslint
-npm install -g ngrok
-npm install -g typescript
-npm install -g typescript-language-server
+# npm install -g prettier
+# npm install -g eslint
+# npm install -g ngrok
+# npm install -g typescript
+# npm install -g typescript-language-server
+# npm i -g vscode-langservers-extracted

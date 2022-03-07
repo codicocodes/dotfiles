@@ -13,7 +13,4 @@ require'plugins.cmp'
 require'plugins.refactoring'
 require'plugins.dap'
 require'dapui'.setup()
--- require'navigator'.setup()
--- require'plugins.lspsaga'
 require'hop'.setup { keys = 'etovxqpdygfblzhckisuran', term_seq_bias = 0.5 }
--- require'plugins.catpuccino'
