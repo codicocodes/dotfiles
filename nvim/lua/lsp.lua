@@ -18,29 +18,13 @@ local function setup_diagnostics() vim.lsp.handlers["textDocument/publishDiagnos
         spacing = 4,
       }
     })
-
-  -- vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-  --   vim.lsp.diagnostic.on_publish_diagnostics, {
-  --     virtual_text = {
-  --       prefix = '', -- ' ', -- Could be '●', '▎', 'x'
-  --       -- spacing = 4,
-  --     },
-  --     -- underline = false,
-  --     -- virtual_text = true,
-  --     -- severity_sort = true,
-  --     -- signs = true,
-  --     -- update_in_insert = false,
-  --   )
 end
 setup_diagnostics()
---   }
 
 local lspconfig = require'lspconfig'
--- local completion = require'completion'
 local function custom_on_attach(client)
   print('Attaching to ' .. client.name)
   setup_diagnostics()
-  -- completion.on_attach(client)
 end
 
 local default_config = {
@@ -115,8 +99,8 @@ lspconfig.gopls.setup {
     },
   },
 }
-
 lspconfig.rust_analyzer.setup{}
+lspconfig.ccls.setup{}
 
 vim.g.completion_matching_strategy_list = {'substring', 'exact', 'fuzzy', 'all'}
 vim.g.diagnostic_enable_virtual_text = 1

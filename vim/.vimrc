@@ -12,7 +12,6 @@ syntax on
 " For plugins to load correctly
 filetype plugin indent on
 
-" TODO: Pick a leader key
 let mapleader = " "
 
 " Security

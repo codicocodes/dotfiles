@@ -1,10 +1,9 @@
 local function autocmd()
-  vim.cmd[[autocmd BufWritePre *js,*ts,*jsx,*tsx,*.graphql,*.json,*.md,*.mdx,*.svelte,*.yml,*yaml :Prettier]]
+  vim.cmd[[autocmd BufWritePre *js,*ts,*jsx,*tsx,*.graphql,*.json,*.svelte,*.yml,*yaml :Prettier]]
   vim.cmd[[au TextYankPost * silent! lua vim.highlight.on_yank()]]
   -- vim.cmd[[au BufWritePre *.go *.lua lua vim.lsp.buf.formatting_sync(nil, 100)]]
   vim.cmd([[autocmd BufWritePre *.go lua GoImports(1000)]])
   -- vim.cmd([[autocmd BufWritePre * %s/\s\+$//e]]) -- removes whitespace on save
-  vim.cmd([[au VimEnter * highlight Pmenu none]]) -- sets autocomplete suggestions to to transparent
 
   function GoImports(timeoutms)
     local context = { source = { organizeImports = true } }
@@ -26,5 +25,28 @@ local function autocmd()
     vim.lsp.buf.formatting()
   end
 end
+
+-- transparent
+vim.cmd([[au VimEnter * highlight Pmenu none]]) -- sets autocomplete suggestions to to transparent
+vim.cmd([[au VimEnter * hi StatusLine guibg=none ctermbg=none guifg=none]])
+vim.cmd([[au VimEnter * hi StatusLineNC guibg=none ctermbg=none guifg=none]])
+vim.cmd([[au VimEnter * hi Normal guibg=none ctermbg=none guifg=none]])
+vim.cmd([[au VimEnter * hi NormalNC guibg=none ctermbg=none guifg=none]])
+vim.cmd([[au VimEnter * hi LineNr guibg=none ctermbg=none guifg=none]])
+vim.cmd([[au VimEnter * hi Folded guibg=none ctermbg=none guifg=none]])
+vim.cmd([[au VimEnter * hi NonText guibg=none ctermbg=none guifg=none]])
+vim.cmd([[au VimEnter * hi SpecialKey guibg=none ctermbg=none guifg=none]])
+vim.cmd([[au VimEnter * hi VertSplit guibg=none ctermbg=none guifg=none]])
+vim.cmd([[au VimEnter * hi SignColumn guibg=none ctermbg=none guifg=none]])
+vim.cmd([[au VimEnter * hi EndOfBuffer guibg=none ctermbg=none guifg=none]])
+vim.cmd([[au VimEnter * hi TelescopeNormal guibg=none ctermbg=none guifg=none]])
+vim.cmd([[au VimEnter * hi TelescopeNormal guibg=none ctermbg=none guifg=none]])
+vim.cmd([[au VimEnter * hi TelescopeBorder guibg=none ctermbg=none guifg=none]])
+vim.cmd([[au VimEnter * hi NvimTreeNormal guibg=none ctermbg=none guifg=none]])
+vim.cmd([[au VimEnter * hi NvimTreeNormalNC guibg=none ctermbg=none guifg=none]])
+vim.cmd([[au VimEnter * hi NvimTreeVertSplit guibg=none ctermbg=none guifg=none]])
+vim.cmd([[au VimEnter * hi NvimTreeStatusLine guibg=none ctermbg=none guifg=none]])
+vim.cmd([[au VimEnter * hi NvimTreeStatusLineNC guibg=none ctermbg=none guifg=none]])
+vim.cmd([[au VimEnter * hi ZenBg guibg=none ctermbg=none guifg=none]])
 
 pcall(autocmd)

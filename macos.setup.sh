@@ -34,11 +34,12 @@ brew install rename
 brew install the_silver_searcher
 brew install awscli
 brew install gh
+brew install openssl
 
 # Remove outdated versions from the cellar
 brew cleanup
 
-brew install nvm # This installs `npm` too using the recommended installation method
+# brew install nvm # This installs `npm` too using the recommended installation method
 # nvm install 16
 # nvm use 16
 
@@ -48,3 +49,4 @@ brew install nvm # This installs `npm` too using the recommended installation me
 # npm install -g typescript
 # npm install -g typescript-language-server
 # npm i -g vscode-langservers-extracted
+# npm i -g vls

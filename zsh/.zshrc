@@ -27,7 +27,7 @@ source $ZSH/oh-my-zsh.sh
 # Append go binary to path and append gopls binary to path
 # go should be installed at /user/local/go/bin
 # gopls should be installed at ~/code/go/bin
-export PATH=$PATH:/usr/local/go/bin:$HOME/code/go/bin:$HOME/code/delve/cmd/dlv:$HOME/code/go/bin/gofumpt
+export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin:$HOME/code/delve/cmd/dlv:$HOME/code/go/bin/gofumpt:/opt/homebrew/bin/
 
 # Functions
 bgs2() {
@@ -56,16 +56,14 @@ bgr() {
 }
 
 brew_permissions() {
+    if ! command -v brew &> /dev/null
+    then
+        echo "brew could NOT be found."
+        return
+    fi
+    echo "brew could be found"
     sudo chown -R $(whoami) $(brew --prefix)/*
 }
-
-sumneko_build() {
-    cd ~/code/lua-language-server/3rd/luamake
-    ninja -f ninja/macos.ninja
-    cd ../..
-    ./3rd/luamake/luamake rebuild
-}
-
 
 # background_random() {
 #     echo "Setting random image"
@@ -81,6 +79,7 @@ alias nv="nvim"
 alias bgs="background_set"
 # alias bgr="background_random"
 alias bgp="ls ~/wallpapers"
+alias s=kitty +kitten ssh
 
 ## Projects
 alias speedtyper="cd ~/code/stream/speedtyper"
@@ -101,4 +100,4 @@ precmd () {print -Pn "\e]0;%~\a"}
 # Source nvm
 export NVM_DIR=~/.nvm
 source  ~/.nvm/nvm.sh
-# source $(brew --prefix nvm)/nvm.sh
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

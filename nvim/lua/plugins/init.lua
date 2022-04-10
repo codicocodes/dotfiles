@@ -16,6 +16,8 @@ packer.startup(function()
   use "mfussenegger/nvim-dap-python"
   use "nvim-telescope/telescope-dap.nvim"
 
+  use "vim-test/vim-test"
+
   -- Lua
 use {
   "folke/todo-comments.nvim",
@@ -74,15 +76,7 @@ use {
     })
 
   use 'kabouzeid/nvim-lspinstall'
-
-  -- use 'ray-x/navigator.lua'
-  -- use {
-    -- 'ray-x/guihua.lua',
-    -- {'do': 'cd lua/fzy && make' } }
   use 'tami5/lspsaga.nvim'
-  -- use 'glepnir/lspsaga.nvim'
-  -- use 'dense-analysis/ale'
-  -- use 'nathunsmitty/nvim-ale-diagnostic'
   use {
     'ThePrimeagen/refactoring.nvim',
     requires = {
@@ -93,11 +87,7 @@ use {
 
   -- THEMES
   use 'sainnhe/edge'
-  -- my version of tokyonight is modified for better transparency support
-  use 'codicocodes/tokyonight.nvim' 
-  -- use 'folke/tokyonight.nvim'
-  -- use '~/code/tokyonight.nvim'
-  -- use "~/code/Catppuccino.nvim"
+  use 'codicocodes/tokyonight.nvim' -- my version of tokyonight is modified for better transparency support
   use 'arcticicestudio/nord-vim'
 
   -- GIT
@@ -130,17 +120,17 @@ use {
     requires = 'kyazdani42/nvim-web-devicons',
     config = function() require'nvim-tree'.setup() end
   }
-  use {
-    'glepnir/galaxyline.nvim',
-    branch = 'main',
-    config = function() require'plugins.galaxyline' end,
-    requires = {'kyazdani42/nvim-web-devicons', opt = true}
-  }
-  use {
-    'akinsho/nvim-bufferline.lua',
-    requires = { 'kyazdani42/nvim-web-devicons' },
-    config = require('plugins.bufferline'),
-  }
+  -- use {
+  --   'glepnir/galaxyline.nvim',
+  --   branch = 'main',
+  --   config = function() require'plugins.galaxyline' end,
+  --   requires = {'kyazdani42/nvim-web-devicons', opt = true}
+  -- }
+  -- use {
+  --   'akinsho/nvim-bufferline.lua',
+  --   requires = { 'kyazdani42/nvim-web-devicons' },
+  --   config = require('plugins.bufferline'),
+  -- }
 end
 )
 

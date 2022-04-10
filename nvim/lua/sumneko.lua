@@ -3,18 +3,6 @@ local util = require 'lspconfig/util'
 
 local name = "sumneko_lua"
 
-local function get_system_name()
-  if vim.fn.has("mac") == 1 then
-    return "macOS"
-  elseif vim.fn.has("unix") == 1 then
-    return "Linux"
-  elseif vim.fn.has('win32') == 1 then
-    return "Windows"
-  else
-    print("Unsupported system for sumneko")
-  end
-end
-
 configs[name] = {
   default_config = {
     filetypes = {'lua', 'javascript', 'javascriptreact','typescript','typescriptreact'};
@@ -25,12 +13,8 @@ configs[name] = {
   };
 }
 
-local system_name = get_system_name()
--- set the path to the sumneko installation; if you previously installed via the now deprecated :LspInstall, use
-local sumneko_root_path = "/Users/codico/code/language-servers/lua-language-server"
-local sumneko_binary = sumneko_root_path.."/bin/"..system_name.."/lua-language-server"
 require('lspconfig').sumneko_lua.setup {
-  cmd = { sumneko_binary, "-E", sumneko_root_path .. "/main.lua" };
+  cmd = { "lua-language-server" };
   settings = {
     Lua = {
       runtime = {
