@@ -13,7 +13,7 @@ echo "                                                 ";
 ZSH_DISABLE_COMPFIX=true
 
 # Path to oh-my-zsh
-export ZSH="/Users/codico/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="robbyrussell"
 
 # Plugins
