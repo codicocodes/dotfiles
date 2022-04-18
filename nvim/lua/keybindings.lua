@@ -52,7 +52,6 @@ key_mapper('n', '<leader>l', ':wincmd l<CR>')
 key_mapper('n', '<leader>k', ':wincmd k<CR>')
 key_mapper('n', '<leader>j', ':wincmd j<CR>')
 key_mapper('n', '<leader>h', ':wincmd h<CR>')
-
 -- LSP
 key_mapper('n', '<leader>dn', ':lua vim.lsp.diagnostic.goto_next()<CR>')
 key_mapper('n', '<leader>dp', ':lua vim.lsp.diagnostic.goto_prev()<CR>')
@@ -84,6 +83,8 @@ key_mapper('n', '<leader>ff', ':NvimTreeFindFile<CR>')
 key_mapper('n', '<leader>tr', ':NvimTreeRefresh<CR>')
 key_mapper('n', '<leader>fd', ':TroubleToggle<CR>')
 key_mapper('n', '<leader>td', ':TodoTelescope<CR>')
+
+key_mapper('n', '<leader>z', ':Z<CR>')
 
 key_mapper('', '<leader><leader>', ':HopWord<CR>')
 
