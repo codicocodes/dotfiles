@@ -24,15 +24,19 @@ alias b="anime-bg-random"
 
 ##### KEYBINDINGS #####
 fish_vi_key_bindings
+set fish_greeting
 
 ##### SETUP SCRIPT #####
 function fish-setup
+    git config --global core.editor 'nvim'
     curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
     fisher install jorgebucaran/nvm.fish
     fisher install jethrokuan/z
     nvm install lts
     nvm use lts
-    npm install -g prettier eslint typescript typescript-language-server vscode-langservers-extracted vue-language-server
+    npm install -g prettier \
+      eslint typescript typescript-language-server \
+      vscode-langservers-extracted vue-language-server
 end
 
 ##### WELCOME MESSAGE #####
