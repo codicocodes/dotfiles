@@ -7,22 +7,24 @@ local key_mapper = function(mode, key, result)
   )
 end
 
+
 -- Buffers
-key_mapper ('', '<leader>1', ':BufferLineGoToBuffer 1<CR>')
-key_mapper ('', '<leader>2', ':BufferLineGoToBuffer 2<CR>')
-key_mapper ('', '<leader>3', ':BufferLineGoToBuffer 3<CR>')
-key_mapper ('', '<leader>4', ':BufferLineGoToBuffer 4<CR>')
-key_mapper ('', '<leader>5', ':BufferLineGoToBuffer 5<CR>')
-key_mapper ('', '<leader>6', ':BufferLineGoToBuffer 6<CR>')
-key_mapper ('', '<leader>7', ':BufferLineGoToBuffer 7<CR>')
-key_mapper ('', '<leader>8', ':BufferLineGoToBuffer 8<CR>')
-key_mapper ('', '<leader>9', ':BufferLineGoToBuffer 9<CR>')
-key_mapper ('', '<leader>0', ':BufferLineGoToBuffer 10<CR>')
+-- key_mapper ('', '<leader>1', ':BufferLineGoToBuffer 1<CR>')
+-- key_mapper ('', '<leader>2', ':BufferLineGoToBuffer 2<CR>')
+-- key_mapper ('', '<leader>3', ':BufferLineGoToBuffer 3<CR>')
+-- key_mapper ('', '<leader>4', ':BufferLineGoToBuffer 4<CR>')
+-- key_mapper ('', '<leader>5', ':BufferLineGoToBuffer 5<CR>')
+-- key_mapper ('', '<leader>6', ':BufferLineGoToBuffer 6<CR>')
+-- key_mapper ('', '<leader>7', ':BufferLineGoToBuffer 7<CR>')
+-- key_mapper ('', '<leader>8', ':BufferLineGoToBuffer 8<CR>')
+-- key_mapper ('', '<leader>9', ':BufferLineGoToBuffer 9<CR>')
+-- key_mapper ('', '<leader>0', ':BufferLineGoToBuffer 10<CR>')
 
 key_mapper('', '<leader>p', ':bprev<CR>')
 key_mapper('', '<leader>n', ':bnext<CR>')
 key_mapper('', '<leader>bd', ':bd<CR>')
 key_mapper('n', '<leader>bx', ':%bd<bar>e#<bar>bd#<CR>')
+
 key_mapper('', '<leader>q', ':wq<CR>')
 key_mapper('', '<leader>w', ':w<CR>')
 key_mapper('', '<leader>e', ':e<CR>')
@@ -35,9 +37,7 @@ key_mapper('', '<left>', '<nop>')
 key_mapper('', '<right>', '<nop>')
 
 -- GET THE HELL OUT OF INSERTMODE RIGHT NOW
-key_mapper('i', 'jk', '<ESC>')
-key_mapper('i', 'JK', '<ESC>')
-key_mapper('i', 'jK', '<ESC>')
+key_mapper('', '<leader>b', ':silent !b<CR>')
 
 -- Manage your windows like a boss
 key_mapper('n', '<leader>sv', ':vsplit<CR>')
