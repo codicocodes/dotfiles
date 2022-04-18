@@ -26,11 +26,19 @@ alias bgr="anime-bg-random"
 ##### KEYBINDINGS #####
 fish_vi_key_bindings
 
-##### PACKAGE MANAGER #####
-# I am using fisher as a package manager
+##### SETUP SCRIPT #####
+function fish-setup
+    curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
+    fisher install jorgebucaran/nvm.fish
+    fisher install jethrokuan/z
+    nvm install lts
+    nvm use lts
+end
 # curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
 # fisher install jorgebucaran/nvm.fish
 # fisher install jethrokuan/z
+# nvm install lts
+# nvm use lts
 
 ##### WELCOME MESSAGE #####
 # figlet welcome\n codico | lolcat
