@@ -1,7 +1,7 @@
 ZSH_DISABLE_COMPFIX=true
 
 # Path to oh-my-zsh
-export ZSH="/home/codico/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="robbyrussell"
 
 # Plugins
@@ -89,5 +89,5 @@ export NVM_DIR=~/.nvm
 source  ~/.nvm/nvm.sh
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-figlet welcome | lolcat
-figlet codico | lolcat
+# figlet welcome | lolcat
+# figlet codico | lolcat

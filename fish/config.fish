@@ -3,7 +3,7 @@ if status is-interactive
 end
 
 ##### PATH #####
-set -g -x PATH /usr/local/bin /home/codico/go/bin $PATH
+set -g -x PATH /usr/local/bin $HOME/go/bin /opt/homebrew/bin/ $PATH
 
 ##### BACKGROUND IMAGE #####
 function anime-bg-set
@@ -33,4 +33,4 @@ fish_vi_key_bindings
 # fisher install jethrokuan/z
 
 ##### WELCOME MESSAGE #####
-figlet welcome\n codico | lolcat
+# figlet welcome\n codico | lolcat
