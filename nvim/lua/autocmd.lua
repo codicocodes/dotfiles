@@ -40,7 +40,6 @@ vim.cmd([[au VimEnter * hi VertSplit guibg=none ctermbg=none guifg=none]])
 vim.cmd([[au VimEnter * hi SignColumn guibg=none ctermbg=none guifg=none]])
 vim.cmd([[au VimEnter * hi EndOfBuffer guibg=none ctermbg=none guifg=none]])
 vim.cmd([[au VimEnter * hi TelescopeNormal guibg=none ctermbg=none guifg=none]])
-vim.cmd([[au VimEnter * hi TelescopeNormal guibg=none ctermbg=none guifg=none]])
 vim.cmd([[au VimEnter * hi TelescopeBorder guibg=none ctermbg=none guifg=none]])
 vim.cmd([[au VimEnter * hi NvimTreeNormal guibg=none ctermbg=none guifg=none]])
 vim.cmd([[au VimEnter * hi NvimTreeNormalNC guibg=none ctermbg=none guifg=none]])
@@ -48,5 +47,7 @@ vim.cmd([[au VimEnter * hi NvimTreeVertSplit guibg=none ctermbg=none guifg=none]
 vim.cmd([[au VimEnter * hi NvimTreeStatusLine guibg=none ctermbg=none guifg=none]])
 vim.cmd([[au VimEnter * hi NvimTreeStatusLineNC guibg=none ctermbg=none guifg=none]])
 vim.cmd([[au VimEnter * hi ZenBg guibg=none ctermbg=none guifg=none]])
+
+
 
 pcall(autocmd)
