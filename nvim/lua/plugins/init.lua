@@ -1,7 +1,4 @@
 local packer = require'packer'
--- local util = require'packer.util'
-
--- local package_root = util.join_paths(vim.fn.stdpath('data'), 'site', 'pack')
 
 packer.init({})
 
@@ -15,7 +12,6 @@ packer.startup(function()
   use "theHamsta/nvim-dap-virtual-text"
   use "mfussenegger/nvim-dap-python"
   use "nvim-telescope/telescope-dap.nvim"
-
   use "vim-test/vim-test"
 
   -- Lua
@@ -42,6 +38,7 @@ use {
       }
     end
   }
+
   -- Lua
   use {
     "folke/zen-mode.nvim",
@@ -120,17 +117,6 @@ use {
     requires = 'kyazdani42/nvim-web-devicons',
     config = function() require'nvim-tree'.setup() end
   }
-  -- use {
-  --   'glepnir/galaxyline.nvim',
-  --   branch = 'main',
-  --   config = function() require'plugins.galaxyline' end,
-  --   requires = {'kyazdani42/nvim-web-devicons', opt = true}
-  -- }
-  -- use {
-  --   'akinsho/nvim-bufferline.lua',
-  --   requires = { 'kyazdani42/nvim-web-devicons' },
-  --   config = require('plugins.bufferline'),
-  -- }
 end
 )
 
