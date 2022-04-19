@@ -4,7 +4,6 @@ packer.init({})
 
 packer.startup(function()
   local use = use
-  -- java
   use "mfussenegger/nvim-jdtls"
   use "mfussenegger/nvim-dap"
   use "leoluz/nvim-dap-go"
@@ -13,16 +12,13 @@ packer.startup(function()
   use "mfussenegger/nvim-dap-python"
   use "nvim-telescope/telescope-dap.nvim"
   use "vim-test/vim-test"
-
-  -- Lua
-use {
-  "folke/todo-comments.nvim",
-  requires = "nvim-lua/plenary.nvim",
-  config = function()
-    require"todo-comments".setup{}
-  end
-}
-  -- Lua
+  use {
+    "folke/todo-comments.nvim",
+    requires = "nvim-lua/plenary.nvim",
+    config = function()
+      require"todo-comments".setup{}
+    end
+  }
   use {
     "folke/trouble.nvim",
     requires = "kyazdani42/nvim-web-devicons",
@@ -38,16 +34,12 @@ use {
       }
     end
   }
-
-  -- Lua
   use {
     "folke/zen-mode.nvim",
     config = function()
       require("zen-mode").setup{}
     end
   }
-
-  -- GENERAL
   use 'nvim-treesitter/nvim-treesitter'
   use 'sheerun/vim-polyglot'
   use 'nvim-lua/popup.nvim'
