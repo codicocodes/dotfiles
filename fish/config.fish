@@ -22,9 +22,10 @@ alias src="source ~/.config/fish/config.fish"
 alias bgs="anime-bg-set"
 alias b="anime-bg-random"
 
-##### KEYBINDINGS #####
+##### SETTINGS #####
 fish_vi_key_bindings
 set fish_greeting
+nvm use lts > /dev/null
 
 ##### SETUP SCRIPT #####
 function fish-setup
@@ -42,13 +43,13 @@ end
 ##### TOGGLE KEYBOARD LAYOUT #####
 function keyb 
     if test (uname) = Linux
-        set layout (setxkbmap -query | awk '/layout/ {print $2}')
+        set layout (xkb-switch)
         if test $layout = 'us'
-            setxkbmap -layout 'se'
-            echo keyboard set to se
+            setxkbmap -layout 'se' 
+            echo keyboard set to se | lolcat
         else
             setxkbmap -layout 'us'
-            echo keyboard set to us
+            echo keyboard set to us | lolcat
         end
     end
 end
