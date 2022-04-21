@@ -1,22 +1,6 @@
-# TEST
-# exec --no-startup-id ~/set_once_i3.sh
-# https://raw.githubusercontent.com/endeavouros-team/endeavouros-i3wm-setup/master/.config/i3/config
-# Maintainer: joekamprad [joekamprad@endeavouros.com]
-# https://endeavouros.com
-#
-# iconic font icon search: https://fontawesome.com/v4.7/cheatsheet/
-#
-# --> to update this run the following command (will backup existing setup file)
-# wget --backups=1 https://raw.githubusercontent.com/endeavouros-team/endeavouros-i3wm-setup/main/.config/i3/config -P ~/.config/i3/
-#
-# Endeavouros-i3 config file
-# Source for complete framework of our i3 config and theming here: https://github.com/endeavouros-team/endeavouros-i3wm-setup
-# EndeavourOS wiki holds some Information also: https://discovery.endeavouros.com/window-tiling-managers/i3-wm/ Please see http://i3wm.org/docs/userguide.html for the official i3 reference!
-
 #######################
 # config starts here: #
 #######################
-
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -144,16 +128,16 @@ mode "resize" {
 # Pressing right will grow the window's width.
 # Pressing up will shrink the window's height.
 # Pressing down will grow the window's height.
-       bindsym h resize shrink width 10 px or 10 ppt
-       bindsym j resize grow height 10 px or 10 ppt
-       bindsym k resize shrink height 10 px or 10 ppt
-       bindsym l resize grow width 10 px or 10 ppt
+       bindsym h resize shrink width 5 px or 5 ppt
+       bindsym j resize grow height 5 px or 5 ppt
+       bindsym k resize shrink height 5 px or 5 ppt
+       bindsym l resize grow width 5 px or 5 ppt
 
 # same bindings, but for the arrow keys
-#	bindsym Left resize shrink width 10 px or 10 ppt
-       bindsym Down resize grow height 10 px or 10 ppt
-       bindsym Up resize shrink height 10 px or 10 ppt
-       bindsym Right resize grow width 10 px or 10 ppt
+			 bindsym Left resize shrink width 5 px or 5 ppt
+       bindsym Down resize grow height 5 px or 5 ppt
+       bindsym Up resize shrink height 5 px or 5 ppt
+       bindsym Right resize grow width 5 px or 5 ppt
 
 # back to normal: Enter or Escape
 			 bindsym Return mode "default"
@@ -167,7 +151,6 @@ bindsym $mod+r mode "resize"
 ######################################
 
 # start a terminal
-# bindsym $mod+Return exec xfce4-terminal
 bindsym $mod+Return exec kitty
 
 # kill focused window
@@ -178,7 +161,7 @@ bindsym $mod+Shift+e exec ~/.config/i3/scripts/powermenu
 
 # Lock the system
 # lock with a picture:
-#bindsym $mod+l exec i3lock -i  ~/.config/i3/i3-lock-screen.png -p default|win -t
+# bindsym $mod+x exec i3lock -i  ~/.config/i3/i3-lock-screen.png -p default|win -t
 # lock by blurring the screen:
 bindsym $mod+x exec ~/.config/i3/scripts/blur-lock
 
@@ -240,7 +223,7 @@ bindsym $mod+e layout toggle split
 bindsym $mod+Shift+space floating toggle
 
 # change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
+# bindsym $mod+space focus mode_toggle
 
 # focus the parent container
 bindsym $mod+a focus parent
@@ -285,14 +268,14 @@ bindsym $mod+Shift+p exec ~/.config/i3/scripts/power-profiles
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
 set $ws1 "1:"
-set $ws2 "2:"
-set $ws3 "3"
+set $ws2 "2:"
+set $ws3 "3:"
 set $ws4 "4"
 set $ws5 "5"
 set $ws6 "6"
 set $ws7 "7"
 set $ws8 "8"
-set $ws9 "9"
+set $ws9 "9:"
 set $ws10 "10:"
 
 # use workspaces on different displays:
@@ -308,7 +291,8 @@ set $ws10 "10:"
 assign [class="kitty"] $ws1
 assign [class="(?i)chromium"] $ws2
 assign [class="(?i)thunar"] $ws8
-assign [class="spotify"] $ws9
+# assign [class="Spotify"] $ws9
+for_window [class="Spotify"] move to workspace $ws9
 assign [class="discord"] $ws10
 
 # automatic set focus new window if it opens on another workspace then the current:
@@ -400,7 +384,7 @@ exec --no-startup-id dbus-launch dunst --config ~/.config/dunst/dunstrc
 
 # Autostart apps as you like
 exec --no-startup-id sleep 2 && kitty
-# exec --no-startup-id sleep 7 && chromium
+exec --no-startup-id sleep 7 && spotify
 exec --no-startup-id sleep 7 && discord
 # exec --no-startup-id sleep 2 && xfce4-terminal
 # exec --no-startup-id sleep 7 && firefox https://github.com/endeavouros-team/endeavouros-i3wm-setup/blob/main/force-knowledge.md
@@ -575,7 +559,7 @@ exec_always setxkbmap -layout us
 exec_always setxkbmap -option caps:escape
 exec_always xset r rate 200 25
 exec ~/.screenlayout/dual-monitor.sh
-exec --no-startup-id sleep 6 && picom -b --config ~/.config/picom.conf
+exec --no-startup-id sleep 6 && picom -b --config ~/.config/picom.conf --experimental-backends
 exec --no-startup-id sleep 6 && ~/.fehbg
 
 
@@ -599,3 +583,6 @@ workspace 10 output LVDS1
 bindsym $mod+u move workspace to output left
 bindsym $mod+i move workspace to output right 
 
+##### CHANGE KEYBOARD LAYOUT #####
+bindsym $mod+y exec fish -c keyb
+bindsym $mod+b exec fish -c anime-bg-random
