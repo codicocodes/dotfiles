@@ -6,7 +6,8 @@
 # is used in the bar {} block below.
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-font pango: Noto Sans Regular 10
+# font pango: Noto Sans Regular 14
+font pango: Caskaydia Cove Nerd Font 14
 
 # set the mod key to the winkey:
 set $mod Mod4
@@ -128,16 +129,16 @@ mode "resize" {
 # Pressing right will grow the window's width.
 # Pressing up will shrink the window's height.
 # Pressing down will grow the window's height.
-       bindsym h resize shrink width 5 px or 5 ppt
-       bindsym j resize grow height 5 px or 5 ppt
-       bindsym k resize shrink height 5 px or 5 ppt
-       bindsym l resize grow width 5 px or 5 ppt
+       bindsym h resize shrink width 1 px or 1 ppt
+       bindsym j resize grow height 1 px or 1 ppt
+       bindsym k resize shrink height 1 px or 1 ppt
+       bindsym l resize grow width 1 px or 1 ppt
 
 # same bindings, but for the arrow keys
-			 bindsym Left resize shrink width 5 px or 5 ppt
-       bindsym Down resize grow height 5 px or 5 ppt
-       bindsym Up resize shrink height 5 px or 5 ppt
-       bindsym Right resize grow width 5 px or 5 ppt
+			 bindsym Left resize shrink width 1 px or 1 ppt
+       bindsym Down resize grow height 1 px or 1 ppt
+       bindsym Up resize shrink height 1 px or 1 ppt
+       bindsym Right resize grow width 1 px or 1 ppt
 
 # back to normal: Enter or Escape
 			 bindsym Return mode "default"
@@ -223,7 +224,7 @@ bindsym $mod+e layout toggle split
 bindsym $mod+Shift+space floating toggle
 
 # change focus between tiling / floating windows
-# bindsym $mod+space focus mode_toggle
+bindsym $mod+space focus mode_toggle
 
 # focus the parent container
 bindsym $mod+a focus parent
@@ -256,7 +257,7 @@ bindsym $mod+p exec /usr/local/bin/switch-audio-port
 ## App shortcuts
 bindsym $mod+w exec /usr/bin/chromium
 # bindsym $mod+n exec /usr/bin/thunar
-bindsym Print exec scrot ~/%Y-%m-%d-%T-screenshot.png && notify-send "Screenshot saved to ~/$(date +"%Y-%m-%d-%T")-screenshot.png"
+bindsym Print exec scrot ~/Screenshots/%Y-%m-%d-%T-screenshot.png && notify-send "Screenshot saved to ~/$(date +"%Y-%m-%d-%T")-screenshot.png"
 
 # Power Profiles menu switcher (rofi)
 bindsym $mod+Shift+p exec ~/.config/i3/scripts/power-profiles
@@ -343,6 +344,7 @@ exec --no-startup-id dex --autostart --environment i3
 
 # num lock activated
 # exec --no-startup-id numlockx on
+
 # configure multiple keyboard layouts and hotkey to switch (Alt+CAPSLOCK in this example)
 # exec --no-startup-id setxkbmap -layout 'us,sk' -variant altgr-intl,qwerty -option 'grp:alt_caps_toggle'
 
@@ -464,31 +466,31 @@ client.urgent		    $urgentred	$urgentred	$white		$purple		$yellowbrown
 # Start i3bar to display a workspace bar
 # (plus the system information i3status finds out, if available)
 bar {
-		font pango: Noto Sans Regular 10
+	font pango: Caskaydia Cove Nerd Font Regular 12, Font Awesome 12
 		status_command i3blocks -c ~/.config/i3/i3blocks.conf
-	    	position bottom
-#	    	i3bar_command i3bar --transparency
-# it could be that you have no primary display set: set one (xrandr --output <output> --primary)
-# reference: https://i3wm.org/docs/userguide.html#_tray_output
-		    tray_output primary
-		    tray_padding 0
+		position bottom
+		# i3bar_command i3bar --transparency
+		# it could be that you have no primary display set: set one (xrandr --output <output> --primary)
+		# reference: https://i3wm.org/docs/userguide.html#_tray_output
+		tray_output primary
+		tray_padding 2
 
-# When strip_workspace_numbers is set to yes,
-# any workspace that has a name of the form
-# “[n][:][NAME]” will display only the name.
-strip_workspace_numbers yes
-##strip_workspace_name no
+		# When strip_workspace_numbers is set to yes,
+		# any workspace that has a name of the form
+		# “[n][:][NAME]” will display only the name.
+		strip_workspace_numbers yes
+		##strip_workspace_name no
 
-		    colors {
-		    separator          $purple
-		    background         $darkgrey
-		    statusline         $white
-#                          		border 		        bg		txt		indicator
-		focused_workspace	$mediumgrey	   	$grey		$darkgrey	$purple
-		active_workspace	$lightblue      	$mediumgrey	$darkgrey	$purple
-		inactive_workspace	$darkgrey   		$darkgrey	$grey		$purple
-		urgent_workspace	$urgentred	    	$urgentred	$white		$purple
-	}
+		colors {
+				separator           $purple
+				background          $darkgrey
+				statusline          $white
+				# border 		        bg		txt		indicator
+				focused_workspace	  $mediumgrey	   	  $grey		    $darkgrey	 $purple
+				active_workspace	  $lightblue      	$mediumgrey	$darkgrey	 $purple
+				inactive_workspace	$darkgrey   		  $darkgrey	  $grey		   $purple
+				urgent_workspace	  $urgentred	    	$urgentred	$white		 $purple
+		}
 }
 
 # you can add different bars for multidisplay setups on each display:
