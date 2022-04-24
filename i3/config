@@ -552,19 +552,19 @@ bindsym $mod+t exec rofi -show window \
 
 ##### CODICO CONFIG #####
 
-##### COMPOSITION #####
-# exec_always --no-startup-id picom -b --config ~/.config/picom.conf
-# exec_always --no-startup-id ~/.fehbg
-
-##### SETTINGS #####
-exec_always setxkbmap -layout us
-exec_always setxkbmap -option caps:escape
-exec_always xset r rate 200 25
+##### MONITORS #####
 exec ~/.screenlayout/dual-monitor.sh
+
+##### COMPOSITION #####
+# Start after monitors are setup
 exec --no-startup-id sleep 6 && picom -b --config ~/.config/picom.conf --experimental-backends
 exec --no-startup-id sleep 6 && ~/.fehbg
 
-
+##### SETTINGS #####
+exec_always autotiling
+exec_always setxkbmap -layout us
+exec_always setxkbmap -option caps:escape
+exec_always xset r rate 200 25
 
 
 # exec_always setxkbmap -layout se
