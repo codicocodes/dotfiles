@@ -8,17 +8,22 @@ local key_mapper = function(mode, key, result)
 end
 
 
--- Buffers
--- key_mapper ('', '<leader>1', ':BufferLineGoToBuffer 1<CR>')
--- key_mapper ('', '<leader>2', ':BufferLineGoToBuffer 2<CR>')
--- key_mapper ('', '<leader>3', ':BufferLineGoToBuffer 3<CR>')
--- key_mapper ('', '<leader>4', ':BufferLineGoToBuffer 4<CR>')
--- key_mapper ('', '<leader>5', ':BufferLineGoToBuffer 5<CR>')
--- key_mapper ('', '<leader>6', ':BufferLineGoToBuffer 6<CR>')
--- key_mapper ('', '<leader>7', ':BufferLineGoToBuffer 7<CR>')
--- key_mapper ('', '<leader>8', ':BufferLineGoToBuffer 8<CR>')
--- key_mapper ('', '<leader>9', ':BufferLineGoToBuffer 9<CR>')
--- key_mapper ('', '<leader>0', ':BufferLineGoToBuffer 10<CR>')
+key_mapper ('', 'mm', ':lua require("harpoon.ui").toggle_quick_menu()<CR>')
+key_mapper ('', '<leader>a', ':lua require("harpoon.mark").add_file()<CR>')
+
+key_mapper ('', '<leader>n', ':lua require("harpoon.ui").nav_next()<CR>')
+key_mapper ('', '<leader>p', ':lua require("harpoon.ui").nav_prev()<CR>')
+
+key_mapper ('', '<leader>1', ':lua require("harpoon.ui").nav_file(1)<CR>')
+key_mapper ('', '<leader>2',  ':lua require("harpoon.ui").nav_file(2)<CR>')
+key_mapper ('', '<leader>3',  ':lua require("harpoon.ui").nav_file(3)<CR>')
+key_mapper ('', '<leader>4',  ':lua require("harpoon.ui").nav_file(4)<CR>')
+key_mapper ('', '<leader>5',  ':lua require("harpoon.ui").nav_file(5)<CR>')
+key_mapper ('', '<leader>6',  ':lua require("harpoon.ui").nav_file(6)<CR>')
+key_mapper ('', '<leader>7',  ':lua require("harpoon.ui").nav_file(7)<CR>')
+key_mapper ('', '<leader>8',  ':lua require("harpoon.ui").nav_file(8)<CR>')
+key_mapper ('', '<leader>9',  ':lua require("harpoon.ui").nav_file(9)<CR>')
+key_mapper ('', '<leader>0',  ':lua require("harpoon.ui").nav_file(0)<CR>')
 
 key_mapper('', '<leader>p', ':bprev<CR>')
 key_mapper('', '<leader>n', ':bnext<CR>')
