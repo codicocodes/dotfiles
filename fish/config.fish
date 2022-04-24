@@ -1,25 +1,76 @@
+function notify
+    if test (uname) = Linux
+        echo $argv[1] | lolcat
+        notify-send $argv[1]
+    else
+        echo $argv[1]
+    end
+end
+
 if status is-interactive
+    set term_height (tput lines)
     # commands to run in interactive sessions can go here
 end
 
 ##### PATH #####
 set -g -x PATH /usr/local/bin $HOME/go/bin /opt/homebrew/bin/ $PATH
 
-##### BACKGROUND IMAGE #####
-function anime-bg-set
-    set anime (find $HOME/wallpapers -type f \
-       | fzf --preview "kitty icat --place 60x60@65x6 --transfer-mode file {} ")
-    feh --bg-scale $anime
+##### UPDATE BACKGROUND #####
+function update-bg
+    if test (uname) = Linux
+        feh --bg-scale $argv[1]
+    else
+        echo "background_image $selected" > "$HOME/code/dotfiles/kitty/background_image.conf"
+        kitty @ set-background-image $selected
+    end
 end
 
+##### CALCULATE IMAGE SIZE #####
+function get-preview-position
+    set term_width (tput cols)
+    set term_half_width (math ceil (math $term_width/2))
+    set width $term_half_width
+    set left $term_half_width
+    set height (math ceil (math "$width / 1.6"))
+    set top 0
+    echo "$width"x"$height"@"$left"x"$top"
+end
+
+##### KITTY IMG PREVIEWER CMD #####
+function previewer
+    set position (get-preview-position)
+    # img to preview as optional arg
+    if not set -q argv[1]
+        # return the cmd
+        echo "kitty icat --place "$position" --transfer-mode file" 
+    else
+        # invoke the cmd
+        cat $argv[1] | kitty icat --place "$position" --transfer-mode file 
+    end
+end
+
+##### BACKGROUND IMAGE #####
+function anime-bg-set
+    # get the cmd
+    set previewer_cmd (previewer)
+    # select the img
+    set anime (find $HOME/wallpapers -type f \
+       | fzf --preview "$previewer_cmd {}" --preview-window noborder )
+    update-bg $anime
+    clear
+    notify "new background image selected (ღ˘⌣˘ღ)"
+end
+
+
+##### RANDOM BACKGROUND #####
 function anime-bg-random
-    feh --bg-scale (random choice $HOME/wallpapers/*)
+    update-bg (random choice $HOME/wallpapers/*)
 end
 
 ##### ALIAS #####
 alias nv="nvim"
-alias src="source ~/.config/fish/config.fish"
-alias bgs="anime-bg-set"
+alias src="clear; source ~/.config/fish/config.fish"
+alias p="anime-bg-set"
 alias b="anime-bg-random"
 
 ##### SETTINGS #####
@@ -46,10 +97,14 @@ function keyb
         set layout (xkb-switch)
         if test $layout = 'us'
             setxkbmap -layout 'se' 
-            echo keyboard set to se | lolcat
+            set msg keyboard set to se 
+            echo $msg | lolcat
+            notify-send "$msg"
         else
             setxkbmap -layout 'us'
-            echo keyboard set to us | lolcat
+            set msg keyboard set to us
+            echo $msg | lolcat
+            notify-send "$msg"
         end
     end
 end
