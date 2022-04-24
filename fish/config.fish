@@ -20,8 +20,8 @@ function update-bg
     if test (uname) = Linux
         feh --bg-scale $argv[1]
     else
-        echo "background_image $selected" > "$HOME/code/dotfiles/kitty/background_image.conf"
-        kitty @ set-background-image $selected
+        echo "background_image $argv[1]" > "$HOME/code/dotfiles/kitty/background_image.conf"
+        kitty @ set-background-image $argv[1]
     end
 end
 
