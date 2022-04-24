@@ -10,7 +10,6 @@ require'sumneko'
 require'plugins.treesitter'
 require'plugins.telescope'
 require'plugins.cmp'
-require'plugins.refactoring'
 require'plugins.dap'
 require'dapui'.setup()
 require'hop'.setup { keys = 'etovxqpdygfblzhckisuran', term_seq_bias = 0.5 }

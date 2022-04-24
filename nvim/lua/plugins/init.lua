@@ -74,13 +74,6 @@ packer.startup(function()
   }
 
   use 'tami5/lspsaga.nvim'
-  use {
-    'ThePrimeagen/refactoring.nvim',
-    requires = {
-      {"nvim-lua/plenary.nvim"},
-      {"nvim-treesitter/nvim-treesitter"}
-    }
-  }
   -- THEMES
   use 'sainnhe/edge'
   use 'codicocodes/tokyonight.nvim' -- my version of tokyonight is modified for better transparency support
