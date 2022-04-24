@@ -76,7 +76,12 @@ alias b="anime-bg-random"
 ##### SETTINGS #####
 fish_vi_key_bindings
 set fish_greeting
-nvm use lts > /dev/null
+
+if type -q nvm
+    nvm use lts > /dev/null
+else
+    echo 'nvm is not installed'
+end
 
 ##### SETUP SCRIPT #####
 function fish-setup
