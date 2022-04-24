@@ -3,6 +3,7 @@ local packer = require'packer'
 packer.init({})
 
 packer.startup(function()
+  ---@diagnostic disable-next-line: undefined-global
   local use = use
   use "mfussenegger/nvim-jdtls"
   use "mfussenegger/nvim-dap"
@@ -41,6 +42,7 @@ packer.startup(function()
     end
   }
   use 'nvim-treesitter/nvim-treesitter'
+  use 'nvim-treesitter/nvim-treesitter-textobjects'
   use 'sheerun/vim-polyglot'
   use 'nvim-lua/popup.nvim'
   use 'nvim-lua/plenary.nvim'
