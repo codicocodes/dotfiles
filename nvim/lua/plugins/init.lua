@@ -54,19 +54,25 @@ packer.startup(function()
   use 'neovim/nvim-lspconfig'
 
   -- Autocomplete
-  use 'hrsh7th/nvim-cmp'
-  use 'hrsh7th/cmp-nvim-lsp'
-  use 'quangnguyen30192/cmp-nvim-ultisnips'
-  use 'honza/vim-snippets'
-  use({
-      "SirVer/ultisnips",
-      requires = "honza/vim-snippets",
-      config = function()
-        vim.g.UltiSnipsRemoveSelectModeMappings = 0
-      end,
-    })
+  use {
+    "hrsh7th/nvim-cmp",
+    requires = {
+      "hrsh7th/cmp-buffer",
+      "hrsh7th/cmp-nvim-lsp",
+      "hrsh7th/cmp-nvim-lua",
+      "hrsh7th/cmp-path",
+      "onsails/lspkind-nvim", -- Enables icons on completions
+      {
+        -- Snippets
+        "L3MON4D3/LuaSnip",
+        requires = {
+          "saadparwaiz1/cmp_luasnip",
+          "rafamadriz/friendly-snippets",
+        },
+      },
+    },
+  }
 
-  use 'kabouzeid/nvim-lspinstall'
   use 'tami5/lspsaga.nvim'
   use {
     'ThePrimeagen/refactoring.nvim',
@@ -75,7 +81,6 @@ packer.startup(function()
       {"nvim-treesitter/nvim-treesitter"}
     }
   }
-
   -- THEMES
   use 'sainnhe/edge'
   use 'codicocodes/tokyonight.nvim' -- my version of tokyonight is modified for better transparency support
