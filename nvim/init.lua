@@ -12,8 +12,12 @@ require'plugins.telescope'
 require'plugins.cmp'
 require'plugins.dap'
 require'dapui'.setup()
-require'hop'.setup { keys = 'etovxqpdygfblzhckisuran', term_seq_bias = 0.5 }
+-- require('dap-python').test_runner = 'pytest'
+require'dap-python'.setup('~/.venv/debugpy/bin/python')
+vim.fn.sign_define("DapBreakpoint", { text = "", texthl = "Error", linehl = "", numhl = "" })
+  vim.fn.sign_define("DapStopped", { text = "", texthl = "Success", linehl = "", numhl = "" })
 
+require'hop'.setup { keys = 'etovxqpdygfblzhckisuran', term_seq_bias = 0.5 }
 require'nvim-treesitter.configs'.setup {
   textobjects = {
     select = {

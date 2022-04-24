@@ -29,22 +29,6 @@ wo.relativenumber = true
 wo.signcolumn = 'yes'
 wo.wrap = false
 vim.g.mapleader=' '
+
 -- bypass an autocomplete issue, don't know detail about this global variable yet.
 vim.g._cmpu_current_snippets={}
-
--- vim.g.python3_host_prog="/usr/local/bin/python3"
-vim.g.python3_host_prog="/usr/bin/python3"
--- vim.g.python3_host_prog="/Library/Frameworks/Python.framework/Versions/3.10/bin/python3"
--- vim.g.highlight.Pmenu = "none"
-
--- @TODO: Move this.
--- UltiSnips Config
-vim.g.UltiSnipsExpandTrigger = '<C-q>.'
-vim.g.UltiSnipsJumpForwardTrigger = '<C-j>'
-vim.g.UltiSnipsJumpBackwardTrigger = '<C-k>'
-
--- -- ALE
--- vim.g.ale_sign_error = ''
--- vim.g.ale_sign_warning = ''
--- vim.g.ale_sign_info = ''
--- vim.g.ale_virtualtext_prefix='~'

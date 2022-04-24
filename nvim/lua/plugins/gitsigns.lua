@@ -19,5 +19,5 @@ require('gitsigns').setup {
   status_formatter = nil, -- Use default
   diff_opts={
     internal = true,  -- If luajit is present
-  } 
+  }
 }

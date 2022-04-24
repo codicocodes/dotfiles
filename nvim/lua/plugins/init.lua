@@ -2,6 +2,7 @@ local packer = require'packer'
 
 packer.init({})
 
+
 packer.startup(function()
   ---@diagnostic disable-next-line: undefined-global
   local use = use
@@ -13,6 +14,7 @@ packer.startup(function()
   use "mfussenegger/nvim-dap-python"
   use "nvim-telescope/telescope-dap.nvim"
   use "vim-test/vim-test"
+  use "rcarriga/vim-ultest"
   use {
     "folke/todo-comments.nvim",
     requires = "nvim-lua/plenary.nvim",
@@ -82,18 +84,11 @@ packer.startup(function()
   use 'arcticicestudio/nord-vim'
 
   -- GIT
+  use 'TimUntersberger/neogit'
   use 'tpope/vim-fugitive'
-  use 'itchyny/vim-gitbranch'
-
   use {
-    'lewis6991/gitsigns.nvim',
-    requires = {
-      'nvim-lua/plenary.nvim'
-    },
-
-    config = function()
-      require'plugins.gitsigns'
-    end
+      'lewis6991/gitsigns.nvim',
+      requires = 'nvim-lua/plenary.nvim'
   }
 
   -- EDITING
@@ -114,4 +109,8 @@ packer.startup(function()
 end
 )
 
-require 'lspsaga'.init_lsp_saga()
+require'lspsaga'.init_lsp_saga()
+
+require('gitsigns').setup{
+  signcolumn = false
+}

@@ -7,6 +7,9 @@ local key_mapper = function(mode, key, result)
   )
 end
 
+key_mapper('', '<leader>bb', ':lua require("dapui").toggle()<CR>')
+key_mapper('', '<leader>bp', ':DapToggleBreakpoint<CR>')
+key_mapper('', '<leader>bn', ':DapContinue<CR>')
 
 key_mapper ('', 'mm', ':lua require("harpoon.ui").toggle_quick_menu()<CR>')
 key_mapper ('', '<leader>a', ':lua require("harpoon.mark").add_file()<CR>')
@@ -25,11 +28,9 @@ key_mapper ('', '<leader>8',  ':lua require("harpoon.ui").nav_file(8)<CR>')
 key_mapper ('', '<leader>9',  ':lua require("harpoon.ui").nav_file(9)<CR>')
 key_mapper ('', '<leader>0',  ':lua require("harpoon.ui").nav_file(0)<CR>')
 
-key_mapper('', '<leader>p', ':bprev<CR>')
-key_mapper('', '<leader>n', ':bnext<CR>')
+-- BECAUSE IM LAZY
 key_mapper('', '<leader>bd', ':bd<CR>')
 key_mapper('n', '<leader>bx', ':%bd<bar>e#<bar>bd#<CR>')
-
 key_mapper('', '<leader>q', ':wq<CR>')
 key_mapper('', '<leader>w', ':w<CR>')
 key_mapper('', '<leader>e', ':e<CR>')
@@ -40,9 +41,6 @@ key_mapper('', '<up>', '<nop>')
 key_mapper('', '<down>', '<nop>')
 key_mapper('', '<left>', '<nop>')
 key_mapper('', '<right>', '<nop>')
-
--- GET THE HELL OUT OF INSERTMODE RIGHT NOW
-key_mapper('', '<leader>b', ':silent !b<CR>')
 
 -- Manage your windows like a boss
 key_mapper('n', '<leader>sv', ':vsplit<CR>')
@@ -94,17 +92,16 @@ key_mapper('n', '<leader>z', ':Z<CR>')
 key_mapper('', '<leader><leader>', ':HopWord<CR>')
 
 -- Gitsigns
-key_mapper('', '<leader>ghb', ':Gitsigns blame_line<CR>')
-key_mapper('', '<leader>ght', ':Gitsigns toggle_signs<CR>')
-key_mapper('', '<leader>ghp', ':Gitsigns preview_hunk<CR>')
-key_mapper('', '<leader>ghi', ':Gitsigns next_hunk<CR>')
-key_mapper('', '<leader>gho', ':Gitsigns prev_hunk<CR>')
-key_mapper('', '<leader>ghu', ':Gitsigns reset_hunk<CR>')
-key_mapper('', '<leader>ghs', ':Gitsigns stage_hunk<CR>')
+key_mapper('', '<leader>gb', ':Gitsigns blame_line<CR>')
+key_mapper('', '<leader>gg', ':Gitsigns toggle_signs<CR>')
+key_mapper('', '<leader>gp', ':Gitsigns preview_hunk<CR>')
+key_mapper('', '<leader>gi', ':Gitsigns next_hunk<CR>')
+key_mapper('', '<leader>go', ':Gitsigns prev_hunk<CR>')
+key_mapper('', '<leader>gu', ':Gitsigns reset_hunk<CR>')
+key_mapper('', '<leader>ga', ':Gitsigns stage_hunk<CR>')
 
 key_mapper('', "vp", 'viwp')
 key_mapper('', '<ESC>', ':noh<CR>')
-key_mapper('', "''", '<ESC>I"<ESC>A"<ESC>')
 key_mapper('','Y','y$')
 
 -- moving text
