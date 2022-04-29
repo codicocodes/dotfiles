@@ -54,6 +54,7 @@ packer.startup(function()
 
   -- LSP
   use 'neovim/nvim-lspconfig'
+  use 'j-hui/fidget.nvim'
 
   -- Autocomplete
   use {

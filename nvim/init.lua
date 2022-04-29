@@ -12,6 +12,8 @@ require'plugins.telescope'
 require'plugins.cmp'
 require'plugins.dap'
 require'dapui'.setup()
+require"fidget".setup{}
+
 -- require('dap-python').test_runner = 'pytest'
 require'dap-python'.setup('~/.venv/debugpy/bin/python')
 vim.fn.sign_define("DapBreakpoint", { text = "", texthl = "Error", linehl = "", numhl = "" })
