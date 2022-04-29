@@ -31,9 +31,11 @@ background_set() {
     $HOME/code/dotfiles/zsh/select_wallpaper.sh
 }
 
-# background_set() {
-#     $HOME/code/dotfiles/zsh/random_wallpaper.sh
-# }
+alias snapshot="git stash; git checkout stash@{0}; git checkout -; git stash pop;"
+
+branch(){
+    git checkout "$(git branch | fzf| tr -d '[:space:]')"
+}
 
 chmod +x $HOME/code/dotfiles/zsh/random_wallpaper.sh
 bgr() {
