@@ -1,13 +1,3 @@
-local function setup_signs()
-  local signs = { Error = " ", Warning = " ", Hint = " ", Information = " " }
-  for type, icon in pairs(signs) do
-    local hl = "LspDiagnosticsSign" .. type
-    vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
-  end
-end
-
-setup_signs()
-
 local function setup_diagnostics() vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
       virtual_text = {
         update_in_insert = false,
@@ -19,7 +9,6 @@ local function setup_diagnostics() vim.lsp.handlers["textDocument/publishDiagnos
       }
     })
 end
-setup_diagnostics()
 
 local lspconfig = require'lspconfig'
 local function custom_on_attach(client)
