@@ -63,6 +63,7 @@ packer.startup(function()
       "hrsh7th/cmp-nvim-lsp",
       "hrsh7th/cmp-nvim-lua",
       "hrsh7th/cmp-path",
+      "hrsh7th/cmp-emoji",
       "onsails/lspkind-nvim", -- Enables icons on completions
       {
         -- Snippets
