@@ -37,6 +37,13 @@ lspconfig.svelte.setup(default_config)
 lspconfig.cmake.setup(default_config)
 lspconfig.java_language_server.setup(default_config)
 
+lspconfig.volar.setup{
+  on_new_config = function(new_config, _)
+    -- work specific path to typescript server
+    new_config.init_options.typescript.serverPath = "/Users/work/.nvm/versions/node/v14.19.1/lib/node_modules/typescript/lib/tsserverlibrary.js"
+  end,
+}
+
 lspconfig.eslint.setup{
   cmd = { "vscode-eslint-language-server", "--stdio" },
   filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx", "vue" },
