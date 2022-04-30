@@ -27,11 +27,12 @@ local function autocmd()
 end
 
 -- transparent
+vim.cmd([[au VimEnter * hi Normal guibg=#000000 guifg=None]])
+vim.cmd([[au VimEnter * hi NormalNC guibg=None guifg=None]])
+
 vim.cmd([[au VimEnter * highlight Pmenu none]]) -- sets autocomplete suggestions to to transparent
 vim.cmd([[au VimEnter * hi StatusLine guibg=none ctermbg=none guifg=none]])
 vim.cmd([[au VimEnter * hi StatusLineNC guibg=none ctermbg=none guifg=none]])
-vim.cmd([[au VimEnter * hi Normal guibg=none ctermbg=none guifg=none]])
-vim.cmd([[au VimEnter * hi NormalNC guibg=none ctermbg=none guifg=none]])
 vim.cmd([[au VimEnter * hi LineNr guibg=none ctermbg=none guifg=none]])
 vim.cmd([[au VimEnter * hi Folded guibg=none ctermbg=none guifg=none]])
 vim.cmd([[au VimEnter * hi NonText guibg=none ctermbg=none guifg=none]])

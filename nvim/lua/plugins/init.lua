@@ -10,6 +10,7 @@ packer.startup(function()
   use "mfussenegger/nvim-dap"
   use "leoluz/nvim-dap-go"
   use "rcarriga/nvim-dap-ui"
+  use "rcarriga/nvim-notify"
   use "theHamsta/nvim-dap-virtual-text"
   use "mfussenegger/nvim-dap-python"
   use "nvim-telescope/telescope-dap.nvim"
@@ -76,8 +77,11 @@ packer.startup(function()
       },
     },
   }
+  use{
+    'weilbith/nvim-code-action-menu',
+    cmd = 'CodeActionMenu',
+  }
 
-  use 'tami5/lspsaga.nvim'
 
   use 'ThePrimeagen/harpoon'
   -- THEMES
@@ -111,7 +115,7 @@ packer.startup(function()
 end
 )
 
-require'lspsaga'.init_lsp_saga()
+vim.notify = require("notify")
 
 require('gitsigns').setup{
   signcolumn = false
