@@ -36,3 +36,9 @@ require'nvim-treesitter.configs'.setup {
     },
   },
 }
+
+require("null-ls").setup({
+    sources = {
+        require("null-ls").builtins.diagnostics.flake8,
+    },
+})
