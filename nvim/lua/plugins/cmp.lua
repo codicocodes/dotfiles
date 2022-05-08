@@ -4,8 +4,35 @@ local function has_words_before()
 end
 
 local luasnip = require("luasnip")
-local lspkind = require("lspkind")
 luasnip.filetype_extend("typescript", { "typescript" })
+
+local kind_icons = {
+  Text = "",
+  Method = "",
+  Function = "",
+  Constructor = "",
+  Field = "",
+  Variable = "",
+  Class = "",
+  Interface = "",
+  Module = "",
+  Property = "",
+  Unit = "",
+  Value = "",
+  Enum = "",
+  Keyword = "",
+  Snippet = "",
+  Color = "",
+  File = "",
+  Reference = "",
+  Folder = "",
+  EnumMember = "",
+  Constant = "",
+  Struct = "",
+  Event = "",
+  Operator = "",
+  TypeParameter = "",
+}
 
 -- nvim-cmp setup
 local cmp = require("cmp")
@@ -16,18 +43,18 @@ cmp.setup({
       end,
     },
     formatting = {
-      format = lspkind.cmp_format({
-          mode = "symbol_text",
-          preset = "codicons",
-          maxwidth = 50,
-          menu = {
+      fields = { "abbr", "kind", "menu" },
+      format = function(entry, item)
+        item.kind = string.format("%s %s", kind_icons[item.kind], item.kind)
+        item.menu = ({
             buffer = "[buf]",
-            nvim_lsp = "[lsp]",
-            nvim_lua = "[api]",
+            nvim_lsp = '[lsp]',
             path = "[path]",
+            nvim_lua = "[api]",
             luasnip = "[snip]",
-          },
-        }),
+          })[entry.source.name]
+        return item
+      end,
     },
     experimental = {
       native_menu = false,
