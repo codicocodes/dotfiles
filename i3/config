@@ -7,7 +7,7 @@
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 # font pango: Noto Sans Regular 14
-font pango: Caskaydia Cove Nerd Font 14
+font pango: Caskaydia Cove Nerd Font 16
 
 # set the mod key to the winkey:
 set $mod Mod4
@@ -32,7 +32,7 @@ workspace_layout default
 ##############################
 
 #border indicator on windows:
-new_window pixel 0
+new_window pixel 3
 
 # thin borders
 # hide_edge_borders both
@@ -42,7 +42,7 @@ gaps inner 6
 gaps outer 3
 
 # show window title bars (not officially supported with i3gaps)
-#default_border normal
+# default_border normal
 
 # window title alignment
 #title_align center
@@ -255,7 +255,8 @@ bindsym XF86AudioPrev exec playerctl previous
 bindsym $mod+p exec /usr/local/bin/switch-audio-port
 
 ## App shortcuts
-bindsym $mod+w exec /usr/bin/chromium
+# bindsym $mod+w exec /usr/bin/chromium
+bindsym $mod+w exec /usr/bin/firefox
 # bindsym $mod+n exec /usr/bin/thunar
 bindsym Print exec scrot ~/Screenshots/%Y-%m-%d-%T-screenshot.png && notify-send "Screenshot saved to ~/$(date +"%Y-%m-%d-%T")-screenshot.png"
 
@@ -291,6 +292,7 @@ set $ws10 "10:"
 # bind program to workspace and focus to them on startup:
 assign [class="kitty"] $ws1
 assign [class="(?i)chromium"] $ws2
+assign [class="(?i)firefox"] $ws2
 assign [class="(?i)thunar"] $ws8
 # assign [class="Spotify"] $ws9
 for_window [class="Spotify"] move to workspace $ws9
@@ -299,6 +301,7 @@ assign [class="discord"] $ws10
 # automatic set focus new window if it opens on another workspace then the current:
 for_window [class=kitty] focus
 for_window [class=(?i)chromium] focus
+for_window [class=(?i)firefox] focus
 for_window [class=Thunar] focus
 
 ##############
@@ -386,7 +389,7 @@ exec --no-startup-id dbus-launch dunst --config ~/.config/dunst/dunstrc
 
 # Autostart apps as you like
 exec --no-startup-id sleep 2 && kitty
-exec --no-startup-id sleep 7 && spotify
+# exec --no-startup-id sleep 7 && spotify
 exec --no-startup-id sleep 7 && discord
 # exec --no-startup-id sleep 2 && xfce4-terminal
 # exec --no-startup-id sleep 7 && firefox https://github.com/endeavouros-team/endeavouros-i3wm-setup/blob/main/force-knowledge.md
@@ -452,12 +455,15 @@ set $grey		#b0b5bd
 set $mediumgrey		#8b8b8b
 set $yellowbrown	#e1b700
 
+set $fubukiLightPurple #b6aebd
+set $fubukiDarkGreen #0c1d21
+
 # define colors for windows:
-#class		        	border		bground		text		indicator	child_border
-client.focused		    $lightblue	$darkblue	$white		$purple		$mediumgrey
-client.unfocused	    $darkblue	$darkblue	$grey		$purple		$darkgrey
-client.focused_inactive	$darkblue	$darkblue	$grey		$purple		$black
-client.urgent		    $urgentred	$urgentred	$white		$purple		$yellowbrown
+# class		        	    border		          bground		         text		            indicator	          child_border
+client.focused		      $fubukiDarkGreen	  $fubukiDarkGreen   $fubukiDarkGreen	  $fubukiLightPurple	$fubukiDarkGreen
+client.unfocused	      $fubukiDarkGreen	  $darkblue          $fubukiDarkGreen		$fubukiDarkGreen		$darkgrey
+client.focused_inactive	$fubukiDarkGreen	  $darkblue          $fubukiDarkGreen		$fubukiDarkGreen		$black
+client.urgent		        $urgentred	$urgentred	$white         $purple		        $yellowbrown
 
 ############################################
 # bar settings (input comes from i3blocks) #
@@ -467,7 +473,7 @@ client.urgent		    $urgentred	$urgentred	$white		$purple		$yellowbrown
 # (plus the system information i3status finds out, if available)
 
 bar {
-	font pango: Caskaydia Cove Nerd Font Regular 12, Font Awesome 12
+	font pango: Caskaydia Cove Nerd Font Regular 14, Font Awesome 14
 		status_command i3blocks -c ~/.config/i3/i3blocks.conf
 		position bottom
 		# i3bar_command i3bar --transparency
@@ -483,14 +489,14 @@ bar {
 		##strip_workspace_name no
 
 		colors {
-				separator           $purple
-				background          $darkgrey
-				statusline          $white
+				separator           $fubukiLightPurple
+				background          $fubukiDarkGreen
+				statusline          $fubukiLightPurple
 				# border 		        bg		txt		indicator
-				focused_workspace	  $mediumgrey	   	  $grey		    $darkgrey	 $purple
-				active_workspace	  $lightblue      	$mediumgrey	$darkgrey	 $purple
-				inactive_workspace	$darkgrey   		  $darkgrey	  $grey		   $purple
-				urgent_workspace	  $urgentred	    	$urgentred	$white		 $purple
+				focused_workspace	  $fubukiLightPurple $fubukiLightPurple		    $fubukiDarkGreen	 $fubukilightpurple
+				active_workspace	  $fubukiLightPurple $mediumgrey	            $fubukiDarkGreen	 $purple
+				inactive_workspace	$fubukiDarkGreen   $fubukiDarkGreen	        $fubukiLightPurple $purple
+				urgent_workspace	  $urgentred	    	 $urgentred	              $white		         $purple
 		}
 }
 
@@ -554,33 +560,48 @@ bindsym $mod+t exec rofi -show window \
 ##### CODICO CONFIG #####
 
 ##### MONITORS #####
-exec ~/.screenlayout/dual-monitor.sh
+# exec ~/.screenlayout/dual-monitor.sh
 
 ##### COMPOSITION #####
 # Start after monitors are setup
-exec --no-startup-id sleep 6 && picom -b --config ~/.config/picom.conf --experimental-backends
+# exec --no-startup-id sleep 6 && picom -b --config ~/.config/picom.conf
+exec --no-startup-id sleep 6 && picom --experimental-backends
 exec --no-startup-id sleep 6 && ~/.fehbg
 
 ##### SETTINGS #####
 exec_always autotiling
-exec_always setxkbmap -layout us
+exec_always setxkbmap -layout se
 exec_always setxkbmap -option caps:escape
 exec_always xset r rate 200 25
 
 
 # exec_always setxkbmap -layout se
+# set $external 
+# set $internal dDP-1-1
 
 ##### ASSIGN MONITOR
-workspace 1 output DP3
-workspace 2 output DP3
-workspace 3 output DP3
-workspace 4 output DP3
-workspace 5 output DP3
-workspace 6 output DP3
-workspace 7 output DP3
-workspace 8 output LVDS1
-workspace 9 output LVDS1
-workspace 10 output LVDS1
+workspace $ws1 output HDMI-0
+workspace $ws2 output HDMI-0
+workspace $ws3 output HDMI-0
+workspace $ws4 output HDMI-0
+workspace $ws5 output HDMI-0
+workspace $ws6 output HDMI-0
+workspace $ws7 output HDMI-0
+workspace $ws8 output dDP-1-1
+workspace $ws9 output dDP-1-1
+workspace $ws10 output dDP-1-1
+workspace 10 output dDP-1-1
+
+# workspace 1 output HDMI-0
+# workspace 2 output HDMI-0
+# workspace 3 output HDMI-0
+# workspace 4 output HDMI-0
+# workspace 5 output HDMI-0
+# workspace 6 output HDMI-0
+# workspace 7 output HDMI-0
+# workspace 8 output dDP-1-1
+# workspace 9 output dDP-1-1
+# workspace 10 output dDP-1-1
 
 ##### MOVE MONITOR #####
 bindsym $mod+u move workspace to output left

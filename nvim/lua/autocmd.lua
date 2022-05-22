@@ -2,7 +2,7 @@ local function autocmd()
   -- vim.cmd[[autocmd BufWritePre *js,*ts,*jsx,*tsx,*.graphql,*.json,*.svelte,*.yml,*yaml :Prettier]]
   vim.cmd[[au TextYankPost * silent! lua vim.highlight.on_yank()]]
   -- vim.cmd[[au BufWritePre *.go *.lua lua vim.lsp.buf.formatting_sync(nil, 100)]]
-  vim.cmd([[autocmd BufWritePre *.go lua GoImports(1000)]])
+  -- vim.cmd([[autocmd BufWritePre *.go lua GoImports(1000)]])
   -- vim.cmd([[autocmd BufWritePre * %s/\s\+$//e]]) -- removes whitespace on save
 
   function GoImports(timeoutms)
