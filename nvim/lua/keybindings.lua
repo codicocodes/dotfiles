@@ -16,7 +16,6 @@ key_mapper ('', '<leader>a', ':lua require("harpoon.mark").add_file()<CR>')
 
 key_mapper ('', '<leader>n', ':lua require("harpoon.ui").nav_next()<CR>')
 key_mapper ('', '<leader>p', ':lua require("harpoon.ui").nav_prev()<CR>')
-
 key_mapper ('', '<leader>1', ':lua require("harpoon.ui").nav_file(1)<CR>')
 key_mapper ('', '<leader>2',  ':lua require("harpoon.ui").nav_file(2)<CR>')
 key_mapper ('', '<leader>3',  ':lua require("harpoon.ui").nav_file(3)<CR>')
@@ -65,19 +64,17 @@ key_mapper('n', 'gi', ':lua vim.lsp.buf.implementation()<CR>')
 key_mapper('n', 'gw', ':lua vim.lsp.buf.document_symbol()<CR>')
 key_mapper('n', 'gW', ':lua vim.lsp.buf.workspace_symbol()<CR>')
 key_mapper('n', 'gr', ':lua vim.lsp.buf.references()<CR>')
+key_mapper("n", "gh", "<cmd>Lspsaga lsp_finder<CR>")
 key_mapper('n', 'gt', ':lua vim.lsp.buf.type_definition()<CR>')
 key_mapper('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>')
 key_mapper('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>')
 key_mapper('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>')
-
-key_mapper('n', '<c-k>', ':Lspsaga signature_help<CR>')
 
 -- Telescope
 key_mapper('n', '<C-p>', ':lua require"telescope.builtin".find_files()<CR>')
 key_mapper('n', '<leader>fs', ':lua require"telescope.builtin".live_grep()<CR>')
 key_mapper('n', '<leader>fh', ':lua require"telescope.builtin".help_tags()<CR>')
 key_mapper('n', '<leader>fb', ':Telescope file_browser path=%:p:h<CR>')
-key_mapper('n', '<leader>gf', ':lua require"telescope.builtin".git_files()<CR>')
 key_mapper('n', '<leader>gs', ':lua require"telescope.builtin".git_status()<CR>')
 
 -- Plugins
@@ -111,6 +108,6 @@ key_mapper('v','<C-j>',":m '>+1<CR>gv=gv")
 key_mapper('v','<C-k>',":m '<-2<CR>gv=gv")
 
 -- tests
-key_mapper('', '<leader>tf', ':TestFile')
-key_mapper('', '<leader>tn', ':TestNearest')
-key_mapper('', '<leader>tl', ':TestLast')
+key_mapper('', '<leader>tf', ':TestFile<CR>')
+key_mapper('', '<leader>tn', ':TestNearest<CR>')
+key_mapper('', '<leader>tl', ':TestLast<CR>')

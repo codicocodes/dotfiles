@@ -2,10 +2,18 @@ local packer = require'packer'
 
 packer.init({})
 
-
 packer.startup(function()
   ---@diagnostic disable-next-line: undefined-global
   local use = use
+  use "phaazon/mind.nvim"
+  use({
+    "glepnir/lspsaga.nvim",
+    branch = "main",
+    config = function()
+      local saga = require("lspsaga")
+      saga.init_lsp_saga({})
+    end,
+  })
   use "mfussenegger/nvim-jdtls"
   use "mfussenegger/nvim-dap"
   use "leoluz/nvim-dap-go"
@@ -15,7 +23,6 @@ packer.startup(function()
   use "mfussenegger/nvim-dap-python"
   use "nvim-telescope/telescope-dap.nvim"
   use "vim-test/vim-test"
-  use "rcarriga/vim-ultest"
   use {
     "folke/todo-comments.nvim",
     requires = "nvim-lua/plenary.nvim",
@@ -77,11 +84,11 @@ packer.startup(function()
       },
     },
   }
+
   use{
     'weilbith/nvim-code-action-menu',
     cmd = 'CodeActionMenu',
   }
-
 
   use 'ThePrimeagen/harpoon'
   -- THEMES
@@ -96,6 +103,7 @@ packer.startup(function()
       'lewis6991/gitsigns.nvim',
       requires = 'nvim-lua/plenary.nvim'
   }
+
 
   -- EDITING
   use 'jiangmiao/auto-pairs'

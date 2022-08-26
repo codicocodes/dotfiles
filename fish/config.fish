@@ -58,12 +58,25 @@ function previewer
     end
 end
 
+
+set bg_folder "wallpapers"
+
+function toggle-bg
+    set selected (echo main\nsecond | fzf )
+    switch $selected
+        case main
+            set bg_folder wallpapers
+        case second
+            set bg_folder wallpapers2
+    end
+end
+
 ##### BACKGROUND IMAGE #####
 function anime-bg-set
     # get the cmd
     set previewer_cmd (previewer)
     # select the img
-    set anime (find $HOME/wallpapers -type f \
+    set anime (find $HOME/$bg_folder/ -type f \
        | fzf --preview "$previewer_cmd {}" --preview-window noborder )
     update-bg $anime
     clear
@@ -73,7 +86,7 @@ end
 
 ##### RANDOM BACKGROUND #####
 function anime-bg-random
-    update-bg (random choice $HOME/wallpapers/*)
+    update-bg (random choice $HOME/$bg_folder/*)
 end
 
 ##### ALIAS #####

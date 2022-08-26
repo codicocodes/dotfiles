@@ -111,7 +111,7 @@ luasnip.add_snippets(
     luasnip.snippet(
       "test",
         fmt("def test_Method_Circumstance_Expectation(self):\n"..
-          "  # Arrange \n\n"..
+          "  # Arrange\n\n"..
           "  # Act\n\n"..
           "  # Assert\n"..
           "  self.assertEqual(True, False)",
@@ -153,7 +153,7 @@ luasnip.add_snippets(
       fmt(
         "describe('when circumstance', () => {open}\n"..
         "  it('should expectation', () => {open}\n"..
-        "    // Arrange \n\n"..
+        "    // Arrange\n\n"..
         "    // Act\n\n"..
         "    // Assert\n"..
         "    expect(true).toBe(false);\n"..

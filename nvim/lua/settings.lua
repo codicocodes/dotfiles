@@ -29,6 +29,3 @@ wo.relativenumber = true
 wo.signcolumn = 'yes'
 wo.wrap = false
 vim.g.mapleader=' '
-
--- bypass an autocomplete issue, don't know detail about this global variable yet.
-vim.g._cmpu_current_snippets={}

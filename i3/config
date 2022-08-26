@@ -216,7 +216,7 @@ bindsym $mod+Shift+v split v
 bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
+# bindsym $mod+s layout stacking
 bindsym $mod+g layout tabbed
 bindsym $mod+e layout toggle split
 
@@ -391,9 +391,6 @@ exec --no-startup-id dbus-launch dunst --config ~/.config/dunst/dunstrc
 exec --no-startup-id sleep 2 && kitty
 # exec --no-startup-id sleep 7 && spotify
 exec --no-startup-id sleep 7 && discord
-# exec --no-startup-id sleep 2 && xfce4-terminal
-# exec --no-startup-id sleep 7 && firefox https://github.com/endeavouros-team/endeavouros-i3wm-setup/blob/main/force-knowledge.md
-# exec --no-startup-id sleep 3 && thunar
 
 ###############
 # system tray #
@@ -403,6 +400,7 @@ exec --no-startup-id sleep 7 && discord
 
 # start blueberry app for managing bluetooth devices from tray:
 exec --no-startup-id blueberry-tray
+exec --no-startup-id optimus-manager-qt
 
 # networkmanager-applet
 #exec --no-startup-id nm-applet
@@ -577,31 +575,19 @@ exec_always xset r rate 200 25
 
 # exec_always setxkbmap -layout se
 # set $external 
-# set $internal dDP-1-1
-
-##### ASSIGN MONITOR
-workspace $ws1 output HDMI-0
-workspace $ws2 output HDMI-0
-workspace $ws3 output HDMI-0
-workspace $ws4 output HDMI-0
-workspace $ws5 output HDMI-0
-workspace $ws6 output HDMI-0
-workspace $ws7 output HDMI-0
-workspace $ws8 output dDP-1-1
-workspace $ws9 output dDP-1-1
-workspace $ws10 output dDP-1-1
+set $internal dDP-1-1
+workspace 1 output HDMI-0
+workspace 2 output HDMI-0
+workspace 3 output HDMI-0
+workspace 4 output HDMI-0
+workspace 5 output HDMI-0
+workspace 6 output HDMI-0
+workspace 7 output HDMI-0
+workspace 8 output dDP-1-1
+workspace 9 output dDP-1-1
 workspace 10 output dDP-1-1
 
-# workspace 1 output HDMI-0
-# workspace 2 output HDMI-0
-# workspace 3 output HDMI-0
-# workspace 4 output HDMI-0
-# workspace 5 output HDMI-0
-# workspace 6 output HDMI-0
-# workspace 7 output HDMI-0
-# workspace 8 output dDP-1-1
-# workspace 9 output dDP-1-1
-# workspace 10 output dDP-1-1
+bindsym $mod+s sticky toggle
 
 ##### MOVE MONITOR #####
 bindsym $mod+u move workspace to output left
