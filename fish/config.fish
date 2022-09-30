@@ -22,7 +22,7 @@ if status is-interactive
 end
 
 ##### PATH #####
-set -g -x PATH /usr/local/bin $HOME/go/bin /opt/homebrew/bin/ $PATH
+set -g -x PATH /usr/local/bin $HOME/.local/bin $HOME/go/bin /opt/homebrew/bin/ $HOME/.cargo/bin $PATH
 
 ##### UPDATE BACKGROUND #####
 function update-bg
@@ -136,7 +136,10 @@ function keyb
     end
 end
 
-##### WELCOME MESSAGE #####
-if type -q figlet
-    figlet welcome\n codico | lolcat
+##### ETCD TESTER #####
+function etcdtester
+    for i in (seq 1 1000);
+        go test -run TestMaintenanceSnapshotCancel
+        echo test $i done with code
+    end
 end
