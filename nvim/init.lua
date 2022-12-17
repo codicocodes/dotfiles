@@ -1,1 +1,1 @@
-require("codico-old")
+require("codico")
