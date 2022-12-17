@@ -30,7 +30,7 @@ key_mapper ('', '<leader>0',  ':lua require("harpoon.ui").nav_file(0)<CR>')
 
 -- Quality of life utils
 key_mapper('', '<leader>bd', ':bd<CR>')
-key_mapper('n', '<leader>bx', ':%bd<bar>e#<bar>bd#<CR>')
+key_mapper('n', '<leader>bx', ':%bd<bar>e#<bar>bd#<CR>') -- close all other open buffers
 key_mapper('', '<leader>q', ':wq<CR>')
 key_mapper('', '<leader>w', ':w<CR>')
 key_mapper('', '<leader>e', ':e<CR>')
