@@ -1,4 +1,4 @@
-require'transparent-colors'
+require'codico-old.transparent-colors'
 
 local function autocmd()
   vim.cmd[[au TextYankPost * silent! lua vim.highlight.on_yank()]]
