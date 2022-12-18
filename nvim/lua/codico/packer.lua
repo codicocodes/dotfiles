@@ -20,13 +20,12 @@ return require('packer').startup(function(use)
   use 'nvim-treesitter/nvim-treesitter-textobjects'
   use {
     'nvim-telescope/telescope.nvim', tag = '0.1.0',
-    requires = { { 'nvim-lua/plenary.nvim' } }
+    requires = { 'nvim-lua/plenary.nvim' }
   }
   use { 'nvim-telescope/telescope-file-browser.nvim' }
   use 'jremmen/vim-ripgrep'
   use 'folke/tokyonight.nvim'
   use 'nvim-tree/nvim-web-devicons'
-
   use {
     'VonHeikemen/lsp-zero.nvim',
     requires = {
@@ -53,13 +52,9 @@ return require('packer').startup(function(use)
     branch = 'main',
     config = function()
       local saga = require('lspsaga')
-
-      saga.init_lsp_saga({
-        -- your configuration
-      })
+      saga.init_lsp_saga()
     end,
   })
-
   use 'vim-test/vim-test'
   use 'tpope/vim-fugitive'
   use {
@@ -73,7 +68,6 @@ return require('packer').startup(function(use)
   use 'tpope/vim-abolish'
   use 'phaazon/hop.nvim'
   use 'lewis6991/gitsigns.nvim'
-
   use 'phaazon/mind.nvim'
   use 'j-hui/fidget.nvim'
   use {
@@ -81,15 +75,17 @@ return require('packer').startup(function(use)
     requires = 'neovim/nvim-lspconfig',
   }
   use 'JoosepAlviste/nvim-ts-context-commentstring'
-
   use 'folke/zen-mode.nvim'
   use {
-    "folke/twilight.nvim",
-    config = function()
-      require("twilight").setup {}
-    end
+    'nvim-tree/nvim-tree.lua',
+    requires = {
+      'nvim-tree/nvim-web-devicons', -- optional, for file icons
+    },
   }
-
+  use {
+    'ThePrimeagen/harpoon',
+    requires = { 'nvim-lua/plenary.nvim' }
+  }
   if packer_bootstrap then
     require('packer').sync()
   end
