@@ -1,4 +1,4 @@
-require'nvim-treesitter.configs'.setup {
+require 'nvim-treesitter.configs'.setup {
   ensure_installed = { 'lua', 'javascript', 'typescript', 'rust', 'go' },
   sync_install = false,
   auto_install = true,
@@ -8,7 +8,7 @@ require'nvim-treesitter.configs'.setup {
   },
   autotag = {
     enable = true,
-    filetypes = { 'html' , 'xml' },
+    filetypes = { 'html', 'xml' },
   },
   context_commentstring = {
     enable = true
