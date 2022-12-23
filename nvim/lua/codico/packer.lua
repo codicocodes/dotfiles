@@ -11,7 +11,7 @@ end
 
 local packer_bootstrap = ensure_packer()
 
-return require('packer').startup(function(use)
+local function install_packages(use)
   use 'wbthomason/packer.nvim'
   use {
     'nvim-treesitter/nvim-treesitter',
@@ -41,6 +41,7 @@ return require('packer').startup(function(use)
       { 'saadparwaiz1/cmp_luasnip' },
       { 'hrsh7th/cmp-nvim-lsp' },
       { 'hrsh7th/cmp-nvim-lua' },
+      { 'hrsh7th/cmp-emoji' },
 
       -- Snippets
       { 'L3MON4D3/LuaSnip' },
@@ -86,7 +87,11 @@ return require('packer').startup(function(use)
     'ThePrimeagen/harpoon',
     requires = { 'nvim-lua/plenary.nvim' }
   }
+  use 'Eandrju/cellular-automaton.nvim'
+
   if packer_bootstrap then
     require('packer').sync()
   end
-end)
+end
+
+return require('packer').startup(install_packages)

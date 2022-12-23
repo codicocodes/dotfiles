@@ -1,3 +1,7 @@
+require('tokyonight').setup({
+  transparent = true,
+})
+
 local highlight_group_names = {
   'Pmenu', 'Normal', 'NormalFloat', 'StatusLine', 'StatusLineNC', 'SignColumn', 'TelescopeNormal', 'TelescopeBorder',
   'TelescopePromptBorder',  'TelescopeResultsBorder',  'TelescopePreviewBorder',
@@ -22,10 +26,6 @@ function Present()
   local dark_background = '#16161e'
   update_colors(dark_background)
 end
-
-require('tokyonight').setup({
-  transparent = true,
-})
 
 vim.api.nvim_command('command! Present lua Present()')
 vim.api.nvim_command('command! Colors lua SetColors()')

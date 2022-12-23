@@ -1,4 +1,7 @@
 require('zen-mode').setup({
+  window = {
+    width = 0.80,
+  },
   plugins = {
     kitty = {
       enabled = true,
@@ -19,3 +22,5 @@ require('zen-mode').setup({
     SetColors()
   end,
 })
+
+vim.keymap.set('n', '<leader>z', ':Z<CR>')
