@@ -86,26 +86,27 @@ lsp.setup_nvim_cmp({
 
 
 lsp.on_attach(function(client, bufnr)
+  if client.server_capabilities.documentSymbolProvider then
     navic.attach(client, bufnr)
     vim.opt.winbar = "%{%v:lua.require'nvim-navic'.get_location()%}"
-
-    local opts = {buffer = bufnr, remap = false}
-    vim.keymap.set('n', '<leader>dn', ':Lspsaga diagnostic_jump_next<CR>', opts)
-    vim.keymap.set('n', '<leader>dp', ':Lspsaga diagnostic_jump_prev<CR>', opts)
-    vim.keymap.set('n', '<leader>ds', ':Lspsaga show_line_diagnostics<CR>', opts)
-    vim.keymap.set('n', 'gd', ':lua vim.lsp.buf.definition()<CR>', opts)
-    vim.keymap.set('n', 'gD', ':lua vim.lsp.buf.declaration()<CR>', opts)
-    vim.keymap.set('n', 'gi', ':lua vim.lsp.buf.implementation()<CR>', opts)
-    vim.keymap.set('n', 'gw', ':lua vim.lsp.buf.document_symbol()<CR>', opts)
-    vim.keymap.set('n', 'gW', ':lua vim.lsp.buf.workspace_symbol()<CR>', opts)
-    vim.keymap.set('n', 'gr', ':lua vim.lsp.buf.references()<CR>', opts)
-    vim.keymap.set("n", "gh", ":Lspsaga lsp_finder<CR>")
-    vim.keymap.set('n', 'gt', ':lua vim.lsp.buf.type_definition()<CR>', opts)
-    vim.keymap.set('n', 'K', ':Lspsaga hover_doc<CR>', opts)
-    vim.keymap.set('n', 'L', ':Lspsaga peek_definition<CR>', opts)
-    vim.keymap.set('n', '<space>rn', '<cmd>:Lspsaga rename<CR>', opts)
-    vim.keymap.set('n', '<space>ca', '<cmd>:CodeActionMenu<CR>', opts)
   end
+  local opts = {buffer = bufnr, remap = false}
+  vim.keymap.set('n', '<leader>dn', ':Lspsaga diagnostic_jump_next<CR>', opts)
+  vim.keymap.set('n', '<leader>dp', ':Lspsaga diagnostic_jump_prev<CR>', opts)
+  vim.keymap.set('n', '<leader>ds', ':Lspsaga show_line_diagnostics<CR>', opts)
+  vim.keymap.set('n', 'gd', ':lua vim.lsp.buf.definition()<CR>', opts)
+  vim.keymap.set('n', 'gD', ':lua vim.lsp.buf.declaration()<CR>', opts)
+  vim.keymap.set('n', 'gi', ':lua vim.lsp.buf.implementation()<CR>', opts)
+  vim.keymap.set('n', 'gw', ':lua vim.lsp.buf.document_symbol()<CR>', opts)
+  vim.keymap.set('n', 'gW', ':lua vim.lsp.buf.workspace_symbol()<CR>', opts)
+  vim.keymap.set('n', 'gr', ':lua vim.lsp.buf.references()<CR>', opts)
+  vim.keymap.set("n", "gh", ":Lspsaga lsp_finder<CR>")
+  vim.keymap.set('n', 'gt', ':lua vim.lsp.buf.type_definition()<CR>', opts)
+  vim.keymap.set('n', 'K', ':Lspsaga hover_doc<CR>', opts)
+  vim.keymap.set('n', 'L', ':Lspsaga peek_definition<CR>', opts)
+  vim.keymap.set('n', '<space>rn', '<cmd>:Lspsaga rename<CR>', opts)
+  vim.keymap.set('n', '<space>ca', '<cmd>:CodeActionMenu<CR>', opts)
+end
 )
 
 lsp.setup()
