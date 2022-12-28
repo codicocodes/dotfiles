@@ -6,7 +6,7 @@ local highlight_group_names = {
   'Pmenu', 'Normal', 'NormalFloat', 'StatusLine', 'StatusLineNC', 'SignColumn', 'TelescopeNormal', 'TelescopeBorder',
   'TelescopePromptBorder',  'TelescopeResultsBorder',  'TelescopePreviewBorder',
   'NvimTreeNormal', 'NvimTreeNormalNC', 'NvimTreeVertSplit', 'NvimTreeStatusLine', 'NvimTreeNormalNC',
-  'NvimTreeCursorLine', 'NvimTreeWinSeparator',
+  'NvimTreeCursorLine', 'NvimTreeWinSeparator', 'LspFloatWinNormal'
 }
 
 local function update_colors(color)
