@@ -5,7 +5,8 @@ require('tokyonight').setup({
 local highlight_group_names = {
   'Pmenu', 'Normal', 'NormalFloat', 'StatusLine', 'StatusLineNC', 'SignColumn', 'TelescopeNormal', 'TelescopeBorder',
   'TelescopePromptBorder',  'TelescopeResultsBorder',  'TelescopePreviewBorder',
-  'NvimTreeNormal', 'NvimTreeNormalNC', 'NvimTreeVertSplit', 'NvimTreeStatusLine', 'NvimTreeNormalNC'
+  'NvimTreeNormal', 'NvimTreeNormalNC', 'NvimTreeVertSplit', 'NvimTreeStatusLine', 'NvimTreeNormalNC',
+  'NvimTreeCursorLine', 'NvimTreeWinSeparator',
 }
 
 local function update_colors(color)
