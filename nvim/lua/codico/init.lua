@@ -14,6 +14,14 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 
 vim.api.nvim_create_autocmd("CmdlineLeave", {
   callback = function ()
-    vim.defer_fn(function() vim.cmd('echo \"\"') end, 1000)
+    local function cleanup_cmd_line () vim.cmd('echo \"\"') end
+    vim.defer_fn(cleanup_cmd_line, 1000)
+  end
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern={"qf"},
+  callback = function ()
+    vim.keymap.set("n", "<CR>", "<CR>:cclose<CR>")
   end
 })

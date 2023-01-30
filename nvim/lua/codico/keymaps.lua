@@ -1,5 +1,5 @@
 vim.keymap.set('n', "vp", 'viwp')
-vim.keymap.set('n', '<ESC>', ':noh<CR>')
+vim.keymap.set('n', '<ESC>', ':noh<CR>:cclose<CR>')
 vim.keymap.set('n', 'Y', 'y$')
 vim.keymap.set('n', '<C-k>', ':m .-2<CR>==')
 vim.keymap.set('n', '<C-j>', ':m .+1<CR>==')
