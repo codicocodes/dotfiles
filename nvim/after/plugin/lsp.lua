@@ -84,6 +84,7 @@ lsp.setup_nvim_cmp({
   }),
 })
 
+require('luasnip.loaders.from_snipmate').lazy_load()
 
 lsp.on_attach(function(client, bufnr)
   if client.server_capabilities.documentSymbolProvider then
