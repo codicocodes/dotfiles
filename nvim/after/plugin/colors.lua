@@ -13,7 +13,10 @@ local function update_colors(color)
   for _, name in pairs(highlight_group_names) do
     vim.api.nvim_set_hl(0, name, { bg = color })
   end
-  vim.api.nvim_set_hl(0, 'LineNr', { fg='#9d7cd8' })
+  -- vim.api.nvim_set_hl(0, 'LineNr', { fg='gray' })
+  vim.api.nvim_set_hl(0, 'CursorLineNr', { fg='#9d7cd8' })
+  vim.cmd.set('cursorline')
+  vim.cmd.set('cursorlineopt=number')
 end
 
 function SetColors(color)
