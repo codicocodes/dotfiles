@@ -1,5 +1,12 @@
 require('tokyonight').setup({
   transparent = true,
+  style = "storm",
+  styles = {
+    comments = { italic = true },
+    keywords = { italic = true },
+    functions = { italic = true },
+    variables = { italic = false },
+  }
 })
 
 local highlight_group_names = {

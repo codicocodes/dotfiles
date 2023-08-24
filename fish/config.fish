@@ -22,7 +22,7 @@ if status is-interactive
 end
 
 ##### PATH #####
-set -g -x PATH /usr/local/bin $HOME/.local/bin $HOME/go/bin /opt/homebrew/bin/ $HOME/.cargo/bin $PATH
+set -g -x PATH /usr/local/bin $HOME/.local/bin $HOME/go/bin /opt/homebrew/bin/ $HOME/.cargo/bin $HOME/nvim-linux64/bin $PATH
 
 ##### UPDATE BACKGROUND #####
 function update-bg
@@ -51,10 +51,10 @@ function previewer
     # img to preview as optional arg
     if not set -q argv[1]
         # return the cmd
-        echo "kitty icat --place "$position" --transfer-mode file" 
+        echo "kitten icat --place "$position" --transfer-mode file" 
     else
         # invoke the cmd
-        cat $argv[1] | kitty icat --place "$position" --transfer-mode file 
+        cat $argv[1] | kitten icat --place "$position" --transfer-mode file 
     end
 end
 
@@ -90,10 +90,14 @@ function anime-bg-random
 end
 
 ##### ALIAS #####
+alias hx="helix"
 alias nv="nvim"
 alias src="clear; source ~/.config/fish/config.fish"
 alias p="anime-bg-set"
 alias b="anime-bg-random"
+alias spring "~/spring-3.1.0/bin/spring"
+alias idea "~/idea-IC-231.9011.34/bin/idea.sh"
+
 
 ##### SETTINGS #####
 fish_vi_key_bindings
@@ -143,3 +147,17 @@ function etcdtester
         echo test $i done with code
     end
 end
+
+# # pnpm
+# set -gx PNPM_HOME "/home/codico/.local/share/pnpm"
+# if not string match -q -- $PNPM_HOME $PATH
+#   set -gx PATH "$PNPM_HOME" $PATH
+# end
+# # pnpm end
+
+# pnpm
+set -gx PNPM_HOME "/home/codico/.local/share/pnpm"
+if not string match -q -- $PNPM_HOME $PATH
+  set -gx PATH "$PNPM_HOME" $PATH
+end
+# pnpm end

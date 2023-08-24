@@ -12,7 +12,13 @@ lsp.ensure_installed({
   'pyright',
 })
 
-lsp.configure("sumneko_lua", {
+lsp.configure("kotlin_language_server", {
+  settings = {
+    root_dir = 'root_pattern("settings.gradle.kts")',
+  }
+})
+
+lsp.configure("lua_ls", {
   settings = {
     Lua = {
       diagnostics = {
@@ -60,6 +66,10 @@ local kind_icons = {
 local cmp = require("cmp")
 
 lsp.setup_nvim_cmp({
+  window = {
+    completion = cmp.config.window.bordered(),
+    documentation = cmp.config.window.bordered 'rounded',
+  },
   formatting = {
     fields = { "abbr", "kind", "menu" },
     format = function(entry, item)

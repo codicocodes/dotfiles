@@ -30,6 +30,7 @@ vim.keymap.set('n', '<leader>h', ':wincmd h<CR>')
 vim.keymap.set("n", "J", "mzJ`z") -- keeps cursor on start of line when using J
 vim.keymap.set("n", "<C-d>", "<C-d>zz") -- keeps cursor in middle when using CTRL-d
 vim.keymap.set("n", "<C-u>", "<C-u>zz") -- keeps cursor in middle when using CTRL-u
+vim.keymap.set("n", "<leader>p", [[viw"_dP]])
 vim.keymap.set("x", "<leader>p", [["_dP]])
 vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])

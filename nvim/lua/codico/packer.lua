@@ -12,6 +12,7 @@ end
 local packer_bootstrap = ensure_packer()
 
 local function install_packages(use)
+  use 'creativenull/dotfyle-metadata.nvim'
   use 'wbthomason/packer.nvim'
   use {
     'nvim-treesitter/nvim-treesitter',
@@ -49,12 +50,12 @@ local function install_packages(use)
     }
   }
   use({
-    'glepnir/lspsaga.nvim',
-    branch = 'main',
+    "glepnir/lspsaga.nvim",
+    branch = "main",
     config = function()
-      local saga = require('lspsaga')
-      saga.init_lsp_saga()
+      require("lspsaga").setup({})
     end,
+    requires = { {"nvim-tree/nvim-web-devicons"} }
   })
   use 'vim-test/vim-test'
   use 'tpope/vim-fugitive'

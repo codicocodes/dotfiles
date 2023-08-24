@@ -179,8 +179,8 @@ bindsym F1 exec ~/.config/i3/scripts/keyhint-2
 # bindsym $mod+F1 exec xed ~/.config/i3/keybindings
 
 # Backlight control
-bindsym XF86MonBrightnessUp exec xbacklight +5 && notify-send "Brightness - $(xbacklight -get | cut -c1-2)%"
-bindsym XF86MonBrightnessDown exec xbacklight -5 && notify-send "Brightness - $(xbacklight -get | cut -c1-2)%"
+bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +5%
+bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 5%-
 
 # change focus
 bindsym $mod+h focus left
@@ -294,6 +294,7 @@ assign [class="kitty"] $ws1
 assign [class="(?i)chromium"] $ws2
 assign [class="(?i)firefox"] $ws2
 assign [class="(?i)thunar"] $ws8
+assign [class="(?i)jetbrains-idea-ce"] $ws4
 # assign [class="Spotify"] $ws9
 for_window [class="Spotify"] move to workspace $ws9
 assign [class="discord"] $ws10
@@ -303,6 +304,7 @@ for_window [class=kitty] focus
 for_window [class=(?i)chromium] focus
 for_window [class=(?i)firefox] focus
 for_window [class=Thunar] focus
+for_window [class=jetbrains-idea-ce] focus
 
 ##############
 # compositor #
@@ -558,7 +560,7 @@ bindsym $mod+t exec rofi -show window \
 ##### CODICO CONFIG #####
 
 ##### MONITORS #####
-# exec ~/.screenlayout/dual-monitor.sh
+exec ~/.screenlayout/dual-monitor.sh
 
 ##### COMPOSITION #####
 # Start after monitors are setup

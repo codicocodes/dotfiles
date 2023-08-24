@@ -1,5 +1,3 @@
-ZSH_DISABLE_COMPFIX=true
-
 # Path to oh-my-zsh
 export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="robbyrussell"
@@ -75,21 +73,11 @@ alias speedtyper="cd ~/code/stream/speedtyper"
 alias st-client="cd ~/code/stream/speedtyper/speedtyper-client"
 alias st-server="cd ~/code/stream/speedtyper/speedtyper-server"
 alias dots="cd ~/code/dotfiles"
-alias ninja="~/code/ninja/ninja"
-
-# ## Git
-# alias gs="git status"
-# alias gc="git commit -m"
-# alias gco="git checkout"
-# alias gcob="git checkout -b"
 
 # Setup
-# Set tab name or window title automatically to the current directory or file #930
+# Set tab name or window title automatically to the current directory or file #930 (kitty)
 precmd () {print -Pn "\e]0;%~\a"}
 # Source nvm
 export NVM_DIR=~/.nvm
 source  ~/.nvm/nvm.sh
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-# figlet welcome | lolcat
-# figlet codico | lolcat
