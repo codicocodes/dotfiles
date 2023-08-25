@@ -623,6 +623,20 @@ require("lazy").setup({
 		version = "v1.x.x", -- version is optional, but recommended
 		dependencies = { "neovim/nvim-lspconfig" },
 	},
+	{
+		"zbirenbaum/copilot.lua",
+		config = function()
+			require("copilot").setup({
+				suggestion = {
+					enabled = true,
+					auto_trigger = true,
+					keymap = {
+						accept = "<C-CR>",
+					},
+				},
+			})
+		end,
+	},
 })
 
 --- LSP configuration
