@@ -5,6 +5,7 @@
   "catppuccin": { "branch": "main", "commit": "2e3e5ebcdc24ef0d5b14a0a999dbbe7936512c46" },
   "cmp-buffer": { "branch": "main", "commit": "3022dbc9166796b644a841a02de8dd1cc1d311fa" },
   "cmp-emoji": { "branch": "main", "commit": "19075c36d5820253d32e2478b6aaf3734aeaafa0" },
+  "cmp-nerdfonts": { "branch": "master", "commit": "172a96388cbde9d352393c6c3e9e29ae0c2157a2" },
   "cmp-nvim-lsp": { "branch": "main", "commit": "44b16d11215dce86f253ce0c30949813c0a90765" },
   "cmp-nvim-lua": { "branch": "main", "commit": "f12408bdb54c39c23e67cab726264c10db33ada8" },
   "cmp-path": { "branch": "main", "commit": "91ff86cd9c29299a64f968ebb45846c485725f23" },

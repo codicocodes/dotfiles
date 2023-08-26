@@ -82,6 +82,7 @@ require("lazy").setup({
 			"L3MON4D3/LuaSnip",
 			"rafamadriz/friendly-snippets",
 			"roobert/tailwindcss-colorizer-cmp.nvim",
+			"fazibear/cmp-nerdfonts",
 		},
 
 		config = function()
@@ -119,6 +120,7 @@ require("lazy").setup({
 					end,
 				},
 				sources = cmp.config.sources({
+					{ name = "nerdfonts" },
 					{ name = "nvim_lsp" },
 					{ name = "buffer" },
 					{ name = "nvim_lua" },
