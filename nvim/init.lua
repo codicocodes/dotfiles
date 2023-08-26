@@ -401,7 +401,14 @@ require("lazy").setup({
 			"MunifTanjim/nui.nvim",
 		},
 	},
-	"folke/zen-mode.nvim",
+	{
+		"folke/zen-mode.nvim",
+		opts = {
+			window = {
+				width = .60,
+			},
+		},
+	},
 	{
 		"folke/flash.nvim",
 		event = "VeryLazy",
