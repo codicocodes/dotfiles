@@ -81,6 +81,7 @@ require("lazy").setup({
 			"hrsh7th/cmp-emoji",
 			"L3MON4D3/LuaSnip",
 			"rafamadriz/friendly-snippets",
+			"roobert/tailwindcss-colorizer-cmp.nvim",
 		},
 
 		config = function()
@@ -105,6 +106,7 @@ require("lazy").setup({
 				formatting = {
 					fields = { "abbr", "kind", "menu" },
 					format = function(entry, item)
+						require("tailwindcss-colorizer-cmp").formatter(entry, item)
 						item.kind = string.format("%s %s", kind_icons[item.kind], item.kind)
 						item.menu = ({
 							buffer = "buf",
@@ -405,7 +407,7 @@ require("lazy").setup({
 		"folke/zen-mode.nvim",
 		opts = {
 			window = {
-				width = .60,
+				width = 0.60,
 			},
 		},
 	},
