@@ -644,6 +644,10 @@ require("lazy").setup({
 		"zbirenbaum/copilot.lua",
 		config = function()
 			require("copilot").setup({
+				filetypes = {
+					-- disable for all filetypes (enable when using)
+					["*"] = false,
+				},
 				suggestion = {
 					enabled = true,
 					auto_trigger = true,
