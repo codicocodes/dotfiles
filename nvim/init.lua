@@ -122,6 +122,7 @@ require("lazy").setup({
 					{ name = "nvim_lua" },
 					{ name = "luasnip" },
 					{ name = "path" },
+					{ name = "neorg" },
 					{ name = "emoji" },
 				}),
 			})
@@ -195,6 +196,24 @@ require("lazy").setup({
 	},
 
 	-- colorscheme
+	{
+		"EdenEast/nightfox.nvim",
+		config = function()
+			require("nightfox").setup({
+				transparent = true,
+			})
+		end,
+	},
+	{
+		"catppuccin/nvim",
+		name = "catppuccin",
+		priority = 1000,
+		config = function()
+			require("catppuccin").setup({
+				transparent_background = true,
+			})
+		end,
+	},
 	{
 		"rose-pine/neovim",
 		name = "rose-pine",
@@ -380,14 +399,6 @@ require("lazy").setup({
 		},
 		dependencies = {
 			"MunifTanjim/nui.nvim",
-			{
-				"rcarriga/nvim-notify",
-				config = function()
-					require("notify").setup({
-						background_colour = "#000000",
-					})
-				end,
-			},
 		},
 	},
 	"folke/zen-mode.nvim",
@@ -425,7 +436,6 @@ require("lazy").setup({
 				"<C-s>",
 				mode = { "c" },
 				function()
-					print("lmao")
 					require("flash").toggle()
 				end,
 				desc = "Toggle Flash Search",
@@ -632,6 +642,45 @@ require("lazy").setup({
 					auto_trigger = true,
 					keymap = {
 						accept = "<C-CR>",
+					},
+				},
+			})
+		end,
+	},
+	{
+		"nvim-neorg/neorg",
+		build = ":Neorg sync-parsers",
+		dependencies = { "nvim-lua/plenary.nvim" },
+		config = function()
+			require("neorg").setup({
+				load = {
+					["core.defaults"] = {}, -- Loads default behaviour
+					["core.concealer"] = {
+						config = {
+							icons = {
+								todo = {
+									done = {
+										icon = "",
+									},
+									pending = {
+										icon = "",
+									},
+								},
+							},
+						},
+					},
+					["core.completion"] = { config = { engine = "nvim-cmp" } },
+					["core.presenter"] = { config = { zen_mode = "zen-mode" } },
+					["core.itero"] = {},
+					["core.ui.calendar"] = {},
+					["core.dirman"] = { -- Manages Neorg workspaces
+						config = {
+							workspaces = {
+								work = "~/notes/work",
+								home = "~/notes/home",
+							},
+							default_workspace = "home",
+						},
 					},
 				},
 			})
