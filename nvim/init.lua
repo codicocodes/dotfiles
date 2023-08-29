@@ -82,7 +82,6 @@ require("lazy").setup({
 			"L3MON4D3/LuaSnip",
 			"rafamadriz/friendly-snippets",
 			"roobert/tailwindcss-colorizer-cmp.nvim",
-			"fazibear/cmp-nerdfonts",
 		},
 
 		config = function()
@@ -120,7 +119,6 @@ require("lazy").setup({
 					end,
 				},
 				sources = cmp.config.sources({
-					{ name = "nerdfonts" },
 					{ name = "nvim_lsp" },
 					{ name = "buffer" },
 					{ name = "nvim_lua" },
@@ -200,6 +198,15 @@ require("lazy").setup({
 	},
 
 	-- colorscheme
+	{
+		"tiagovla/tokyodark.nvim",
+		opts = {
+			-- custom options here
+		},
+		config = function(_, opts)
+			-- vim.cmd([[colorscheme tokyodark]])
+		end,
+	},
 	{
 		"EdenEast/nightfox.nvim",
 		config = function()
@@ -789,7 +796,9 @@ local eslint = require("efmls-configs.linters.eslint")
 local prettier = require("efmls-configs.formatters.prettier")
 local stylua = require("efmls-configs.formatters.stylua")
 local black = require("efmls-configs.formatters.black")
+local gofmt = require("efmls-configs.formatters.gofmt")
 local languages = {
+	golang = { gofmt },
 	typescript = { eslint, prettier },
 	lua = { stylua },
 	python = { black },
@@ -811,3 +820,6 @@ require("lspconfig").efm.setup(vim.tbl_extend("force", efmls_config, {
 	on_attach = on_attach,
 	capabilities = capabilities,
 }))
+
+
+vim.cmd('command! MakeFileExecutable :!chmod +x %<CR>')

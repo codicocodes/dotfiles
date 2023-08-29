@@ -7,7 +7,7 @@ vim.keymap.set("v", "<C-j>", ":m '>+1<CR>gv=gv", { silent = true })
 vim.keymap.set("v", "<C-k>", ":m '<-2<CR>gv=gv", { silent = true })
 vim.keymap.set("n", "<leader>bd", ":bd<CR>", { silent = true, desc = "[B]uffer [D]elete" })
 vim.keymap.set("n", "<leader>bx", ":%bd<bar>e#<bar>bd#<CR>", { silent = true, desc = "[B]uffer E[x]it (all other)" })
-vim.keymap.set("n", "<leader>q", ":wqa!<CR>", { silent = true, desc = "Save and [Q]uit Neovim" })
+vim.keymap.set("n", "<leader>q", ":wqa<CR>", { silent = true, desc = "Save and [Q]uit Neovim" })
 vim.keymap.set("n", "<leader>w", ":w<CR>", { silent = true, desc = "[W]rite" })
 vim.keymap.set("n", "<leader>r", ":LspRestart<CR>", { silent = true, desc = "[R]estart LSP" })
 vim.keymap.set("n", "<up>", "<nop>")
@@ -33,7 +33,6 @@ vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]], { desc = "Delete without over
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]], { desc = "Yank to system Clipboard" })
 vim.keymap.set("n", "<leader>Y", [["+Y]], { desc = "Yank Line to system Clipboard" })
 vim.keymap.set("n", "<leader>bf", vim.lsp.buf.format, { desc = "[B]uffer [F]ormat" })
-vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true, desc = "Make File E[x]ecutable" })
 vim.keymap.set(
 	"n",
 	"<leader>s",
