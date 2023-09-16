@@ -1,34 +1,7 @@
 require("core.options")
 require("core.keymaps")
 require("core.lazy")
-
-local kind_icons = {
-	Text = "",
-	Method = "",
-	Function = "",
-	Constructor = "",
-	Field = "",
-	Variable = "",
-	Class = "",
-	Interface = "",
-	Module = "",
-	Property = "",
-	Unit = "",
-	Value = "",
-	Enum = "",
-	Keyword = "",
-	Snippet = "",
-	Color = "",
-	File = "",
-	Reference = "",
-	Folder = "",
-	EnumMember = "",
-	Constant = "",
-	Struct = "",
-	Event = "",
-	Operator = "",
-	TypeParameter = "",
-}
+local kind_icons = require("utils.icons")
 
 require("lazy").setup({
 	{
@@ -432,13 +405,33 @@ require("lazy").setup({
 				}, "\n"),
 				query_updaters = [[abcdefghilmoqrstuvwxyz0123456789_-,.ABCDEFGHIJKLMOQRSTUVWXYZ]],
 				items = {
-					{ action = "Telescope find_files", name = "F: Files", section = "Welcome" },
-					{ action = "lua require('harpoon.ui').toggle_quick_menu()", name = "M: Menu", section = "Welcome" },
-					{ action = "Lazy update", name = "U: Update", section = "Plugins" },
-					{ action = "tab G", name = "G: Git", section = "Welcome" },
+					{
+						action = "Telescope find_files",
+						name = "F: Files",
+						section = "Welcome",
+					},
+					{
+						action = "lua require('harpoon.ui').toggle_quick_menu()",
+						name = "M: Menu",
+						section = "Welcome",
+					},
+					{
+						action = "Lazy update",
+						name = "U: Update",
+						section = "Plugins",
+					},
+					{
+						action = "tab G",
+						name = "G: Git",
+						section = "Welcome",
+					},
 					{ action = "Neorg workspace home", name = "H: Home", section = "Notes" },
 					{ action = "Neorg workspace work", name = "W: Work", section = "Notes" },
-					{ action = "qall!", name = "Q: Quit", section = "Welcome" },
+					{
+						action = "qall!",
+						name = "Q: Quit",
+						section = "Welcome",
+					},
 				},
 			})
 
