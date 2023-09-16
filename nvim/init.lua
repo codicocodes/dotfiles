@@ -437,6 +437,9 @@ require("lazy").setup({
 				},
 			})
 
+
+			vim.cmd("command! Dashboard :lua require('mini.starter').open()")
+
 			vim.cmd([[
 				augroup MiniStarterJK
 					au!
