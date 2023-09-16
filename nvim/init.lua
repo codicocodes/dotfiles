@@ -260,7 +260,6 @@ require("lazy").setup({
 			show_trailing_blankline_indent = true,
 			show_current_context = true,
 			show_current_context_start = false,
-			filetype_exclude = { "dashboard" },
 		},
 	},
 	{ "numToStr/Comment.nvim", opts = {} },
@@ -388,6 +387,7 @@ require("lazy").setup({
 		"echasnovski/mini.starter",
 		version = "*",
 		config = function()
+			local plugin_count = #require('lazy').plugins()
 			local starter = require("mini.starter")
 			starter.setup({
 				content_hooks = {
@@ -395,13 +395,15 @@ require("lazy").setup({
 					starter.gen_hook.aligning("center", "center"),
 				},
 				evaluate_single = true,
-				footer = os.date(),
+				footer = table.concat({
+					"🚀 " .. plugin_count .. " plugins installed",
+					"📅 " .. os.date(),
+				}, "\n"),
 				header = table.concat({
 					[[  /\ \▔\___  ___/\   /(●)_ __ ___  ]],
 					[[ /  \/ / _ \/ _ \ \ / / | '_ ` _ \ ]],
 					[[/ /\  /  __/ (_) \ V /| | | | | | |]],
 					[[\_\ \/ \___|\___/ \_/ |_|_| |_| |_|]],
-					[[───────────────────────────────────]],
 				}, "\n"),
 				query_updaters = [[abcdefghilmoqrstuvwxyz0123456789_-,.ABCDEFGHIJKLMOQRSTUVWXYZ]],
 				items = {
