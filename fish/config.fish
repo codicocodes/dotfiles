@@ -22,7 +22,7 @@ if status is-interactive
 end
 
 ##### PATH #####
-set -g -x PATH /usr/local/bin $HOME/.local/bin $HOME/go/bin /opt/homebrew/bin/ $HOME/.cargo/bin $HOME/nvim-linux64/bin $PATH
+set -g -x PATH /usr/local/go/bin /usr/local/bin $HOME/.local/bin $HOME/go/bin /opt/homebrew/bin/ $HOME/.cargo/bin $HOME/.local/share/bob/nvim-bin $PATH
 
 ##### UPDATE BACKGROUND #####
 function update-bg
