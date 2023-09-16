@@ -31,6 +31,26 @@ local kind_icons = {
 }
 
 require("lazy").setup({
+	{
+		"vim-test/vim-test",
+		config = function()
+			function SetupVimtest(file_name)
+				if file_name == "python" then
+					vim.keymap.set("n", "<leader>tf", ":TestFile --keepdb<CR>")
+					vim.keymap.set("n", "<leader>tn", ":TestNearest --keepdb<CR>")
+					vim.keymap.set("n", "<leader>tl", ":TestLast --keepdb<CR>")
+					return
+				end
+				vim.keymap.set("n", "<leader>tf", ":TestFile<CR>")
+				vim.keymap.set("n", "<leader>tn", ":TestNearest<CR>")
+				vim.keymap.set("n", "<leader>tl", ":TestLast<CR>")
+			end
+
+			vim.api.nvim_create_autocmd("BufEnter", {
+				command = "silent! lua SetupVimtest(vim.bo.filetype)",
+			})
+		end,
+	},
 	"creativenull/dotfyle-metadata.nvim",
 	"tpope/vim-fugitive",
 	"tpope/vim-rhubarb",
@@ -199,6 +219,10 @@ require("lazy").setup({
 
 	-- colorscheme
 	{
+		"mcchrish/zenbones.nvim",
+		dependencies = { "rktjmp/lush.nvim" },
+	},
+	{
 		"tiagovla/tokyodark.nvim",
 		opts = {
 			-- custom options here
@@ -263,6 +287,7 @@ require("lazy").setup({
 			show_trailing_blankline_indent = true,
 			show_current_context = true,
 			show_current_context_start = false,
+			filetype_exclude = { "dashboard" },
 		},
 	},
 	{ "numToStr/Comment.nvim", opts = {} },
@@ -386,7 +411,46 @@ require("lazy").setup({
 			vim.keymap.set("n", "<leader>5", navigate(5), { desc = "Harpoon Buffer (5)" })
 		end,
 	},
-	-- lazy.nvim
+	{
+		"echasnovski/mini.starter",
+		version = "*",
+		config = function()
+			local starter = require("mini.starter")
+			starter.setup({
+				content_hooks = {
+					starter.gen_hook.adding_bullet(""),
+					starter.gen_hook.aligning("center", "center"),
+				},
+				evaluate_single = true,
+				footer = os.date(),
+				header = table.concat({
+					[[  /\ \▔\___  ___/\   /(●)_ __ ___  ]],
+					[[ /  \/ / _ \/ _ \ \ / / | '_ ` _ \ ]],
+					[[/ /\  /  __/ (_) \ V /| | | | | | |]],
+					[[\_\ \/ \___|\___/ \_/ |_|_| |_| |_|]],
+					[[───────────────────────────────────]],
+				}, "\n"),
+				query_updaters = [[abcdefghilmoqrstuvwxyz0123456789_-,.ABCDEFGHIJKLMOQRSTUVWXYZ]],
+				items = {
+					{ action = "Telescope find_files", name = "F: Find files", section = "Welcome" },
+					{ action = "Lazy update", name = "U: Update Plugins", section = "Welcome" },
+					{ action = "tab G", name = "G: Fugitive", section = "Welcome" },
+					{ action = "Neorg index", name = "N: Notes", section = "Welcome" },
+					{ action = "qall!", name = "Q: Quit Neovim", section = "Welcome" },
+				},
+			})
+
+			vim.cmd([[
+				augroup MiniStarterJK
+					au!
+					au User MiniStarterOpened nmap <buffer> j <Cmd>lua MiniStarter.update_current_item('next')<CR>
+					au User MiniStarterOpened nmap <buffer> k <Cmd>lua MiniStarter.update_current_item('prev')<CR>
+					au User MiniStarterOpened nmap <buffer> <C-p> <Cmd>Telescope find_files<CR>
+					au User MiniStarterOpened nmap <buffer> <leader>fb <Cmd>Telescope file_browser<CR>
+				augroup END
+			]])
+		end,
+	},
 	{
 		"folke/noice.nvim",
 		event = "VeryLazy",
@@ -426,14 +490,13 @@ require("lazy").setup({
 		opts = {},
 		keys = {
 			{
-				"s",
-				mode = { "n", "x", "o" },
+				"S",
+				mode = { "n", "o", "x" },
 				function()
-					require("flash").jump()
+					require("flash").treesitter()
 				end,
-				desc = "Flash",
+				desc = "Flash Treesitter",
 			},
-			-- { "S", mode = { "n", "o", "x" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
 			{
 				"r",
 				mode = "o",
@@ -505,114 +568,6 @@ require("lazy").setup({
 					})
 				end,
 			},
-		},
-	},
-
-	{
-		"nvim-neotest/neotest",
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-			"nvim-treesitter/nvim-treesitter",
-			"antoinemadec/FixCursorHold.nvim",
-			"haydenmeade/neotest-jest",
-			"nvim-neotest/neotest-python",
-		},
-		opts = {
-			adapters = {
-				"neotest-jest",
-				"nvim-neotest/neotest-python",
-			},
-			status = { virtual_text = true },
-			output = { open_on_run = true },
-			quickfix = {
-				open = function()
-					if require("lazyvim.util").has("trouble.nvim") then
-						vim.cmd("Trouble quickfix")
-					else
-						vim.cmd("copen")
-					end
-				end,
-			},
-		},
-		config = function(_, opts)
-			local neotest_ns = vim.api.nvim_create_namespace("neotest")
-			vim.diagnostic.config({
-				virtual_text = {
-					format = function(diagnostic)
-						-- Replace newline and tab characters with space for more compact diagnostics
-						local message =
-							diagnostic.message:gsub("\n", " "):gsub("\t", " "):gsub("%s+", " "):gsub("^%s+", "")
-						return message
-					end,
-				},
-			}, neotest_ns)
-
-			if opts.adapters then
-				local adapters = {}
-				for name, config in pairs(opts.adapters or {}) do
-					if type(name) == "number" then
-						if type(config) == "string" then
-							config = require(config)
-						end
-						adapters[#adapters + 1] = config
-					elseif config ~= false then
-						local adapter = require(name)
-						if type(config) == "table" and not vim.tbl_isempty(config) then
-							local meta = getmetatable(adapter)
-							if adapter.setup then
-								adapter.setup(config)
-							elseif meta and meta.__call then
-								adapter(config)
-							else
-								error("Adapter " .. name .. " does not support setup")
-							end
-						end
-						adapters[#adapters + 1] = adapter
-					end
-				end
-				opts.adapters = adapters
-			end
-
-			require("neotest").setup(opts)
-		end,
-		-- stylua: ignore
-		keys = {
-			{
-				"<leader>tf",
-				function() require("neotest").run.run(vim.fn.expand("%")) end,
-				desc =
-				"Run File"
-			},
-			{
-				"<leader>tF",
-				function() require("neotest").run.run(vim.loop.cwd()) end,
-				desc =
-				"Run All Test Files"
-			},
-			{
-				"<leader>tn",
-				function() require("neotest").run.run() end,
-				desc =
-				"Run Nearest"
-			},
-			{
-				"<leader>ts",
-				function() require("neotest").summary.toggle() end,
-				desc =
-				"Toggle Summary"
-			},
-			{
-				"<leader>to",
-				function() require("neotest").output.open({ enter = true, auto_close = true }) end,
-				desc = "Show Output"
-			},
-			{
-				"<leader>tO",
-				function() require("neotest").output_panel.toggle() end,
-				desc =
-				"Toggle Output Panel"
-			},
-			{ "<leader>tS", function() require("neotest").run.stop() end, desc = "Stop" },
 		},
 	},
 	{
@@ -742,6 +697,7 @@ capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 local mason_lspconfig = require("mason-lspconfig")
 
 local servers = {
+	ocamllsp = {},
 	gopls = {},
 	pyright = {},
 	rust_analyzer = {},
@@ -782,6 +738,7 @@ vim.diagnostic.config({
 vim.api.nvim_set_hl(0, "CursorLineNr", { fg = "#f6c177" })
 vim.cmd.set("cursorline")
 vim.cmd.set("cursorlineopt=number")
+vim.cmd.set("colorcolumn=100")
 
 vim.api.nvim_create_autocmd("TextYankPost", {
 	callback = function()
@@ -821,5 +778,4 @@ require("lspconfig").efm.setup(vim.tbl_extend("force", efmls_config, {
 	capabilities = capabilities,
 }))
 
-
-vim.cmd('command! MakeFileExecutable :!chmod +x %<CR>')
+vim.cmd("command! MakeFileExecutable :!chmod +x %<CR>")
