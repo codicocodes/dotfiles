@@ -432,11 +432,13 @@ require("lazy").setup({
 				}, "\n"),
 				query_updaters = [[abcdefghilmoqrstuvwxyz0123456789_-,.ABCDEFGHIJKLMOQRSTUVWXYZ]],
 				items = {
-					{ action = "Telescope find_files", name = "F: Find files", section = "Welcome" },
-					{ action = "Lazy update", name = "U: Update Plugins", section = "Welcome" },
-					{ action = "tab G", name = "G: Fugitive", section = "Welcome" },
-					{ action = "Neorg index", name = "N: Notes", section = "Welcome" },
-					{ action = "qall!", name = "Q: Quit Neovim", section = "Welcome" },
+					{ action = "Telescope find_files", name = "F: Files", section = "Welcome" },
+					{ action = "lua require('harpoon.ui').toggle_quick_menu()", name = "M: Menu", section = "Welcome" },
+					{ action = "Lazy update", name = "U: Update", section = "Plugins" },
+					{ action = "tab G", name = "G: Git", section = "Welcome" },
+					{ action = "Neorg workspace home", name = "H: Home", section = "Notes" },
+					{ action = "Neorg workspace work", name = "W: Work", section = "Notes" },
+					{ action = "qall!", name = "Q: Quit", section = "Welcome" },
 				},
 			})
 
