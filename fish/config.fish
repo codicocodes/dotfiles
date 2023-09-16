@@ -104,7 +104,7 @@ fish_vi_key_bindings
 set fish_greeting
 
 if type -q nvm
-    nvm use lts > /dev/null
+    nvm use 20 > /dev/null
 else
     echo 'nvm is not installed'
 end
@@ -115,8 +115,8 @@ function fish-setup
     curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
     fisher install jorgebucaran/nvm.fish
     fisher install jethrokuan/z
-    nvm install lts
-    nvm use lts
+    nvm install 20
+    nvm use 20
     npm install -g prettier \
       eslint typescript typescript-language-server \
       vscode-langservers-extracted vue-language-server
