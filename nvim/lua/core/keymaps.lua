@@ -33,9 +33,9 @@ vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]], { desc = "Delete without over
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]], { desc = "Yank to system Clipboard" })
 vim.keymap.set("n", "<leader>Y", [["+Y]], { desc = "Yank Line to system Clipboard" })
 vim.keymap.set("n", "<leader>bf", vim.lsp.buf.format, { desc = "[B]uffer [F]ormat" })
-vim.keymap.set(
-	"n",
-	"<leader>s",
-	[[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
-	{ desc = "[Search] and Replace word under cursor" }
-)
+-- vim.keymap.set(
+-- 	"n",
+-- 	"<leader>s",
+-- 	[[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
+-- 	{ desc = "[Search] and Replace word under cursor" }
+-- )
