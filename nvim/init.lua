@@ -28,6 +28,7 @@ require("lazy").setup({
 	"tpope/vim-fugitive",
 	"tpope/vim-rhubarb",
 	"tpope/vim-sleuth",
+	"tpope/vim-abolish",
 	{
 		"kylechui/nvim-surround",
 		version = "*", -- Use for stability; omit to use `main` branch for the latest features
@@ -38,7 +39,6 @@ require("lazy").setup({
 			})
 		end,
 	},
-	"tpope/vim-abolish",
 	{
 		-- LSP Configuration & Plugins
 		"neovim/nvim-lspconfig",
@@ -62,7 +62,6 @@ require("lazy").setup({
 			},
 		},
 	},
-
 	{
 		"hrsh7th/nvim-cmp",
 		dependencies = {
@@ -255,6 +254,8 @@ require("lazy").setup({
 		"lukas-reineke/indent-blankline.nvim",
 		-- Enable `lukas-reineke/indent-blankline.nvim`
 		-- See `:help indent_blankline.txt`
+		event = "VeryLazy",
+		version = "v2.20.8",
 		opts = {
 			char = "┊",
 			show_trailing_blankline_indent = true,
@@ -385,6 +386,7 @@ require("lazy").setup({
 	},
 	{
 		"echasnovski/mini.starter",
+		dependencies = { "MaximilianLloyd/ascii.nvim" },
 		version = "*",
 		config = function()
 			local plugin_count = #require("lazy").plugins()
@@ -398,13 +400,10 @@ require("lazy").setup({
 				footer = table.concat({
 					"🚀 " .. plugin_count .. " plugins installed",
 					"📅 " .. os.date(),
+					"\n ",
+					table.concat(require("ascii").art.animals.cats.cookie, "\n"),
 				}, "\n"),
-				header = table.concat({
-					[[  /\ \▔\___  ___/\   /(●)_ __ ___  ]],
-					[[ /  \/ / _ \/ _ \ \ / / | '_ ` _ \ ]],
-					[[/ /\  /  __/ (_) \ V /| | | | | | |]],
-					[[\_\ \/ \___|\___/ \_/ |_|_| |_| |_|]],
-				}, "\n"),
+				header = table.concat(require("ascii").art.text.neovim.ogre, "\n"),
 				query_updaters = [[abcdefghilmoqrstuvwxyz0123456789_-,.ABCDEFGHIJKLMOQRSTUVWXYZ]],
 				items = {
 					{
