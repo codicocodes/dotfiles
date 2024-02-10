@@ -192,7 +192,7 @@ require("lazy").setup({
 			{
 				"<leader>E",
 				function()
-					require("neo-tree.command").execute({ toggle = true, reveal = true })
+					require("neo-tree.command").execute({ toggle = true, reveal = true, dir = "/" })
 				end,
 				desc = "Explorer NeoTree (cwd)",
 			},
