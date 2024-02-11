@@ -24,7 +24,22 @@ require("lazy").setup({
 			})
 		end,
 	},
-	"creativenull/dotfyle-metadata.nvim",
+	{
+		"creativenull/dotfyle-metadata.nvim",
+		config = function()
+			local augroup = vim.api.nvim_create_augroup("DotfyleMetadataGroup", {})
+			vim.api.nvim_create_autocmd("User", {
+				group = augroup,
+				pattern = { "LazyUpdate", "LazyInstall", "LazySync", "LazyClean" },
+				once = true,
+				callback = function()
+					local dotfyle_metadata = require("dotfyle_metadata")
+					dotfyle_metadata.generate({})
+					vim.cmd("!prettier --write " .. dotfyle_metadata.dotfyle_path)
+				end,
+			})
+		end,
+	},
 	"tpope/vim-fugitive",
 	"tpope/vim-rhubarb",
 	"tpope/vim-sleuth",
