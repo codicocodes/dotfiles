@@ -349,9 +349,6 @@ require("lazy").setup({
 					enable = true,
 					filetypes = { "html", "xml", "svelte", "react", "vue" },
 				},
-				context_commentstring = {
-					enable = true,
-				},
 				textobjects = {
 					select = {
 						enable = true,
